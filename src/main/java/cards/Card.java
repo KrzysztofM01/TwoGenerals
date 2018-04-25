@@ -9,7 +9,7 @@ public abstract class Card {
     private ImageIcon imageIcon;
     private CardType cardType;
 
-    public Card(String name, int power, int cost, ImageIcon imageIcon, CardType cardType) {
+    Card(String name, int power, int cost, ImageIcon imageIcon, CardType cardType) {
         this.name = name;
         this.power = power;
         this.cost = cost;
