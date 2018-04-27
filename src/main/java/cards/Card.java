@@ -8,6 +8,9 @@ public abstract class Card {
     private int cost;
     private ImageIcon imageIcon;
     private CardType cardType;
+    private int currentPower;
+    private boolean isHidden = false;
+    private int onWhichFront = 0;
 
     Card(String name, int power, int cost, ImageIcon imageIcon, CardType cardType) {
         this.name = name;
@@ -15,6 +18,7 @@ public abstract class Card {
         this.cost = cost;
         this.imageIcon = imageIcon;
         this.cardType = cardType;
+        this.currentPower = power;
     }
 
     public void action(){
@@ -43,6 +47,31 @@ public abstract class Card {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public CardType getCardType() { return cardType; }
+
+    public int getCurrentPower() { return currentPower;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public int getOnWhichFront() {
+        return onWhichFront;
+    }
+
+    public void setCurrentPower(int currentPower) {
+        this.currentPower = currentPower;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
+    }
+
+    public void setOnWhichFront(int onWhichFront) {
+        this.onWhichFront = onWhichFront;
     }
 
     @Override
