@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class DasDingo extends Card {
 
-    public DasDingo(String name, int power, int cost, ImageIcon imageIcon, CardType cardType) {
+    DasDingo(String name, int power, int cost, ImageIcon imageIcon, CardType cardType) {
         super(name, power, cost, imageIcon, cardType);
     }
 

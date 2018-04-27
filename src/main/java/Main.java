@@ -26,9 +26,11 @@ public class Main {
         list.add(CardCreator.newCard(select2, CardType.valueOf(select4),3,9, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02b.png")));
         list.add(CardCreator.newCard(select1, CardType.valueOf(select3),2,5, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02c.png")));
         list.add(CardCreator.newCard(select2, CardType.valueOf(select4),2,5, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02d.png")));
+
         for (Card card: list){
-            System.out.println(card.toString());
-            card.action();
+            System.out.print(card.getName()+ " ");
+            //card.action();
         }
+
     }
 }
