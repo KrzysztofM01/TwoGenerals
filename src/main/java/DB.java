@@ -23,6 +23,9 @@ public class DB {
             String sqlInsert = "INSERT INTO `tuser`(`login`, `password`, `hasadmin`) VALUES (?, ?, ?);";
             PreparedStatement preparedStatement = DB.connection.prepareStatement(sqlInsert);
             preparedStatement.setString(1, login);
+            // <------------------------------------------------------------------------>
+            //password is visible, should be immediately transfered into hash after init
+            // <------------------------------------------------------------------------>
             preparedStatement.setString(2, org.apache.commons.codec.digest.DigestUtils.sha256Hex(password));
             preparedStatement.setBoolean(3, hasAdmin);
             preparedStatement.executeUpdate();
