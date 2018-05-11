@@ -19,6 +19,7 @@ public class BattleFrontGUI {
         }
 
         this.cards.setHgap(-VariablesGraphics.cardWidth/3);
+        this.cards.setVgap(-VariablesGraphics.cardHeight/5);
         this.cards.setAlignment(pos);
         this.cards.setPrefWidth(VariablesGraphics.battleFieldWidth);
         this.cards.setPrefHeight(VariablesGraphics.battleFieldHeight/2);

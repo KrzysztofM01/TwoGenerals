@@ -14,8 +14,10 @@ import variables.VariablesGraphics;
 public class Card extends StackPane {
     private CardLogic cardLogic;
     private boolean highlighted;
-    private PowerText powerText;
+    private CardText cardTextPower;
+    private CardText cardTextCost;
     private ImageView cardBack  = new ImageView(new Image("cardImages/mahjong.png"));
+    private int tempCardPlayerID;
 
     public Card(CardLogic card) {
         this.cardLogic = card;
@@ -26,9 +28,10 @@ public class Card extends StackPane {
         this.cardBack.setFitHeight(VariablesGraphics.cardHeight);
         this.setPadding(new Insets(VariablesGraphics.cardPadding, VariablesGraphics.cardPadding, VariablesGraphics.cardPadding, VariablesGraphics.cardPadding ));
         this.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-        this.powerText = new PowerText(this.cardLogic.getCurrentPower());
+        this.cardTextPower = new CardText(this.cardLogic.getCurrentPower(), CardTextType.power);
+        this.cardTextCost = new CardText(this.cardLogic.getCost(), CardTextType.cost);
         this.cardBack.setViewOrder(1);
-        this.getChildren().addAll(imageView, powerText, cardBack);
+        this.getChildren().addAll(imageView, cardTextPower, cardTextCost, cardBack);
     }
 
     public void turnCardBack(boolean isCardBackUp){
@@ -57,12 +60,24 @@ public class Card extends StackPane {
         }
     }
 
-    public void setPowerText(PowerText powerText) {
-        this.powerText = powerText;
+    public void setCardTextPower(CardText cardTextPower) {
+        this.cardTextPower = cardTextPower;
     }
 
-    public PowerText getPowerText() {
+    public CardText getCardTextPower() {
 
-        return powerText;
+        return cardTextPower;
+    }
+
+    public CardText getCardTextCost() {
+        return cardTextCost;
+    }
+
+    public int getTempCardPlayerID() {
+        return tempCardPlayerID;
+    }
+
+    public void setTempCardPlayerID(int tempCardPlayerID) {
+        this.tempCardPlayerID = tempCardPlayerID;
     }
 }

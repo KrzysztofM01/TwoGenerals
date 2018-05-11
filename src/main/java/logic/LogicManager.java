@@ -26,6 +26,7 @@ public class LogicManager {
     }
 
     public void addCardToFront(CardLogic cardLogic, LineType frontLineType, int playerID){
+        this.getPlayer(playerID).removeCard(cardLogic);
         if (playerID == 0){
             switch (frontLineType) {
                 case left:
@@ -213,4 +214,11 @@ public class LogicManager {
         return 0;
     }
 
+    public Player getPlayer(int playerID) {
+        if (playerID == 0){
+            return this.player0;
+        } else {
+            return this.player1;
+        }
+    }
 }

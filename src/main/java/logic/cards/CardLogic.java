@@ -28,6 +28,10 @@ public abstract class CardLogic {
 
     }
 
+    public String getDescription(){
+        return "";
+    }
+
     public String getName() {
         return name;
     }

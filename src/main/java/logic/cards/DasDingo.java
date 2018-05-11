@@ -16,6 +16,11 @@ public class DasDingo extends CardLogic {
         for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, playerID).getCardList()){
             cardLogic.setCurrentPower(cardLogic.getCurrentPower()+2);
         }
+        this.setCurrentPower(this.getPower());
+    }
 
+    @Override
+    public String getDescription() {
+        return "When used this card increases power by 2 of all friendly cards in battle front.";
     }
 }

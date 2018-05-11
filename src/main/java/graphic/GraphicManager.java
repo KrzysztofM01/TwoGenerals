@@ -87,14 +87,22 @@ public class GraphicManager {
         return cardPreviewPane;
     }
 
-    public void addCardToPlayerDeck(Card card){
-        this.playerCards.getChildren().add(card);
+    public void addCardToPlayerDeck(Card card, PlayerType playerType){
         this.cardList.add(card);
+        if (playerType == PlayerType.player){
+            this.playerCards.getChildren().add(card);
+        } else {
+            this.opponentCards.getChildren().add(card);
+        }
     }
 
-    public void removeCardFromPlayerDeck(Card card){
+    public void removeCardFromPlayerDeck(Card card, PlayerType playerType){
         this.cardList.remove(card);
-        this.playerCards.getChildren().remove(card);
+        if (playerType == PlayerType.player){
+            this.playerCards.getChildren().remove(card);
+        } else {
+            this.opponentCards.getChildren().remove(card);
+        }
     }
 
     public void addCardToFront(Card card, LineType lineType, int power, PlayerType playerType){
@@ -106,7 +114,8 @@ public class GraphicManager {
     }
 
     public void updateGraphics(Card card){
-        card.getPowerText().setText(card.getCardLogic().getCurrentPower());
+        card.getCardTextPower().setText(card.getCardLogic().getCurrentPower());
+        card.getCardTextCost().setText(card.getCardLogic().getCost());
     }
 
     public void removeCardFromFront(Card card, LineType lineType, int power, PlayerType playerType){

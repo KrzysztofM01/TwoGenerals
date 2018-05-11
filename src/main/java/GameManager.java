@@ -16,9 +16,11 @@ import javafx.stage.Stage;
 public class GameManager {
 
     private Card tempCard;
+    private CardPreview tempCardPreview;
+
     private LogicManager logicManager;
     private GraphicManager graphicManager;
-    private CardPreview tempCardPreview;
+
 
     public GameManager(Stage primaryStage, Player player0, Player player1) {
 
@@ -28,47 +30,43 @@ public class GameManager {
         //
 
         // Handler must be in main manager
-        EventHandler<MouseEvent> eventHandler = e -> {
-            System.out.println(e.getPickResult().getIntersectedNode().getId());
+        EventHandler<MouseEvent> sendCardToFrontHandler = e -> {
             if (e.getPickResult().getIntersectedNode().getId() != null && !NodeIDConverter.isItBattleFieldID(e.getPickResult().getIntersectedNode().getId())) {
                 if (GameManager.this.tempCard != null) {
                     if (GameManager.this.tempCard.isHighlighted()) {
-                        GameManager.this.removeCardFromPlayerDeck(GameManager.this.tempCard);
-                        GameManager.this.addCardToFront(GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), 0);
+                        GameManager.this.removeCardFromPlayerDeck(GameManager.this.tempCard, GameManager.this.tempCard.getTempCardPlayerID());
+                        GameManager.this.addCardToFront(GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), GameManager.this.tempCard.getTempCardPlayerID());
                         //GameManager.this.tempCard = null;
                     }
                 }
             }
         };
 
-        EventHandler<ActionEvent> buttonHandler = e -> {
+        EventHandler<ActionEvent> attackOnFrontHandler = e -> {
             LineType lineType = NodeIDConverter.toLineType(e.getSource().toString());
             int loserPlayerID = this.logicManager.attackFrontLine(lineType);
             PlayerType playerType = PlayerTypeConverter.toPlayerType(loserPlayerID);
             this.graphicManager.getBattleFrontTextBoxGUI(lineType, playerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerID));
         };
 
-        graphicManager.getLeftBattleFieldGUI().setOnMouseClicked(eventHandler);
-        graphicManager.getCenterBattleFieldGUI().setOnMouseClicked(eventHandler);
-        graphicManager.getRightBattleFieldGUI().setOnMouseClicked(eventHandler);
+        graphicManager.getLeftBattleFieldGUI().setOnMouseClicked(sendCardToFrontHandler);
+        graphicManager.getCenterBattleFieldGUI().setOnMouseClicked(sendCardToFrontHandler);
+        graphicManager.getRightBattleFieldGUI().setOnMouseClicked(sendCardToFrontHandler);
 
-        graphicManager.getLeftAttackButton().setOnAction(buttonHandler);
-        graphicManager.getCenterAttackButton().setOnAction(buttonHandler);
-        graphicManager.getRightAttackButton().setOnAction(buttonHandler);
+        graphicManager.getLeftAttackButton().setOnAction(attackOnFrontHandler);
+        graphicManager.getCenterAttackButton().setOnAction(attackOnFrontHandler);
+        graphicManager.getRightAttackButton().setOnAction(attackOnFrontHandler);
 
     }
 
-    public void addCardToPlayerDeck(CardLogic cardLogic){
+    public void addCardToPlayerDeck(CardLogic cardLogic, int playerID){
         Card card = new Card(cardLogic);
-        graphicManager.addCardToPlayerDeck(card);
-        //logic manager here
+        graphicManager.addCardToPlayerDeck(card, PlayerTypeConverter.toPlayerType(playerID));
+        logicManager.getPlayer(playerID).getCardList().add(cardLogic);
         card.setOnMouseEntered((MouseEvent e) ->{
             CardPreview cardPreview = new CardPreview(cardLogic);
             this.tempCardPreview = cardPreview;
             graphicManager.getCardPreviewPane().getChildren().add(cardPreview);
-            //cardPreview.setLayoutX(card.getParent().getLayoutX()+card.getLayoutX()- VariablesGraphics.cardHeight /3);
-            //cardPreview.setLayoutX(VariablesGraphics.screenWidth/2-VariablesGraphics.cardHeight);
-            //cardPreview.setLayoutY(card.getParent().getLayoutY()- VariablesGraphics.cardHeight*2 -VariablesGraphics.cardPadding*2);
         });
         card.setOnMouseExited((MouseEvent e) -> {
             graphicManager.getCardPreviewPane().getChildren().remove(tempCardPreview);
@@ -79,30 +77,31 @@ public class GameManager {
             if (this.tempCard != null && card.isHighlighted()){
                 card.setHighlighted(false);
                 card.setViewOrder(0);
-                //this.tempCard = null;
                 } else if (this.tempCard != null && !card.isHighlighted()){
                 this.tempCard.setHighlighted(false);
                 this.tempCard.setViewOrder(0);
                 this.tempCard = card;
+                this.tempCard.setTempCardPlayerID(playerID);
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
                 } else {
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
                 this.tempCard = card;
+                this.tempCard.setTempCardPlayerID(playerID);
                 }
         });
     }
 
-    public void removeCardFromPlayerDeck(Card card){
-        graphicManager.removeCardFromPlayerDeck(card);
+    public void removeCardFromPlayerDeck(Card card, int playerID){
+        graphicManager.removeCardFromPlayerDeck(card, PlayerTypeConverter.toPlayerType(playerID));
+        logicManager.getPlayer(playerID).removeCard(card.getCardLogic());
         this.tempCard.setOnMouseClicked((MouseEvent e) -> {
             e.getPickResult().getIntersectedNode().setId(e.getPickResult().getIntersectedNode().getParent().getId());
         });
 
-        //logic manager here
-    }
 
+    }
 
     public void addCardToFront(Card card, String nodeID, int playerID){
         LineType lineType = NodeIDConverter.toLineType(nodeID);
