@@ -1,0 +1,25 @@
+#leftPlayerActiveCards{
+    -fx-background-color: #ff1d31;
+}
+#leftPlayerHiddenCards{
+    -fx-background-color: #ff8f26;
+}
+#leftOpponentActiveCards{
+    -fx-background-color: #c9ff95;
+}
+#leftOpponentHiddenCards{
+    -fx-background-color: #f085ff;
+}
+#leftBattleField{
+    -fx-background-color: #fff624;
+}
+#centerBattleField{
+    -fx-background-color: #fff624;
+}
+#rightBattleField{
+    -fx-background-color: #fff624;
+}
+#BattleFrontTextBoxGUI {
+    -fx-background-color: #55fff0;
+}
+

@@ -1,0 +1,35 @@
+.root {
+    -fx-background-color: #ffecbe;
+    -fx-background-repeat: stretch;
+    -fx-background-size: 1200 900;
+    -fx-background-position: center center;
+}
+
+#playerCards {
+    -fx-background-color: #d1ff7d;
+}
+#opponentCards {
+    -fx-background-color: #d1ff7d;
+}
+#cardPreview {
+    -fx-background-color: #d1ff7d;
+}
+#lowerPane {
+    -fx-background-color: #fff530;
+}
+
+#left{
+    -fx-background-color: #29ff10;
+}
+
+#center{
+    -fx-background-color: #40ffe9;
+}
+
+#right{
+    -fx-background-color: #3d77ff;
+}
+
+#textArea1{
+    -fx-text-alignment: center;
+}

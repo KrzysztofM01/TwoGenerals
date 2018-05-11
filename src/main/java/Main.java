@@ -1,57 +1,64 @@
-import cards.Card;
-import cards.CardCreator;
-import cards.CardType;
+import logic.Player;
+import logic.cards.CardCreator;
+import logic.cards.CardLogic;
+import logic.cards.CardType;
+import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.util.ArrayList;
-
-public class Main {
+public class Main extends Application{
 
     public static void main(String[] args) {
-        /*
-        DB.connect();
-        DB.insertUser("insane", "wololo3", true);
-        ImageIcon imageIcon = new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02a.png", "idk");
-        System.out.println(DB.checkPassword("insane", "wololo3"));
-        DB.disconnect();
-        */
-        String select1 = "NORMALCARD";
-        String select2 = "DASDINGO";
-        String select3 = "NormalCard";
-        String select4 = "DasDingo";
+        launch(args);
+    }
 
-        Card card1 = CardCreator.newCard(select2, CardType.valueOf(select4),9,5, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02d.png"));
+    @Override
+    public void start(Stage primaryStage){
 
+        Player player0 = new Player(0,"Krystian");
+        Player player1 = new Player(1,"Karczynski");
 
-        ArrayList<Card> list = new ArrayList<Card>();
-        list.add(CardCreator.newCard(select1, CardType.valueOf(select3),3,3, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02a.png")));
-        list.add(CardCreator.newCard(select2, CardType.valueOf(select4),8,9, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02b.png")));
-        list.add(CardCreator.newCard(select1, CardType.valueOf(select3),2,5, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02c.png")));
-        list.add(CardCreator.newCard(select2, CardType.valueOf(select4),9,5, new ImageIcon("C:\\Users\\User\\IdeaProjects\\TwoGenerals\\src\\main\\resources\\cardImages\\02d.png")));
-        Player player1 = new Player(0,"Srutek",list);
+        GameManager guiManager = new GameManager(primaryStage, player0, player1);
 
-        /*
-        Display player's cards
-        for (Card card: player1.getDeck()){
-            System.out.println(card.toString());
-        }
-        */
-        BattleFront battleFront1 = new BattleFront(0,0);
-        BattleFront battleFront2 = new BattleFront(0,1);
+        Image image = new Image("cardImages/02a.png");
+        Image image2 = new Image("cardImages/02b.png");
+        Image image3 = new Image("cardImages/02c.png");
+        Image image4 = new Image("cardImages/02d.png");
+        CardLogic card = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image);
+        CardLogic card2 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image2);
+        CardLogic card3 = CardCreator.newCard("Normal graphics.Card", CardType.DasDingo, 1, 2, image3);
+        CardLogic card4 = CardCreator.newCard("Normal graphics.Card", CardType.DasDingo, 1, 2, image3);
+        CardLogic card16 = CardCreator.newCard("Normal graphics.Card", CardType.DasDingo, 1, 2, image3);
+        CardLogic card17 = CardCreator.newCard("Normal graphics.Card", CardType.DasDingo, 1, 2, image3);
+        CardLogic card5 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image4);
+        CardLogic card6 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image);
+        CardLogic card7 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image2);
+        CardLogic card8 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image);
+        CardLogic card9 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image);
+        CardLogic card10 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image4);
+        CardLogic card11 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image2);
+        CardLogic card12 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image2);
+        CardLogic card13 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image4);
+        CardLogic card14 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image2);
+        CardLogic card15 = CardCreator.newCard("Normal graphics.Card", CardType.NormalCard, 3, 2, image4);
 
-        System.out.println(battleFront1.displayBattleFront());
-        System.out.println(battleFront2.displayBattleFront());
-
-        BattleField.addCardToBattleFront(player1.getDeck().get(0),player1,battleFront1);
-        BattleField.addCardToBattleFront(player1.getDeck().get(0),player1,battleFront2);
-
-        System.out.println(battleFront1.displayBattleFront());
-        System.out.println(battleFront2.displayBattleFront());
-
-        BattleField.attackOnBattleFront(battleFront1, battleFront2);
-
-        System.out.println(battleFront1.displayBattleFront());
-        System.out.println(battleFront2.displayBattleFront());
+        guiManager.addCardToPlayerDeck(card);
+        guiManager.addCardToPlayerDeck(card2);
+        guiManager.addCardToPlayerDeck(card3);
+        guiManager.addCardToPlayerDeck(card4);
+        guiManager.addCardToPlayerDeck(card5);
+        guiManager.addCardToPlayerDeck(card6);
+        guiManager.addCardToPlayerDeck(card7);
+        guiManager.addCardToPlayerDeck(card8);
+        guiManager.addCardToPlayerDeck(card9);
+        guiManager.addCardToPlayerDeck(card10);
+        guiManager.addCardToPlayerDeck(card11);
+        guiManager.addCardToPlayerDeck(card12);
+        guiManager.addCardToPlayerDeck(card13);
+        guiManager.addCardToPlayerDeck(card14);
+        guiManager.addCardToPlayerDeck(card15);
+        guiManager.addCardToPlayerDeck(card16);
+        guiManager.addCardToPlayerDeck(card17);
 
     }
 }
