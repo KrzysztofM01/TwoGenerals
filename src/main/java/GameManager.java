@@ -1,8 +1,10 @@
-import graphics.Card;
-import graphics.CardPreview;
-import graphics.GraphicManager;
-import graphics.NodeIDConverter;
-import logic.Player;
+import graphic.PlayerType;
+import graphic.PlayerTypeConverter;
+import graphic.cards.Card;
+import graphic.cards.CardPreview;
+import graphic.GraphicManager;
+import graphic.NodeIDConverter;
+import logic.players.Player;
 import logic.cards.CardLogic;
 import logic.battleFields.LineType;
 import logic.LogicManager;
@@ -20,18 +22,21 @@ public class GameManager {
 
     public GameManager(Stage primaryStage, Player player0, Player player1) {
 
-        // Launch the graphics and logic managers
+        // Launch the graphic and logic managers
         this.graphicManager = new GraphicManager(primaryStage);
         this.logicManager = new LogicManager(player0, player1);
         //
 
         // Handler must be in main manager
         EventHandler<MouseEvent> eventHandler = e -> {
-            if (GameManager.this.tempCard != null) {
-                if (GameManager.this.tempCard.isHighlighted()) {
-                    GameManager.this.removeCardFromPlayerDeck(GameManager.this.tempCard);
-                    GameManager.this.addCardToFront(GameManager.this.tempCard,e.getPickResult().getIntersectedNode().getId(), 0);
-                    //GameManager.this.tempCard = null;
+            System.out.println(e.getPickResult().getIntersectedNode().getId());
+            if (e.getPickResult().getIntersectedNode().getId() != null && !NodeIDConverter.isItBattleFieldID(e.getPickResult().getIntersectedNode().getId())) {
+                if (GameManager.this.tempCard != null) {
+                    if (GameManager.this.tempCard.isHighlighted()) {
+                        GameManager.this.removeCardFromPlayerDeck(GameManager.this.tempCard);
+                        GameManager.this.addCardToFront(GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), 0);
+                        //GameManager.this.tempCard = null;
+                    }
                 }
             }
         };
@@ -39,7 +44,8 @@ public class GameManager {
         EventHandler<ActionEvent> buttonHandler = e -> {
             LineType lineType = NodeIDConverter.toLineType(e.getSource().toString());
             int loserPlayerID = this.logicManager.attackFrontLine(lineType);
-            this.graphicManager.getBattleFrontTextBoxGUI(lineType, loserPlayerID).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerID));
+            PlayerType playerType = PlayerTypeConverter.toPlayerType(loserPlayerID);
+            this.graphicManager.getBattleFrontTextBoxGUI(lineType, playerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerID));
         };
 
         graphicManager.getLeftBattleFieldGUI().setOnMouseClicked(eventHandler);
@@ -100,9 +106,10 @@ public class GameManager {
 
     public void addCardToFront(Card card, String nodeID, int playerID){
         LineType lineType = NodeIDConverter.toLineType(nodeID);
+        PlayerType playerType = PlayerTypeConverter.toPlayerType(playerID);
         logicManager.addCardToFront(card.getCardLogic(), lineType, playerID);
         card.getCardLogic().action(this.logicManager, lineType, playerID);
-        graphicManager.addCardToFront(card, lineType, logicManager.getFrontLinePower(lineType, playerID));
+        graphicManager.addCardToFront(card, lineType, logicManager.getFrontLinePower(lineType, playerID), playerType);
         if (card.getCardLogic().isUpdateGraphics()){
             for (Card cardGraphic: this.graphicManager.getCardList()){
                 this.graphicManager.updateGraphics(cardGraphic);
@@ -113,7 +120,9 @@ public class GameManager {
     }
 
     public void removeCardFromFront(Card card, String nodeID, int playerID){
-        graphicManager.removeCardFromFront(card, LineType.valueOf(nodeID));
-        logicManager.removeCardFromFront(card.getCardLogic(), LineType.valueOf(nodeID), playerID);
+        LineType lineType = NodeIDConverter.toLineType(nodeID);
+        PlayerType playerType = PlayerTypeConverter.toPlayerType(playerID);
+        logicManager.removeCardFromFront(card.getCardLogic(), lineType, playerID);
+        graphicManager.removeCardFromFront(card, lineType, logicManager.getFrontLinePower(lineType, playerID), playerType);
     }
 }

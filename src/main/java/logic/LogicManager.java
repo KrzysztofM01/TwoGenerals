@@ -4,6 +4,7 @@ package logic;
 import logic.battleFields.FrontLine;
 import logic.battleFields.LineType;
 import logic.cards.CardLogic;
+import logic.players.Player;
 import variables.VariablesLogic;
 
 public class LogicManager {

@@ -1,10 +1,10 @@
 #leftPlayerActiveCards{
     -fx-background-color: #ff1d31;
 }
-#leftPlayerHiddenCards{
+#leftPlayerCards{
     -fx-background-color: #ff8f26;
 }
-#leftOpponentActiveCards{
+#leftOpponentCards{
     -fx-background-color: #c9ff95;
 }
 #leftOpponentHiddenCards{
