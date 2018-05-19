@@ -1,5 +1,8 @@
 package graphic.battleFields;
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import logic.battleFields.LineType;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -27,12 +30,23 @@ public class BattleFrontTextBoxGUI extends Pane {
         } else {
             this.setLayoutY(-VariablesGraphics.battleFrontTextBoxHeight);
         }
+
+        this.hitPoints.setId("hitPoints");
+        this.hitPoints.setFont(Font.font("Helvetica", FontWeight.BOLD, 15));
+        this.hitPoints.setFill(Color.WHITE);
+        this.power.setFont(Font.font("Helvetica", FontWeight.BOLD, 15));
+        this.power.setFill(Color.WHITE);
+        this.powerAmount.setFont(Font.font("Helvetica", FontWeight.BOLD, 15));
+        this.powerAmount.setFill(Color.WHITE);
+        this.hitPointsAmount.setFont(Font.font("Helvetica", FontWeight.BOLD, 15));
+        this.hitPointsAmount.setFill(Color.WHITE);
+
         // Set layout positions
         this.setPrefSize(VariablesGraphics.battleFrontTextBoxWidth, VariablesGraphics.battleFrontTextBoxHeight);
-        this.getHitPoints().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth * 0.1);
-        this.getHitPointsAmount().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth*0.2);
-        this.getPower().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth * 0.65);
-        this.getPowerAmount().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth*0.74);
+        this.getHitPoints().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth * 0.05);
+        this.getHitPointsAmount().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth*0.22);
+        this.getPower().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth * 0.6);
+        this.getPowerAmount().setLayoutX(VariablesGraphics.battleFrontTextBoxWidth*0.69);
         this.getHitPoints().setLayoutY(VariablesGraphics.battleFrontTextBoxHeight * 0.4);
         this.getHitPointsAmount().setLayoutY(VariablesGraphics.battleFrontTextBoxHeight * 0.7);
         this.getPower().setLayoutY(VariablesGraphics.battleFrontTextBoxHeight * 0.4);

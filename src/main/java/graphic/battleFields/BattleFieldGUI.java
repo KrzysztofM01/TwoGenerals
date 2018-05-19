@@ -9,8 +9,8 @@ import variables.VariablesGraphics;
 
 public class BattleFieldGUI extends Pane {
     public static final String STYLESHEET = "battleFrontStyles.css";
-    private BattleFrontGUI playerCards = new BattleFrontGUI(true);
-    private BattleFrontGUI opponentCards = new BattleFrontGUI(false);
+    private BattleFrontGUI playerCards = new BattleFrontGUI();
+    private BattleFrontGUI opponentCards = new BattleFrontGUI();
 
     private LineType lineType;
 
@@ -26,9 +26,10 @@ public class BattleFieldGUI extends Pane {
         this.opponentTextBox = new BattleFrontTextBoxGUI(PlayerType.opponent, this.lineType);
 
         // Set IDs of Panes
-        this.opponentCards.getCards().setId(this.lineType.toString() + this.opponentCards.getCards().getId());
-        this.playerCards.getCards().setId(this.lineType.toString() + this.playerCards.getCards().getId());
+        this.opponentCards.setId(this.lineType.toString() + "Opponent" + this.opponentCards.getId());
+        this.playerCards.setId(this.lineType.toString() + "Player" + this.playerCards.getId());
         this.setId(this.lineType.toString() + "BattleField");
+
         //
         //Set BattleFieldPane Layout
         this.setPrefSize(VariablesGraphics.battleFieldWidth, VariablesGraphics.battleFieldHeight);
@@ -44,15 +45,15 @@ public class BattleFieldGUI extends Pane {
                 this.setLayoutX(VariablesGraphics.battleFieldWidth * 2 + VariablesGraphics.battleFieldBreakWidth * 3);
                 break;
         }
-        this.playerCards.getCards().setLayoutY(VariablesGraphics.battleFieldHeight/2);
-        this.getChildren().addAll(this.opponentCards.getCards(), this.playerCards.getCards(), this.playerTextBox, this.opponentTextBox);
+        this.playerCards.setLayoutY(VariablesGraphics.battleFieldHeight/2);
+        this.getChildren().addAll(this.opponentCards, this.playerCards, this.playerTextBox, this.opponentTextBox);
     }
 
     public ObservableList<Node> getCardsNodeList (PlayerType playerType) {
         if (playerType == PlayerType.player){
-            return playerCards.getCards().getChildren();
+            return playerCards.getChildren();
         } else {
-            return opponentCards.getCards().getChildren();
+            return opponentCards.getChildren();
         }
     }
 

@@ -1,25 +1,28 @@
 package logic.cards;
 
+import graphic.cards.CardImage;
 import javafx.scene.image.Image;
 import logic.battleFields.LineType;
 import logic.LogicManager;
 
-public abstract class CardLogic {
+import java.io.Serializable;
+
+public abstract class CardLogic implements Serializable{
     private String name;
     private int power;
     private int cost;
-    private Image image;
+    private String imageURL;
     private CardType cardType;
     private int currentPower;
     private boolean isHidden = false;
     private int onWhichFront = 0;
     private boolean updateGraphics = false;
 
-    CardLogic(String name, int power, int cost, Image image, CardType cardType) {
+    CardLogic(String name, int power, int cost, String imageURL, CardType cardType) {
         this.name = name;
         this.power = power;
         this.cost = cost;
-        this.image = image;
+        this.imageURL = imageURL;
         this.cardType = cardType;
         this.currentPower = power;
     }
@@ -44,8 +47,8 @@ public abstract class CardLogic {
         return cost;
     }
 
-    public Image getImage() {
-        return image;
+    public String getImageURL() {
+        return imageURL;
     }
 
     public void setPower(int power) {

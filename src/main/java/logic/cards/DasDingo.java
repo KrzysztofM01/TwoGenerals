@@ -1,13 +1,14 @@
 package logic.cards;
 
+import graphic.cards.CardImage;
 import javafx.scene.image.Image;
 import logic.battleFields.LineType;
 import logic.LogicManager;
 
 public class DasDingo extends CardLogic {
 
-    DasDingo(String name, int power, int cost, Image image, CardType cardType) {
-        super(name, power, cost, image, cardType);
+    DasDingo(String name, int power, int cost, String imageURL, CardType cardType) {
+        super(name, power, cost, imageURL, cardType);
         this.setUpdateGraphics(true);
     }
 

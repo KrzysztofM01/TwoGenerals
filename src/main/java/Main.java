@@ -1,3 +1,5 @@
+import graphic.cards.CardImage;
+import javafx.stage.Screen;
 import logic.players.Player;
 import logic.cards.CardCreator;
 import logic.cards.CardLogic;
@@ -5,6 +7,8 @@ import logic.cards.CardType;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class Main extends Application{
 
@@ -20,34 +24,37 @@ public class Main extends Application{
         /* To fix:
         1) when you add card to front it doesnt have correct padding background
         ^ it may be connected to multiply color background in leftbattleground
+        2) Scale font with screenSize
+        3) Send all things to css and scale it into one CSS
+        4) Remove things from graphicManager and create new class for each of them
         */
-
-
-
 
         Player player0 = new Player(0,"Krystian");
         Player player1 = new Player(1,"Karczynski");
 
-        GameManager guiManager = new GameManager(primaryStage, player0, player1);
+        GameManager gameManager = new GameManager(primaryStage, player0, player1);
 
-        Image image = new Image("cardImages/02a.png");
-        Image image2 = new Image("cardImages/02b.png");
-        Image image3 = new Image("cardImages/02c.png");
-        Image image4 = new Image("cardImages/02d.png");
+
+        String image = "cardImages/BloodKnight2.jpg";
+        String image2 = "cardImages/Thaumaturg.jpg";
+        String image3 = "cardImages/HawkMaster.jpg";
+        String image4 = "cardImages/TheBloodKnight.jpg";
+        String image5 = "cardImages/HoodedWarrior.png";
+        String image6 = "cardImages/BlindMage.png";
 
         //Player Cards
         CardLogic card = CardCreator.newCard("Normal Card", CardType.NormalCard, 3, 2, image);
-        CardLogic card2 = CardCreator.newCard("Normal Card", CardType.NormalCard, 3, 4, image2);
+        CardLogic card2 = CardCreator.newCard("White Knight Riding", CardType.NormalCard, 3, 4, image2);
         CardLogic card3 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
         CardLogic card4 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
         CardLogic card16 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
         CardLogic card17 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
-        CardLogic card5 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 8, image4);
-        CardLogic card6 = CardCreator.newCard("Normal Card", CardType.NormalCard, 2, 5, image);
-        CardLogic card7 = CardCreator.newCard("Normal Card", CardType.NormalCard, 4, 3, image2);
-        CardLogic card8 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 7, image);
-        CardLogic card9 = CardCreator.newCard("Normal Card", CardType.NormalCard, 1, 1, image);
-        CardLogic card10 = CardCreator.newCard("Normal Card", CardType.NormalCard, 5, 3, image4);
+        CardLogic card5 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 8, image6);
+        CardLogic card6 = CardCreator.newCard("Normal Card", CardType.NormalCard, 2, 5, image6);
+        CardLogic card7 = CardCreator.newCard("Normal Card", CardType.NormalCard, 4, 3, image5);
+        CardLogic card8 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 7, image5);
+        CardLogic card9 = CardCreator.newCard("Normal Card", CardType.NormalCard, 1, 1, image5);
+        CardLogic card10 = CardCreator.newCard("Normal Card", CardType.NormalCard, 5, 3, image6);
         CardLogic card11 = CardCreator.newCard("Normal Card", CardType.NormalCard, 4, 6, image2);
         CardLogic card12 = CardCreator.newCard("Normal Card", CardType.NormalCard, 5, 3, image2);
         CardLogic card13 = CardCreator.newCard("Normal Card", CardType.NormalCard, 12, 8, image4);
@@ -69,37 +76,37 @@ public class Main extends Application{
         CardLogic card30 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
         CardLogic card31 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
 
-        guiManager.addCardToPlayerDeck(card,0);
-        guiManager.addCardToPlayerDeck(card2,0);
-        guiManager.addCardToPlayerDeck(card3,0);
-        guiManager.addCardToPlayerDeck(card4,0);
-        guiManager.addCardToPlayerDeck(card5,0);
-        guiManager.addCardToPlayerDeck(card6,0);
-        guiManager.addCardToPlayerDeck(card7,0);
-        guiManager.addCardToPlayerDeck(card8,0);
-        guiManager.addCardToPlayerDeck(card9,0);
-        guiManager.addCardToPlayerDeck(card10,0);
-        guiManager.addCardToPlayerDeck(card11,0);
-        guiManager.addCardToPlayerDeck(card12,0);
-        guiManager.addCardToPlayerDeck(card13,0);
-        guiManager.addCardToPlayerDeck(card14,0);
-        guiManager.addCardToPlayerDeck(card15,0);
-        guiManager.addCardToPlayerDeck(card16,0);
-        guiManager.addCardToPlayerDeck(card17,0);
-        guiManager.addCardToPlayerDeck(card18,1);
-        guiManager.addCardToPlayerDeck(card19,1);
-        guiManager.addCardToPlayerDeck(card20,1);
-        guiManager.addCardToPlayerDeck(card21,1);
-        guiManager.addCardToPlayerDeck(card22,1);
-        guiManager.addCardToPlayerDeck(card23,1);
-        guiManager.addCardToPlayerDeck(card24,1);
-        guiManager.addCardToPlayerDeck(card25,1);
-        guiManager.addCardToPlayerDeck(card26,1);
-        guiManager.addCardToPlayerDeck(card27,1);
-        guiManager.addCardToPlayerDeck(card28,1);
-        guiManager.addCardToPlayerDeck(card29,1);
-        guiManager.addCardToPlayerDeck(card30,1);
-        guiManager.addCardToPlayerDeck(card31,1);
+        gameManager.addCardToPlayerDeck(card,0);
+        gameManager.addCardToPlayerDeck(card2,0);
+        gameManager.addCardToPlayerDeck(card3,0);
+        gameManager.addCardToPlayerDeck(card4,0);
+        gameManager.addCardToPlayerDeck(card5,0);
+        gameManager.addCardToPlayerDeck(card6,0);
+        gameManager.addCardToPlayerDeck(card7,0);
+        gameManager.addCardToPlayerDeck(card8,0);
+        gameManager.addCardToPlayerDeck(card9,0);
+        gameManager.addCardToPlayerDeck(card10,0);
+        gameManager.addCardToPlayerDeck(card11,0);
+        gameManager.addCardToPlayerDeck(card12,0);
+        gameManager.addCardToPlayerDeck(card13,0);
+        gameManager.addCardToPlayerDeck(card14,0);
+        gameManager.addCardToPlayerDeck(card15,0);
+        gameManager.addCardToPlayerDeck(card16,0);
+        gameManager.addCardToPlayerDeck(card17,0);
+        gameManager.addCardToPlayerDeck(card18,0);
+        gameManager.addCardToPlayerDeck(card19,0);
+        gameManager.addCardToPlayerDeck(card20,0);
+        gameManager.addCardToPlayerDeck(card21,0);
+        gameManager.addCardToPlayerDeck(card22,0);
+        gameManager.addCardToPlayerDeck(card23,0);
+        gameManager.addCardToPlayerDeck(card24,0);
+        gameManager.addCardToPlayerDeck(card25,0);
+        gameManager.addCardToPlayerDeck(card26,1);
+        gameManager.addCardToPlayerDeck(card27,1);
+        gameManager.addCardToPlayerDeck(card28,1);
+        gameManager.addCardToPlayerDeck(card29,1);
+        gameManager.addCardToPlayerDeck(card30,1);
+        gameManager.addCardToPlayerDeck(card31,1);
 
     }
 }

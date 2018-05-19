@@ -1,5 +1,8 @@
 package graphic.buttons;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import logic.battleFields.LineType;
 import javafx.scene.control.Button;
 import variables.VariablesGraphics;
@@ -10,7 +13,7 @@ public class AttackButton extends Button {
 
     public AttackButton(LineType lineType){
         this.lineType = lineType;
-        this.setText("Attack");
+        this.setPrefSize(VariablesGraphics.screenHeight*0.035, VariablesGraphics.screenHeight*0.035);
         this.setId(this.lineType+"AttackButton");
         this.setLayoutY(VariablesGraphics.battleFieldPositionY + VariablesGraphics.battleFieldHeight + VariablesGraphics.battleFrontTextBoxHeight/4);
         switch (lineType){

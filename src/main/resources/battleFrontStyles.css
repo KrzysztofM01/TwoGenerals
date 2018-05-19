@@ -11,15 +11,37 @@
     -fx-background-color: #f085ff;
 }
 #leftBattleField{
-    -fx-background-color: #fff624;
+
 }
 #centerBattleField{
-    -fx-background-color: #fff624;
+
 }
 #rightBattleField{
-    -fx-background-color: #fff624;
+
 }
+
+#AttackButton {
+
+}
+
 #BattleFrontTextBoxGUI {
-    -fx-background-color: #55fff0;
+    -fx-background-image: url("images/metalFrame3.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: stretch;
+}
+#leftPlayerBattleFront, #centerPlayerBattleFront, #rightPlayerBattleFront{
+    -fx-background-image: url("images/woodenFrame.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: stretch;
+
+}
+#leftOpponentBattleFront, #centerOpponentBattleFront, #rightOpponentBattleFront{
+    -fx-background-image: url("images/woodenFrameReverse.jpg");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#hitPoints{
+
 }
 

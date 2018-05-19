@@ -1,5 +1,7 @@
 package logic.battleFields;
 
-public enum LineType {
+import java.io.Serializable;
+
+public enum LineType implements Serializable{
     left, center, right
 }

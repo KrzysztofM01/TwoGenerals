@@ -1,15 +1,16 @@
 package logic.cards;
 
+import graphic.cards.CardImage;
 import javafx.scene.image.Image;
 
 public class CardCreator {
 
-    public static CardLogic newCard(String name, CardType cardType, int power, int cost, Image image) {
+    public static CardLogic newCard(String name, CardType cardType, int power, int cost, String imageURL) {
         switch (cardType) {
             case NormalCard:
-                return new NormalCard(name, power, cost, image, cardType);
+                return new NormalCard(name, power, cost, imageURL, cardType);
             case DasDingo:
-                return new DasDingo(name, power, cost, image, cardType);
+                return new DasDingo(name, power, cost, imageURL, cardType);
             default:
                 return null;
         }

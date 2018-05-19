@@ -6,30 +6,32 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import variables.VariablesGraphics;
 
-public class CardText extends StackPane {
-    private int power;
-    private Text text;
+import java.io.Serializable;
 
-    public CardText(int number, CardTextType cardTextType) {
+public class CardText extends StackPane implements Serializable{
+    private int power;
+    private SerializableText text;
+
+    public CardText(int number, boolean isPowerText) {
         this.power = number;
         this.setMaxSize(VariablesGraphics.cardWidth/5, VariablesGraphics.cardHeight/8);
-        this.setTranslateY(-VariablesGraphics.cardHeight/2.65- VariablesGraphics.cardPadding);
-        switch (cardTextType){
-            case power:
-                this.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
-                this.setTranslateX(-VariablesGraphics.cardWidth/2.65- VariablesGraphics.cardPadding);
-                break;
-            case cost:
-                this.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-                this.setTranslateX(-VariablesGraphics.cardWidth/6.5- VariablesGraphics.cardPadding);
-                break;
+
+        if (isPowerText){
+            this.setTranslateX(-VariablesGraphics.cardWidth/2.75- VariablesGraphics.cardPadding);
+            this.setTranslateY(-VariablesGraphics.cardHeight/2.72- VariablesGraphics.cardPadding);
+        } else {
+            this.setTranslateX(-VariablesGraphics.cardWidth/2.6- VariablesGraphics.cardPadding);
+            this.setTranslateY(VariablesGraphics.cardHeight/3.1- VariablesGraphics.cardPadding);
         }
 
-
-        this.text = new Text(Integer.toString(number));
+        this.text = new SerializableText(Integer.toString(number));
+        this.text.setId("cardNumbers");
         this.getChildren().add(this.text);
     }
 
@@ -37,7 +39,7 @@ public class CardText extends StackPane {
         this.text.setText(Integer.toString(power));
     }
 
-    public Text getText() {
+    public SerializableText getText() {
         return text;
     }
 }

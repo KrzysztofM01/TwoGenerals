@@ -3,7 +3,12 @@ package graphic;
 import graphic.battleFields.BattleFieldGUI;
 import graphic.battleFields.BattleFrontTextBoxGUI;
 import graphic.buttons.AttackButton;
+import graphic.buttons.ExitButton;
 import graphic.cards.Card;
+import graphic.cards.cardPreview.CardPreview;
+import graphic.panes.ActionPointsBox;
+import graphic.panes.CardPreviewPane;
+import graphic.panes.PlayerHealthBox;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import logic.battleFields.LineType;
@@ -13,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import logic.cards.CardLogic;
 import variables.VariablesGraphics;
 
 import java.util.ArrayList;
@@ -25,7 +31,7 @@ public class GraphicManager {
     private Pane mainPane = new Pane();
     private FlowPane playerCards = new FlowPane();
     private FlowPane opponentCards = new FlowPane();
-    private Pane cardPreviewPane = new Pane();
+    private CardPreviewPane cardPreviewPane = new CardPreviewPane();
     private BattleFieldGUI leftBattleFieldGUI = new BattleFieldGUI(LineType.left);
     private BattleFieldGUI centerBattleFieldGUI = new BattleFieldGUI(LineType.center);
     private BattleFieldGUI rightBattleFieldGUI = new BattleFieldGUI(LineType.right);
@@ -34,56 +40,52 @@ public class GraphicManager {
     private AttackButton centerAttackButton = new AttackButton(LineType.center);
     private AttackButton rightAttackButton = new AttackButton(LineType.right);
 
-    private ArrayList<Card> cardList = new ArrayList<Card>();
+    private PlayerHealthBox playerHealthBox = new PlayerHealthBox(PlayerType.player);
+    private PlayerHealthBox opponentHealthBox = new PlayerHealthBox(PlayerType.opponent);
 
-    // To remove
-    private Pane lowerPane = new Pane();
-    private FlowPane lowerLeftFlowPane = new FlowPane();
-    private FlowPane lowerCenterFlowPane = new FlowPane();
-    private FlowPane lowerRightFlowPane = new FlowPane();
-    //
+    private ActionPointsBox movePointsBox = new ActionPointsBox();
+    private ExitButton exitButton = new ExitButton();
+
+    private ArrayList<Card> cardList = new ArrayList<Card>();
 
 
     public GraphicManager(Stage primaryStage) {
         // Set IDs of Panes
         this.playerCards.setId("playerCards");
         this.opponentCards.setId("opponentCards");
-        this.cardPreviewPane.setId("cardPreview");
         //
         // Set scene and it's style
         this.scene = new Scene(this.mainPane, VariablesGraphics.screenWidth, VariablesGraphics.screenHeight);
         this.scene.getStylesheets().addAll(STYLESHEET);
         //
         // Set mainPane layouts
-        this.playerCards.setHgap(-VariablesGraphics.cardWidth/4);
+        this.playerCards.setHgap(-VariablesGraphics.cardWidth/2);
         this.playerCards.setAlignment(Pos.BOTTOM_CENTER);
         this.playerCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
-        this.playerCards.setLayoutY(VariablesGraphics.screenHeight*0.957 - VariablesGraphics.cardHeight);
+        this.playerCards.setLayoutY(VariablesGraphics.playerCardPositionY);
 
-        this.opponentCards.setHgap(-VariablesGraphics.cardWidth/4);
+        this.opponentCards.setLayoutY(VariablesGraphics.screenHeight*0.01);
+        this.opponentCards.setHgap(-VariablesGraphics.cardWidth/1.5);
         this.opponentCards.setAlignment(Pos.TOP_CENTER);
         this.opponentCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
 
-        this.cardPreviewPane.setLayoutY(VariablesGraphics.battleFieldPositionY);
-        this.cardPreviewPane.setLayoutX(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*4);
-        this.cardPreviewPane.setPrefSize(VariablesGraphics.battleFieldWidth, VariablesGraphics.battleFieldHeight);
-
         this.mainPane.getChildren().addAll(this.playerCards, this.opponentCards, this.leftBattleFieldGUI,
                 this.centerBattleFieldGUI, this.rightBattleFieldGUI, this.leftAttackButton, this.centerAttackButton,
-                this.rightAttackButton, this.cardPreviewPane);
+                this.rightAttackButton, this.cardPreviewPane, this.playerHealthBox, this.opponentHealthBox,
+                this.movePointsBox, this.exitButton);
         //
         // Add scene to the primary stage
         primaryStage.setTitle("Two Generals");
-        primaryStage.setResizable(false);
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint("");
         primaryStage.getIcons().add(new Image("images/2GIcon.png"));
-        primaryStage.setWidth(VariablesGraphics.screenWidth);
-        primaryStage.setHeight(VariablesGraphics.screenHeight);
+
         primaryStage.setScene(scene);
         primaryStage.show();
         //
     }
 
-    public Pane getCardPreviewPane() {
+    public CardPreviewPane getCardPreviewPane() {
         return cardPreviewPane;
     }
 
@@ -153,6 +155,10 @@ public class GraphicManager {
         return cardList;
     }
 
+    public ExitButton getExitButton() {
+        return exitButton;
+    }
+
     public BattleFrontTextBoxGUI getBattleFrontTextBoxGUI(LineType lineType, PlayerType playerType){
         if (playerType == PlayerType.player){
             switch (lineType){
@@ -186,5 +192,23 @@ public class GraphicManager {
                 return this.rightBattleFieldGUI.getCardsNodeList(playerType);
         }
         return null;
+    }
+
+    public PlayerHealthBox getPlayerHealthBox(PlayerType playerType) {
+        if (playerType == PlayerType.player){
+            return this.playerHealthBox;
+        } else {
+            return this.opponentHealthBox;
+        }
+    }
+
+    public CardPreview createCardPreview (CardLogic cardLogic){
+        CardPreview cardPreview = new CardPreview(cardLogic);
+        this.cardPreviewPane.getChildren().add(cardPreview);
+        return cardPreview;
+    }
+
+    public void removeCardPreview (CardPreview cardPreview){
+        this.cardPreviewPane.getChildren().remove(cardPreview);
     }
 }

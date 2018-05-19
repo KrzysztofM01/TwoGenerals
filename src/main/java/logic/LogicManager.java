@@ -167,7 +167,7 @@ public class LogicManager {
                     if (leftPlayerFrontLine.getHP() > 0) {
                         this.leftPlayerFrontLine.setHP(this.leftPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player1.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
@@ -186,7 +186,7 @@ public class LogicManager {
                     if (centerPlayerFrontLine.getHP() > 0) {
                         this.centerPlayerFrontLine.setHP(this.centerPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player1.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
@@ -205,7 +205,7 @@ public class LogicManager {
                     if (rightPlayerFrontLine.getHP() > 0) {
                         this.rightPlayerFrontLine.setHP(this.rightPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player1.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
