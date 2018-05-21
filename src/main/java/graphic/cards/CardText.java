@@ -15,11 +15,9 @@ import variables.VariablesGraphics;
 import java.io.Serializable;
 
 public class CardText extends StackPane implements Serializable{
-    private int power;
     private SerializableText text;
 
     public CardText(int number, boolean isPowerText) {
-        this.power = number;
         this.setMaxSize(VariablesGraphics.cardWidth/5, VariablesGraphics.cardHeight/8);
 
         if (isPowerText){

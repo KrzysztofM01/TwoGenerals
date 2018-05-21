@@ -1,6 +1,5 @@
 package logic.cards;
 
-import graphic.cards.CardImage;
 import javafx.scene.image.Image;
 
 public class CardCreator {

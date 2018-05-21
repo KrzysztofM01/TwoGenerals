@@ -1,7 +1,5 @@
 package logic.cards;
 
-import graphic.cards.CardImage;
-import javafx.scene.image.Image;
 import logic.battleFields.LineType;
 import logic.LogicManager;
 

@@ -1,3 +1,5 @@
+package main;
+
 import graphic.PlayerType;
 import graphic.PlayerTypeConverter;
 import graphic.cards.Card;
@@ -14,7 +16,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import network.MethodWrapper;
-import network.Network;
+import network.NetworkManager;
 
 import java.io.IOException;
 
@@ -26,41 +28,43 @@ public class GameManager {
     private LogicManager logicManager;
     private GraphicManager graphicManager;
 
-    private Network network;
+    private NetworkManager networkManager;
 
 
-    public GameManager(Stage primaryStage, Player player0, Player player1) {
 
-        // Setting up network
-        this.network = new Network();
-        //
+    public GameManager(Stage primaryStage) {
 
         // Launch the graphic and logic managers
         this.graphicManager = new GraphicManager(primaryStage);
-        this.logicManager = new LogicManager(player0, player1);
+        this.networkManager = new NetworkManager(primaryStage, graphicManager);
+        this.logicManager = new LogicManager();
         //
 
+
         // Handler must be in main manager
-        EventHandler<MouseEvent> exitGameButton = e -> primaryStage.close();
+        EventHandler<MouseEvent> exitGameButton = e -> {
+            primaryStage.close();
+            networkManager.closeReceiveDataThread();
+        };
         this.graphicManager.getExitButton().setOnMouseClicked(exitGameButton);
 
 
         EventHandler<MouseEvent> sendCardToFrontHandler = e -> {
             if (e.getPickResult().getIntersectedNode().getId() != null && !NodeIDConverter.isItBattleFieldID(e.getPickResult().getIntersectedNode().getId())) {
-                if (GameManager.this.tempCard != null && GameManager.this.tempCard.isHighlighted()) {
+                if (main.GameManager.this.tempCard != null && main.GameManager.this.tempCard.isHighlighted()) {
                     try {
                         this.tempCard.setPadding(Insets.EMPTY);
-                        GameManager.this.removeCardFromPlayerDeck(GameManager.this.tempCard, GameManager.this.tempCard.getTempCardPlayerID());
+                        main.GameManager.this.removeCardFromPlayerDeck(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempCardPlayerID());
                         // To ma sie wyslac
-                        MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(GameManager.this.tempCard, GameManager.this.tempCard.getTempCardPlayerID());
-                        this.network.getOos().writeObject(removeCardToSend);
+                        MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempCardPlayerID());
+                        networkManager.getOos().writeObject(removeCardToSend);
                         //
-                        GameManager.this.addCardToFront(GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), GameManager.this.tempCard.getTempCardPlayerID());
+                        main.GameManager.this.addCardToFront(main.GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), main.GameManager.this.tempCard.getTempCardPlayerID());
                         // To ma sie wyslac
-                        MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(GameManager.this.tempCard, NodeIDConverter.toLineType(e.getPickResult().getIntersectedNode().getId()), GameManager.this.tempCard.getTempCardPlayerID());
-                        this.network.getOos().writeObject(addCardToFrontToSend);
+                        MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(main.GameManager.this.tempCard, NodeIDConverter.toLineType(e.getPickResult().getIntersectedNode().getId()), main.GameManager.this.tempCard.getTempCardPlayerID());
+                        networkManager.getOos().writeObject(addCardToFrontToSend);
                         //
-                        //GameManager.this.tempCard = null;
+                        //main.GameManager.this.tempCard = null;
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -77,8 +81,9 @@ public class GameManager {
                 this.graphicManager.getBattleFrontTextBoxGUI(lineType, playerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerID));
                 this.graphicManager.getPlayerHealthBox(PlayerTypeConverter.toPlayerType(loserPlayerID)).setHPAmount(this.logicManager.getPlayer(loserPlayerID).getHitPoints());
                 // To ma sie wyslac
-                MethodWrapper attackOnFrontToSned = MethodWrapper.attackOnFront(lineType);
-                this.network.getOos().writeObject(attackOnFrontToSned);
+                MethodWrapper attackOnFrontToSend = MethodWrapper.attackOnFront(lineType);
+                networkManager.getOos().writeObject(attackOnFrontToSend);
+
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -91,7 +96,6 @@ public class GameManager {
         graphicManager.getLeftAttackButton().setOnAction(attackOnFrontHandler);
         graphicManager.getCenterAttackButton().setOnAction(attackOnFrontHandler);
         graphicManager.getRightAttackButton().setOnAction(attackOnFrontHandler);
-
     }
 
     public void addCardToPlayerDeck(CardLogic cardLogic, int playerID) {

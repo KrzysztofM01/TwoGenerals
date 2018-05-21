@@ -12,8 +12,14 @@ public class Player {
     private int hitPoints = VariablesLogic.playerHitPoints;
     private int actionPoints = VariablesLogic.playerActionPoints;
 
-    public Player(int ID, String name) {
+    public Player() {
+    }
+
+    public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 

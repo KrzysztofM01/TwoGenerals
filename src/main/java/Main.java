@@ -1,14 +1,10 @@
-import graphic.cards.CardImage;
-import javafx.stage.Screen;
-import logic.players.Player;
 import logic.cards.CardCreator;
 import logic.cards.CardLogic;
 import logic.cards.CardType;
+import logic.players.Player;
 import javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.awt.*;
+import main.GameManager;
 
 public class Main extends Application{
 
@@ -19,20 +15,23 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
 
-
-
         /* To fix:
+        0) When clicking exit game, the OOS or OIS thread is still running
         1) when you add card to front it doesnt have correct padding background
         ^ it may be connected to multiply color background in leftbattleground
         2) Scale font with screenSize
         3) Send all things to css and scale it into one CSS
         4) Remove things from graphicManager and create new class for each of them
+
         */
 
-        Player player0 = new Player(0,"Krystian");
-        Player player1 = new Player(1,"Karczynski");
+        //NetworkConnectPanel networkConnectPanel = new NetworkConnectPanel(primaryStage);
 
-        GameManager gameManager = new GameManager(primaryStage, player0, player1);
+
+        //Player player0 = new Player(0,"Krystian");
+        //Player player1 = new Player(1,"Karczynski");
+
+        GameManager gameManager = new GameManager(primaryStage);
 
 
         String image = "cardImages/BloodKnight2.jpg";
@@ -60,7 +59,6 @@ public class Main extends Application{
         CardLogic card13 = CardCreator.newCard("Normal Card", CardType.NormalCard, 12, 8, image4);
         CardLogic card14 = CardCreator.newCard("Normal Card", CardType.NormalCard, 10, 9, image2);
         CardLogic card15 = CardCreator.newCard("Normal Card", CardType.NormalCard, 3, 2, image4);
-        //Opponent Cards
         CardLogic card18 = CardCreator.newCard("Normal Card", CardType.NormalCard, 3, 2, image4);
         CardLogic card19 = CardCreator.newCard("Normal Card", CardType.NormalCard, 5, 4, image);
         CardLogic card20 = CardCreator.newCard("Normal Card", CardType.NormalCard, 1, 2, image);
@@ -69,6 +67,8 @@ public class Main extends Application{
         CardLogic card23 = CardCreator.newCard("Normal Card", CardType.NormalCard, 2, 1, image2);
         CardLogic card24 = CardCreator.newCard("Normal Card", CardType.NormalCard, 4, 2, image);
         CardLogic card25 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 6, image2);
+
+        //Opponent Cards
         CardLogic card26 = CardCreator.newCard("Normal Card", CardType.NormalCard, 6, 5, image2);
         CardLogic card27 = CardCreator.newCard("Normal Card", CardType.NormalCard, 3, 2, image4);
         CardLogic card28 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
@@ -101,12 +101,15 @@ public class Main extends Application{
         gameManager.addCardToPlayerDeck(card23,0);
         gameManager.addCardToPlayerDeck(card24,0);
         gameManager.addCardToPlayerDeck(card25,0);
+        /*
         gameManager.addCardToPlayerDeck(card26,1);
         gameManager.addCardToPlayerDeck(card27,1);
         gameManager.addCardToPlayerDeck(card28,1);
         gameManager.addCardToPlayerDeck(card29,1);
         gameManager.addCardToPlayerDeck(card30,1);
         gameManager.addCardToPlayerDeck(card31,1);
+        */
+
 
     }
 }

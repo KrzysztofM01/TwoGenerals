@@ -1,6 +1,8 @@
 package logic;
 
 
+import graphic.PlayerType;
+import graphic.PlayerTypeConverter;
 import logic.battleFields.FrontLine;
 import logic.battleFields.LineType;
 import logic.cards.CardLogic;
@@ -17,17 +19,15 @@ public class LogicManager {
     private FrontLine centerOpponentFrontLine = new FrontLine(LineType.center, 1);
     private FrontLine rightOpponentFrontLine = new FrontLine(LineType.right, 1);
 
-    private Player player0;
-    private Player player1;
+    private Player player = new Player();
+    private Player opponent = new Player();
 
-    public LogicManager(Player player0, Player player1){
-        this.player0 = player0;
-        this.player1 = player1;
+    public LogicManager(){
     }
 
     public void addCardToFront(CardLogic cardLogic, LineType frontLineType, int playerID){
         this.getPlayer(playerID).removeCard(cardLogic);
-        if (playerID == 0){
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player){
             switch (frontLineType) {
                 case left:
                     this.leftPlayerFrontLine.addCard(cardLogic);
@@ -54,7 +54,7 @@ public class LogicManager {
     }
 
     public void removeCardFromFront(CardLogic cardLogic, LineType frontLineType, int playerID){
-        if (playerID == 0){
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player){
             switch (frontLineType) {
                 case left:
                     this.leftPlayerFrontLine.removeCard(cardLogic);
@@ -82,7 +82,7 @@ public class LogicManager {
     }
 
     public FrontLine getFrontLine(LineType lineType, int playerID) {
-        if (playerID == 0) {
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player) {
             switch (lineType) {
                 case left:
                     return this.leftPlayerFrontLine;
@@ -105,7 +105,7 @@ public class LogicManager {
     }
 
     public int getFrontLinePower(LineType lineType, int playerID){
-        if (playerID == 0) {
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player) {
             switch (lineType) {
                 case left:
                     return this.leftPlayerFrontLine.getSummedPower();
@@ -128,7 +128,7 @@ public class LogicManager {
     }
 
     public int getFrontLineHitPoints(LineType lineType, int playerID){
-        if (playerID == 0) {
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player) {
             switch (lineType) {
                 case left:
                     return this.leftPlayerFrontLine.getHP();
@@ -160,14 +160,14 @@ public class LogicManager {
                     if (leftOpponentFrontLine.getHP()>0){
                         this.leftOpponentFrontLine.setHP(this.leftOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player1.setHitPoints(this.player1.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
+                        this.opponent.setHitPoints(this.opponent.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 1;
                 } else if (powerDifference < 0) {
                     if (leftPlayerFrontLine.getHP() > 0) {
                         this.leftPlayerFrontLine.setHP(this.leftPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player.setHitPoints(this.player.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
@@ -179,14 +179,14 @@ public class LogicManager {
                     if (centerOpponentFrontLine.getHP()>0){
                         this.centerOpponentFrontLine.setHP(this.centerOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player1.setHitPoints(this.player1.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
+                        this.opponent.setHitPoints(this.opponent.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 1;
                 } else if (powerDifference < 0) {
                     if (centerPlayerFrontLine.getHP() > 0) {
                         this.centerPlayerFrontLine.setHP(this.centerPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player.setHitPoints(this.player.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
@@ -198,14 +198,14 @@ public class LogicManager {
                     if (rightOpponentFrontLine.getHP()>0){
                         this.rightOpponentFrontLine.setHP(this.rightOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player1.setHitPoints(this.player1.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
+                        this.opponent.setHitPoints(this.opponent.getHitPoints() - new Double(powerDifference*VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 1;
                 } else if (powerDifference < 0) {
                     if (rightPlayerFrontLine.getHP() > 0) {
                         this.rightPlayerFrontLine.setHP(this.rightPlayerFrontLine.getHP() + new Double(powerDifference*VariablesLogic.frontLineAttackFactor).intValue());
                     } else {
-                        this.player0.setHitPoints(this.player0.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
+                        this.player.setHitPoints(this.player.getHitPoints() + new Double(powerDifference * VariablesLogic.playerAttackFactor).intValue());
                     }
                     return 0;
                 }
@@ -215,10 +215,10 @@ public class LogicManager {
     }
 
     public Player getPlayer(int playerID) {
-        if (playerID == 0){
-            return this.player0;
+        if (PlayerTypeConverter.toPlayerType(playerID) == PlayerType.player){
+            return this.player;
         } else {
-            return this.player1;
+            return this.opponent;
         }
     }
 }

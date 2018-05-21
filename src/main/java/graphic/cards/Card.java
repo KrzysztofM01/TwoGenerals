@@ -1,6 +1,7 @@
 package graphic.cards;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import logic.cards.CardLogic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
@@ -21,10 +22,11 @@ public class Card extends StackPane implements Serializable{
 
     public Card(CardLogic card) {
         this.cardLogic = card;
-        CardImageView cardFront = new CardImageView(new Image(card.getImageURL()));
-        /*cardFront.setPreserveRatio(false);
+        ImageView cardFront = new ImageView(new Image(card.getImageURL()));
+        cardFront.setPreserveRatio(false);
         cardFront.setFitWidth(VariablesGraphics.cardWidth);
         cardFront.setFitHeight(VariablesGraphics.cardHeight);
+        /*
         this.cardBack.setPreserveRatio(true);
         this.cardBack.setFitHeight(VariablesGraphics.cardHeight);
         */

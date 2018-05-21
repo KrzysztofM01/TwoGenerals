@@ -44,6 +44,7 @@ public class MethodWrapper implements Serializable{
         switch (this.methodType) {
             case addCardToFront:
                 System.out.println("Card was added to front.");
+
                 break;
             case removeCardFromPlayer:
                 System.out.println("Card was removed from player's cards.");

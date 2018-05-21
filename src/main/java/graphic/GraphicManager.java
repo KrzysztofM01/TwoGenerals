@@ -48,11 +48,14 @@ public class GraphicManager {
 
     private ArrayList<Card> cardList = new ArrayList<Card>();
 
+    private Stage primaryStage;
+
 
     public GraphicManager(Stage primaryStage) {
         // Set IDs of Panes
         this.playerCards.setId("playerCards");
         this.opponentCards.setId("opponentCards");
+        this.primaryStage = primaryStage;
         //
         // Set scene and it's style
         this.scene = new Scene(this.mainPane, VariablesGraphics.screenWidth, VariablesGraphics.screenHeight);
@@ -73,15 +76,19 @@ public class GraphicManager {
                 this.centerBattleFieldGUI, this.rightBattleFieldGUI, this.leftAttackButton, this.centerAttackButton,
                 this.rightAttackButton, this.cardPreviewPane, this.playerHealthBox, this.opponentHealthBox,
                 this.movePointsBox, this.exitButton);
+    }
+
+
+    public void loadGameScene(){
         //
         // Add scene to the primary stage
-        primaryStage.setTitle("Two Generals");
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint("");
-        primaryStage.getIcons().add(new Image("images/2GIcon.png"));
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //primaryStage.setTitle("Two Generals");
+        this.primaryStage.setFullScreen(true);
+        this.primaryStage.setFullScreenExitHint("");
+        //primaryStage.getIcons().add(new Image("images/2GIcon.png"));
+        this.primaryStage.close();
+        this.primaryStage.setScene(this.scene);
+        this.primaryStage.show();
         //
     }
 
