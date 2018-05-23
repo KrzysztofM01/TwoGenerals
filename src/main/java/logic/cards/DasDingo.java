@@ -1,5 +1,6 @@
 package logic.cards;
 
+import graphic.PlayerType;
 import logic.battleFields.LineType;
 import logic.LogicManager;
 
@@ -11,8 +12,8 @@ public class DasDingo extends CardLogic {
     }
 
     @Override
-    public void action(LogicManager logicManager, LineType frontLineType, int playerID){
-        for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, playerID).getCardList()){
+    public void action(LogicManager logicManager, LineType frontLineType, PlayerType playerType){
+        for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, playerType).getCardList()){
             cardLogic.setCurrentPower(cardLogic.getCurrentPower()+2);
         }
         this.setCurrentPower(this.getPower());

@@ -1,5 +1,6 @@
 package graphic.cards;
 
+import graphic.PlayerType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.cards.CardLogic;
@@ -18,7 +19,7 @@ public class Card extends StackPane implements Serializable{
     private boolean highlighted;
     private CardText cardTextPower;
     private CardText cardTextCost;
-    private int tempCardPlayerID;
+    private PlayerType tempPlayerType;
 
     public Card(CardLogic card) {
         this.cardLogic = card;
@@ -39,6 +40,17 @@ public class Card extends StackPane implements Serializable{
 
     public CardLogic getCardLogic() {
         return cardLogic;
+    }
+
+    public void renderCardGraphics() {
+        ImageView cardFront = new ImageView(new Image(cardLogic.getImageURL()));
+        cardFront.setPreserveRatio(false);
+        cardFront.setFitWidth(VariablesGraphics.cardWidth);
+        cardFront.setFitHeight(VariablesGraphics.cardHeight);
+        this.setPadding(new Insets(VariablesGraphics.cardPadding, VariablesGraphics.cardPadding, VariablesGraphics.cardPadding, VariablesGraphics.cardPadding ));
+        this.cardTextPower = new CardText(this.cardLogic.getCurrentPower(), true);
+        this.cardTextCost = new CardText(this.cardLogic.getCost(), false);
+        this.getChildren().addAll(cardFront, cardTextPower, cardTextCost);
     }
 
     public boolean isHighlighted() {
@@ -68,12 +80,11 @@ public class Card extends StackPane implements Serializable{
         return cardTextCost;
     }
 
-    public int getTempCardPlayerID() {
-        return tempCardPlayerID;
+    public void setTempPlayerType(PlayerType tempPlayerType) {
+        this.tempPlayerType = tempPlayerType;
     }
 
-    public void setTempCardPlayerID(int tempCardPlayerID) {
-        this.tempCardPlayerID = tempCardPlayerID;
+    public PlayerType getTempPlayerType() {
+        return tempPlayerType;
     }
-
 }

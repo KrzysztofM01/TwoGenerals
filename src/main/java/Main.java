@@ -1,3 +1,4 @@
+import graphic.PlayerType;
 import logic.cards.CardCreator;
 import logic.cards.CardLogic;
 import logic.cards.CardType;
@@ -16,6 +17,7 @@ public class Main extends Application{
     public void start(Stage primaryStage){
 
         /* To fix:
+        -1)Clicking on textbox changes the ID, removing the CSS and also when clicking on opponent card changes it to yours
         0) When clicking exit game, the OOS or OIS thread is still running
         1) when you add card to front it doesnt have correct padding background
         ^ it may be connected to multiply color background in leftbattleground
@@ -76,38 +78,38 @@ public class Main extends Application{
         CardLogic card30 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
         CardLogic card31 = CardCreator.newCard("Normal Card", CardType.DasDingo, 1, 2, image3);
 
-        gameManager.addCardToPlayerDeck(card,0);
-        gameManager.addCardToPlayerDeck(card2,0);
-        gameManager.addCardToPlayerDeck(card3,0);
-        gameManager.addCardToPlayerDeck(card4,0);
-        gameManager.addCardToPlayerDeck(card5,0);
-        gameManager.addCardToPlayerDeck(card6,0);
-        gameManager.addCardToPlayerDeck(card7,0);
-        gameManager.addCardToPlayerDeck(card8,0);
-        gameManager.addCardToPlayerDeck(card9,0);
-        gameManager.addCardToPlayerDeck(card10,0);
-        gameManager.addCardToPlayerDeck(card11,0);
-        gameManager.addCardToPlayerDeck(card12,0);
-        gameManager.addCardToPlayerDeck(card13,0);
-        gameManager.addCardToPlayerDeck(card14,0);
-        gameManager.addCardToPlayerDeck(card15,0);
-        gameManager.addCardToPlayerDeck(card16,0);
-        gameManager.addCardToPlayerDeck(card17,0);
-        gameManager.addCardToPlayerDeck(card18,0);
-        gameManager.addCardToPlayerDeck(card19,0);
-        gameManager.addCardToPlayerDeck(card20,0);
-        gameManager.addCardToPlayerDeck(card21,0);
-        gameManager.addCardToPlayerDeck(card22,0);
-        gameManager.addCardToPlayerDeck(card23,0);
-        gameManager.addCardToPlayerDeck(card24,0);
-        gameManager.addCardToPlayerDeck(card25,0);
+        gameManager.addCardToPlayerDeck(card, PlayerType.player);
+        gameManager.addCardToPlayerDeck(card2,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card3,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card4,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card5,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card6,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card7,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card8,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card9,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card10,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card11,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card12,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card13,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card14,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card15,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card16,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card17,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card18,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card19,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card20,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card21,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card22,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card23,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card24,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card25,PlayerType.player);
         /*
-        gameManager.addCardToPlayerDeck(card26,1);
-        gameManager.addCardToPlayerDeck(card27,1);
-        gameManager.addCardToPlayerDeck(card28,1);
-        gameManager.addCardToPlayerDeck(card29,1);
-        gameManager.addCardToPlayerDeck(card30,1);
-        gameManager.addCardToPlayerDeck(card31,1);
+        gameManager.addCardToPlayerDeck(card26,PlayerType.opponent);
+        gameManager.addCardToPlayerDeck(card27,PlayerType.opponent);
+        gameManager.addCardToPlayerDeck(card28,PlayerType.opponent);
+        gameManager.addCardToPlayerDeck(card29,PlayerType.opponent);
+        gameManager.addCardToPlayerDeck(card30,PlayerType.opponent);
+        gameManager.addCardToPlayerDeck(card31,PlayerType.opponent);
         */
 
 

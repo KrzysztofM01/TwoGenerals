@@ -1,13 +1,11 @@
 package main;
 
 import graphic.PlayerType;
-import graphic.PlayerTypeConverter;
 import graphic.cards.Card;
 import graphic.cards.cardPreview.CardPreview;
 import graphic.GraphicManager;
 import graphic.NodeIDConverter;
 import javafx.geometry.Insets;
-import logic.players.Player;
 import logic.cards.CardLogic;
 import logic.battleFields.LineType;
 import logic.LogicManager;
@@ -23,7 +21,6 @@ import java.io.IOException;
 public class GameManager {
 
     private Card tempCard;
-    private CardPreview tempCardPreview;
 
     private LogicManager logicManager;
     private GraphicManager graphicManager;
@@ -36,7 +33,7 @@ public class GameManager {
 
         // Launch the graphic and logic managers
         this.graphicManager = new GraphicManager(primaryStage);
-        this.networkManager = new NetworkManager(primaryStage, graphicManager);
+        this.networkManager = new NetworkManager(primaryStage, this);
         this.logicManager = new LogicManager();
         //
 
@@ -54,14 +51,14 @@ public class GameManager {
                 if (main.GameManager.this.tempCard != null && main.GameManager.this.tempCard.isHighlighted()) {
                     try {
                         this.tempCard.setPadding(Insets.EMPTY);
-                        main.GameManager.this.removeCardFromPlayerDeck(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempCardPlayerID());
+                        main.GameManager.this.removeCardFromPlayerDeck(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempPlayerType());
                         // To ma sie wyslac
-                        MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempCardPlayerID());
+                        MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(main.GameManager.this.tempCard);
                         networkManager.getOos().writeObject(removeCardToSend);
                         //
-                        main.GameManager.this.addCardToFront(main.GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), main.GameManager.this.tempCard.getTempCardPlayerID());
+                        main.GameManager.this.addCardToFront(main.GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), main.GameManager.this.tempCard.getTempPlayerType());
                         // To ma sie wyslac
-                        MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(main.GameManager.this.tempCard, NodeIDConverter.toLineType(e.getPickResult().getIntersectedNode().getId()), main.GameManager.this.tempCard.getTempCardPlayerID());
+                        MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(main.GameManager.this.tempCard, NodeIDConverter.toLineType(e.getPickResult().getIntersectedNode().getId()));
                         networkManager.getOos().writeObject(addCardToFrontToSend);
                         //
                         //main.GameManager.this.tempCard = null;
@@ -76,10 +73,9 @@ public class GameManager {
         EventHandler<ActionEvent> attackOnFrontHandler = e -> {
             try {
                 LineType lineType = NodeIDConverter.toLineType(e.getSource().toString());
-                int loserPlayerID = this.logicManager.attackFrontLine(lineType);
-                PlayerType playerType = PlayerTypeConverter.toPlayerType(loserPlayerID);
-                this.graphicManager.getBattleFrontTextBoxGUI(lineType, playerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerID));
-                this.graphicManager.getPlayerHealthBox(PlayerTypeConverter.toPlayerType(loserPlayerID)).setHPAmount(this.logicManager.getPlayer(loserPlayerID).getHitPoints());
+                PlayerType loserPlayerType = this.logicManager.attackFrontLine(lineType);
+                this.graphicManager.getBattleFrontTextBoxGUI(lineType, loserPlayerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerType));
+                this.graphicManager.getPlayerHealthBox(loserPlayerType).setHPAmount(this.logicManager.getPlayer(loserPlayerType).getHitPoints());
                 // To ma sie wyslac
                 MethodWrapper attackOnFrontToSend = MethodWrapper.attackOnFront(lineType);
                 networkManager.getOos().writeObject(attackOnFrontToSend);
@@ -98,16 +94,17 @@ public class GameManager {
         graphicManager.getRightAttackButton().setOnAction(attackOnFrontHandler);
     }
 
-    public void addCardToPlayerDeck(CardLogic cardLogic, int playerID) {
+
+    public void addCardToPlayerDeck(CardLogic cardLogic, PlayerType playerType) {
         Card card = new Card(cardLogic);
-        graphicManager.addCardToPlayerDeck(card, PlayerTypeConverter.toPlayerType(playerID));
-        logicManager.getPlayer(playerID).getCardList().add(cardLogic);
+        graphicManager.addCardToPlayerDeck(card, playerType);
+        logicManager.getPlayer(playerType).getCardList().add(cardLogic);
 
         card.setOnMouseEntered((MouseEvent e) -> {
-            this.tempCardPreview = this.graphicManager.createCardPreview(cardLogic);
+            this.graphicManager.createCardPreview(cardLogic);
         });
         card.setOnMouseExited((MouseEvent e) -> {
-            this.graphicManager.removeCardPreview(this.tempCardPreview);
+            this.graphicManager.removeCardPreview();
         });
 
         card.setOnMouseClicked((MouseEvent e) -> {
@@ -118,21 +115,21 @@ public class GameManager {
                 this.tempCard.setHighlighted(false);
                 this.tempCard.setViewOrder(0);
                 this.tempCard = card;
-                this.tempCard.setTempCardPlayerID(playerID);
+                this.tempCard.setTempPlayerType(playerType);
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
             } else {
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
                 this.tempCard = card;
-                this.tempCard.setTempCardPlayerID(playerID);
+                this.tempCard.setTempPlayerType(playerType);
             }
         });
     }
 
-    public void removeCardFromPlayerDeck(Card card, int playerID) {
-        graphicManager.removeCardFromPlayerDeck(card, PlayerTypeConverter.toPlayerType(playerID));
-        logicManager.getPlayer(playerID).removeCard(card.getCardLogic());
+    public void removeCardFromPlayerDeck(Card card, PlayerType playerType) {
+        graphicManager.removeCardFromPlayerDeck(card, playerType);
+        logicManager.getPlayer(playerType).removeCard(card.getCardLogic());
         this.tempCard.setOnMouseClicked((MouseEvent e) -> {
             e.getPickResult().getIntersectedNode().setId(e.getPickResult().getIntersectedNode().getParent().getId());
         });
@@ -140,12 +137,11 @@ public class GameManager {
 
     }
 
-    public void addCardToFront(Card card, String nodeID, int playerID) {
+    public void addCardToFront(Card card, String nodeID, PlayerType playerType) {
         LineType lineType = NodeIDConverter.toLineType(nodeID);
-        PlayerType playerType = PlayerTypeConverter.toPlayerType(playerID);
-        logicManager.addCardToFront(card.getCardLogic(), lineType, playerID);
-        card.getCardLogic().action(this.logicManager, lineType, playerID);
-        graphicManager.addCardToFront(card, lineType, logicManager.getFrontLinePower(lineType, playerID), playerType);
+        logicManager.addCardToFront(card.getCardLogic(), lineType, playerType);
+        card.getCardLogic().action(this.logicManager, lineType, playerType);
+        graphicManager.addCardToFront(card, lineType, logicManager.getFrontLinePower(lineType, playerType), playerType);
         if (card.getCardLogic().isUpdateGraphics()) {
             for (Card cardGraphic : this.graphicManager.getCardList()) {
                 this.graphicManager.updateGraphics(cardGraphic);
@@ -155,10 +151,17 @@ public class GameManager {
         card.setHighlighted(false);
     }
 
-    public void removeCardFromFront(Card card, String nodeID, int playerID) {
+    public void removeCardFromFront(Card card, String nodeID, PlayerType playerType) {
         LineType lineType = NodeIDConverter.toLineType(nodeID);
-        PlayerType playerType = PlayerTypeConverter.toPlayerType(playerID);
-        logicManager.removeCardFromFront(card.getCardLogic(), lineType, playerID);
-        graphicManager.removeCardFromFront(card, lineType, logicManager.getFrontLinePower(lineType, playerID), playerType);
+        logicManager.removeCardFromFront(card.getCardLogic(), lineType, playerType);
+        graphicManager.removeCardFromFront(card, lineType, logicManager.getFrontLinePower(lineType, playerType), playerType);
+    }
+
+    public LogicManager getLogicManager() {
+        return logicManager;
+    }
+
+    public GraphicManager getGraphicManager() {
+        return graphicManager;
     }
 }

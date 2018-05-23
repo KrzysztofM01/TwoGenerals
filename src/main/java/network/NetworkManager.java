@@ -1,10 +1,11 @@
 package network;
 
 import graphic.GraphicManager;
-import graphic.PlayerTypeConverter;
+import graphic.cards.Card;
 import javafx.concurrent.Task;
 import javafx.stage.Stage;
 import logic.players.Player;
+import main.GameManager;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,7 +33,7 @@ public class NetworkManager {
 
     private NetworkConnectPanel networkConnectPanel;
 
-    public NetworkManager(Stage primaryStage, GraphicManager graphicManager) {
+    public NetworkManager(Stage primaryStage, GameManager gameManager) {
         // Start Connection Panel graphics
         this.networkConnectPanel = new NetworkConnectPanel(primaryStage);
         // Set controls for connection button
@@ -55,11 +56,11 @@ public class NetworkManager {
             };
             task.setOnSucceeded(e2 -> {
                 if (isConnected){
-                    graphicManager.loadGameScene();
-                    GetData getData = new GetData(getOis());
+                    gameManager.getGraphicManager().loadGameScene();
+                    GetData getData = new GetData(getOis(), gameManager);
                     recieveDataThread = new Thread(getData);
                     recieveDataThread.start();
-                    PlayerTypeConverter.setYourPlayerID(playerID);
+                    sendCardsThroughNetwork(gameManager.getGraphicManager());
                 }
             });
             thread = new Thread(task);
@@ -106,11 +107,11 @@ public class NetworkManager {
             };
             task.setOnSucceeded(e2 -> {
                 if (clientAccepted){
-                    graphicManager.loadGameScene();
-                    GetData getData = new GetData(getOis());
+                    gameManager.getGraphicManager().loadGameScene();
+                    GetData getData = new GetData(getOis(), gameManager);
                     recieveDataThread = new Thread(getData);
                     recieveDataThread.start();
-                    PlayerTypeConverter.setYourPlayerID(playerID);
+                    sendCardsThroughNetwork(gameManager.getGraphicManager());
                 }
             });
             thread = new Thread(task);
@@ -158,6 +159,16 @@ public class NetworkManager {
         }
     }
 
+    public void sendCardsThroughNetwork(GraphicManager graphicManager){
+        for (Card card: graphicManager.getPlayerCardList()){
+            try {
+                MethodWrapper cardToSend = MethodWrapper.addCardToPlayer(card);
+                this.oos.writeObject(cardToSend);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public ObjectOutputStream getOos() {
         return oos;

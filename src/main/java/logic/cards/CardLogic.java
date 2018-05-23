@@ -1,5 +1,6 @@
 package logic.cards;
 
+import graphic.PlayerType;
 import logic.battleFields.LineType;
 import logic.LogicManager;
 
@@ -25,7 +26,7 @@ public abstract class CardLogic implements Serializable{
         this.currentPower = power;
     }
 
-    public void action(LogicManager logicManager, LineType frontLineType, int playerID){
+    public void action(LogicManager logicManager, LineType frontLineType, PlayerType playerType){
 
     }
 

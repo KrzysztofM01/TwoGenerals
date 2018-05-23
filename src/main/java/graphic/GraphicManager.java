@@ -27,6 +27,7 @@ public class GraphicManager {
 
     public static final String STYLESHEET = "mainPane.css";
 
+    private CardPreview tempCardPreview;
     private Scene scene;
     private Pane mainPane = new Pane();
     private FlowPane playerCards = new FlowPane();
@@ -47,6 +48,8 @@ public class GraphicManager {
     private ExitButton exitButton = new ExitButton();
 
     private ArrayList<Card> cardList = new ArrayList<Card>();
+    private ArrayList<Card> playerCardList = new ArrayList<>();
+    private ArrayList<Card> opponentCardList = new ArrayList<>();
 
     private Stage primaryStage;
 
@@ -100,8 +103,10 @@ public class GraphicManager {
         this.cardList.add(card);
         if (playerType == PlayerType.player){
             this.playerCards.getChildren().add(card);
+            this.playerCardList.add(card);
         } else {
             this.opponentCards.getChildren().add(card);
+            this.opponentCardList.add(card);
         }
     }
 
@@ -209,13 +214,22 @@ public class GraphicManager {
         }
     }
 
-    public CardPreview createCardPreview (CardLogic cardLogic){
+    public void createCardPreview (CardLogic cardLogic){
         CardPreview cardPreview = new CardPreview(cardLogic);
         this.cardPreviewPane.getChildren().add(cardPreview);
-        return cardPreview;
+        this.tempCardPreview = cardPreview;
     }
 
-    public void removeCardPreview (CardPreview cardPreview){
-        this.cardPreviewPane.getChildren().remove(cardPreview);
+    public void removeCardPreview () {
+        this.cardPreviewPane.getChildren().remove(tempCardPreview);
     }
+
+    public ArrayList<Card> getPlayerCardList() {
+        return playerCardList;
+    }
+
+    public ArrayList<Card> getOpponentCardList() {
+        return opponentCardList;
+    }
+
 }
