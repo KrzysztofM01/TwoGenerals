@@ -8,6 +8,8 @@ import logic.cards.CardLogic;
 import logic.players.Player;
 import variables.VariablesLogic;
 
+import java.util.ArrayList;
+
 public class LogicManager {
 
     private FrontLine leftPlayerFrontLine = new FrontLine(LineType.left, 0);
@@ -105,26 +107,15 @@ public class LogicManager {
     }
 
     public int getFrontLinePower(LineType lineType, PlayerType playerType){
-        if (playerType == PlayerType.player) {
-            switch (lineType) {
-                case left:
-                    return this.leftPlayerFrontLine.getSummedPower();
-                case center:
-                    return this.centerPlayerFrontLine.getSummedPower();
-                case right:
-                    return this.rightPlayerFrontLine.getSummedPower();
-            }
-        } else {
-            switch (lineType) {
-                case left:
-                    return this.leftOpponentFrontLine.getSummedPower();
-                case center:
-                    return this.centerOpponentFrontLine.getSummedPower();
-                case right:
-                    return this.rightOpponentFrontLine.getSummedPower();
+        int summedPower = 0;
+        for (LineType fromAllLineTypes: LineType.values()){
+            for (CardLogic cardLogic: getFrontLine(fromAllLineTypes, playerType).getCardList()) {
+                if (cardLogic.getLineType() == lineType) {
+                    summedPower += cardLogic.getCurrentPower();
+                }
             }
         }
-        return 0;
+        return summedPower;
     }
 
     public int getFrontLineHitPoints(LineType lineType, PlayerType playerType){
@@ -154,7 +145,7 @@ public class LogicManager {
         int powerDifference;
         switch (lineType){
             case left:
-                powerDifference = leftPlayerFrontLine.getSummedPower() - leftOpponentFrontLine.getSummedPower();
+                powerDifference = getFrontLinePower(lineType, PlayerType.player) - getFrontLinePower(lineType, PlayerType.opponent);
                 if (powerDifference>0){
                     if (leftOpponentFrontLine.getHP()>0){
                         this.leftOpponentFrontLine.setHP(this.leftOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());
@@ -173,7 +164,7 @@ public class LogicManager {
                 return PlayerType.player;
 
             case center:
-                powerDifference = centerPlayerFrontLine.getSummedPower() - centerOpponentFrontLine.getSummedPower();
+                powerDifference = getFrontLinePower(lineType, PlayerType.player) - getFrontLinePower(lineType, PlayerType.opponent);
                 if (powerDifference>0){
                     if (centerOpponentFrontLine.getHP()>0){
                         this.centerOpponentFrontLine.setHP(this.centerOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());
@@ -192,7 +183,7 @@ public class LogicManager {
                 return PlayerType.player;
 
             case right:
-                powerDifference = rightPlayerFrontLine.getSummedPower() - rightOpponentFrontLine.getSummedPower();
+                powerDifference = getFrontLinePower(lineType, PlayerType.player) - getFrontLinePower(lineType, PlayerType.opponent);
                 if (powerDifference>0){
                     if (rightOpponentFrontLine.getHP()>0){
                         this.rightOpponentFrontLine.setHP(this.rightOpponentFrontLine.getHP() - new Double(powerDifference * VariablesLogic.frontLineAttackFactor).intValue());

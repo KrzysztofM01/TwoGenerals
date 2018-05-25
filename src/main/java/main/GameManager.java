@@ -188,7 +188,13 @@ public class GameManager {
         logicManager.addCardToFront(card.getCardLogic(), lineType, playerType);
         card.getCardLogic().action(this.logicManager, lineType, playerType);
         graphicManager.addCardToFront(card, lineType, logicManager.getFrontLinePower(lineType, playerType), playerType);
+        for (LineType lineTypeForAll: LineType.values()){
+            graphicManager.updateBattleFrontBoxPower(lineTypeForAll, playerType, logicManager.getFrontLinePower(lineTypeForAll, playerType) );
+        }
+
         if (card.getCardLogic().isUpdateGraphics()) {
+            graphicManager.getPlayerHealthBox(PlayerType.player).setHPAmount(logicManager.getPlayer(PlayerType.player).getHitPoints());
+            graphicManager.getPlayerHealthBox(PlayerType.opponent).setHPAmount(logicManager.getPlayer(PlayerType.opponent).getHitPoints());
             for (Card cardGraphic : this.graphicManager.getCardList()) {
                 this.graphicManager.updateGraphics(cardGraphic);
             }

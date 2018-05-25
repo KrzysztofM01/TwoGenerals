@@ -16,7 +16,6 @@ public class Main extends Application{
     public void start(Stage primaryStage){
 
         /* To fix:
-        1) CardPreview text description is out of place when text is bigger than usual
         2) Scale font with screenSize
         3) Send all things to css and scale it into one CSS
         4) Remove things from graphicManager and create new class for each of them
@@ -61,11 +60,14 @@ public class Main extends Application{
 
         // Creating Player Cards, special cards disabled for now...
         CardLogic card = CardCreator.newCard("Blood Knight", CardType.BattleCard, 8, 6, image);
-       // CardLogic card2 = CardCreator.newCard("Thaumaturge", CardType.Thaumaturge, 3, 5, image2);
-       // CardLogic card3 = CardCreator.newCard("Hawk Master", CardType.HawkMaster, 1, 4, image3);
+        CardLogic card2 = CardCreator.newCard("Thaumaturge", CardType.MagicCatalyst, 3, 5, image2);
+        CardLogic card42 = CardCreator.newCard("Thaumaturge", CardType.MagicCatalyst, 3, 5, image2);
+        // CardLogic card3 = CardCreator.newCard("Hawk Master", CardType.HawkMaster, 3, 5, image3);
+        // reveal enemy cards
         CardLogic card4 = CardCreator.newCard("Witch Slayer", CardType.BattleCard, 7, 5, image4);
         CardLogic card16 = CardCreator.newCard("Hooded Warrior", CardType.BattleCard, 4, 2, image5);
-       // CardLogic card17 = CardCreator.newCard("Blind Mage", CardType.BlindMage, 2, 5, image6);
+        CardLogic card17 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6);
+        CardLogic card43 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6);
         CardLogic card5 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
         CardLogic card6 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
         CardLogic card7 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
@@ -74,11 +76,13 @@ public class Main extends Application{
         CardLogic card10 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin);
         CardLogic card11 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin);
         CardLogic card12 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric);
+        CardLogic card44 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric);
         CardLogic card13 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1);
         CardLogic card14 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1);
         CardLogic card15 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2);
         CardLogic card18 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2);
-        //CardLogic card19 = CardCreator.newCard("Inferno Mage", CardType.BurningMage, 10, 5, burningMage);
+        CardLogic card19 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage);
+        CardLogic card45 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage);
         CardLogic card20 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan);
         CardLogic card21 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan);
         CardLogic card22 = CardCreator.newCard("Nylotha Shaman", CardType.BattleCard, 10, 7, hunterWithOwl);
@@ -96,16 +100,18 @@ public class Main extends Application{
         CardLogic card32 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue);
         CardLogic card33 = CardCreator.newCard("Raven Knight", CardType.BattleCard, 8, 5, RavenKnight);
         //CardLogic card34 = CardCreator.newCard("Shadow Dancer", CardType.ShadowDancer, 3, 6, thiefClimbingWall);
-        //CardLogic card35 = CardCreator.newCard("Morgus Assassin", CardType.MorgusAssassin, 3, 5, thiefAssassinWoman);
+        CardLogic card35 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman);
+        CardLogic card46 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman);
         CardLogic card36 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief);
         CardLogic card37 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief);
-       // CardLogic card38 = CardCreator.newCard("Planes Walker", CardType.PlanesWalker, 6, 7, planesWalker);
+        CardLogic card38 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker);
+        CardLogic card47 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker);
         CardLogic card39 = CardCreator.newCard("Berserk", CardType.BattleCard, 8, 5, warMercenary);
 
         //Adding Cards to player deck
         gameManager.addCardToPlayerDeck(card, PlayerType.player);
-        //gameManager.addCardToPlayerDeck(card2,PlayerType.player);
-       // gameManager.addCardToPlayerDeck(card3,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card2,PlayerType.player);
+        //gameManager.addCardToPlayerDeck(card3,PlayerType.player);
         gameManager.addCardToPlayerDeck(card4,PlayerType.player);
         gameManager.addCardToPlayerDeck(card5,PlayerType.player);
         gameManager.addCardToPlayerDeck(card6,PlayerType.player);
@@ -119,9 +125,9 @@ public class Main extends Application{
         gameManager.addCardToPlayerDeck(card14,PlayerType.player);
         gameManager.addCardToPlayerDeck(card15,PlayerType.player);
         gameManager.addCardToPlayerDeck(card16,PlayerType.player);
-      // gameManager.addCardToPlayerDeck(card17,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card17,PlayerType.player);
         gameManager.addCardToPlayerDeck(card18,PlayerType.player);
-       // gameManager.addCardToPlayerDeck(card19,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card19,PlayerType.player);
         gameManager.addCardToPlayerDeck(card20,PlayerType.player);
         gameManager.addCardToPlayerDeck(card21,PlayerType.player);
         gameManager.addCardToPlayerDeck(card22,PlayerType.player);
@@ -137,13 +143,19 @@ public class Main extends Application{
         gameManager.addCardToPlayerDeck(card32,PlayerType.player);
         gameManager.addCardToPlayerDeck(card33,PlayerType.player);
        // gameManager.addCardToPlayerDeck(card34,PlayerType.player);
-       // gameManager.addCardToPlayerDeck(card35,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card35,PlayerType.player);
         gameManager.addCardToPlayerDeck(card36,PlayerType.player);
         gameManager.addCardToPlayerDeck(card37,PlayerType.player);
-       // gameManager.addCardToPlayerDeck(card38,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card38,PlayerType.player);
         gameManager.addCardToPlayerDeck(card39,PlayerType.player);
         gameManager.addCardToPlayerDeck(card40,PlayerType.player);
         gameManager.addCardToPlayerDeck(card41,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card42,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card43,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card44,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card45,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card46,PlayerType.player);
+        gameManager.addCardToPlayerDeck(card47,PlayerType.player);
 
 
 

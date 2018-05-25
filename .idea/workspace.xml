@@ -1,295 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/Main.java" line="89" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/Main.java" line="93" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41b2f0e4-cfb1-4fb8-937f-7415810be3ae" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/graphic/buttons/EndTurnButton.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/graphic/panes/AttackActionPane.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/graphic/panes/MessagePane.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/ArcherMan.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/ArcherWoman.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/AssassinWoman.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BattleCleric.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BattleMage.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BattleMage2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BattleMage3.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BlueKnight.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/BurningMage.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/DesertBowMan.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/HunterWithOwl.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/Inquisitor.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/KnightInRain.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/MageMan.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/Mercenary.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/PlanesWalker.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/PossessedKnight.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/RagingSwordsman.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/RavenKnight.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/SoldierInRain.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/Thief.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/ThiefAssassinWoman.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/ThiefClimbingWall.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/WarMercenary.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/WomanKnight.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/cardImages/WomanRogue.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/images/2GIconNew.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/images/CardBackG2.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/images/crossedSwordsAttack.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/images/crossedSwordsRed.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/BlindMage.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/InfernoMage.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/MorgusAssassin.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/PlanesWalker.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/NodeIDConverter.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/NodeIDConverter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/buttons/AttackButton.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/buttons/AttackButton.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/cards/Card.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/cards/Card.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/cards/CardText.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/cards/CardText.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreview.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreview.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextDescription.java" afterPath="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextDescription.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/LogicManager.java" afterPath="$PROJECT_DIR$/src/main/java/logic/LogicManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/battleFields/FrontLine.java" afterPath="$PROJECT_DIR$/src/main/java/logic/battleFields/FrontLine.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/CardLogic.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/CardLogic.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/CardType.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/CardType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/DasDingo.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/BattleCleric.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/NormalCard.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/BattleCard.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/players/Player.java" afterPath="$PROJECT_DIR$/src/main/java/logic/players/Player.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java" afterPath="$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/GameManager.java" afterPath="$PROJECT_DIR$/src/main/java/main/GameManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/network/ListenForServerRequest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/network/MethodType.java" afterPath="$PROJECT_DIR$/src/main/java/network/MethodType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/network/MethodWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/network/MethodWrapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/network/Network.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/network/NetworkManager.java" afterPath="$PROJECT_DIR$/src/main/java/network/NetworkManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/network/SendData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/variables/VariablesLogic.java" afterPath="$PROJECT_DIR$/src/main/java/variables/VariablesLogic.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/02a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/02b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/02c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/02d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/03a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/03b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/03c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/03d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/04a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/04b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/04c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/04d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/05a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/05b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/05c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/05d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/06a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/06b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/06c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/06d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/07a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/07b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/07c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/07d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/08a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/08b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/08c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/08d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/09a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/09b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/09c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/09d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/10a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/10b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/10c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/10d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/11a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/11b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/11c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/11d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/12a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/12b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/12c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/12d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/13a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/13b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/13c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/13d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/14a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/14b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/14c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/14d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/HankTheWitchSlayer.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/drache.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/hund.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/mahjong.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cardImages/phoenix.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/1000_F_135437182_VdSBcZDKG7ulKsKoQYrbryp8qmiBw3II.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/123.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/16572512-silver-vintage-ornate-frame.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/26508371-medieval-wood-sign-board-isolated.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Board.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/depositphotos_34024719-stock-photo-old-paper-sheet.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/depositphotos_70912991-stock-photo-old-blank-weathered-wooden-board.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/depositphotos_8701531-stock-photo-vintage-metal-plate-on-old.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/exitButton.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/horizontalScroll.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/horizontalScroll.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/metalFrame.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/metalFrame2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/ornate-frame.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/paper.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/paper.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/weatherPlank.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/woodenSign.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainPane.css" afterPath="$PROJECT_DIR$/src/main/resources/mainPane.css" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CustomEventHandler.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/battleFrontStyles.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/02a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/02b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/02c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/02d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/03a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/03b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/03c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/03d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/04a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/04b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/04c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/04d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/05a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/05b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/05c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/05d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/06a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/06b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/06c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/06d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/07a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/07b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/07c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/07d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/08a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/08b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/08c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/08d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/09a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/09b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/09c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/09d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/10a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/10b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/10c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/10d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/11a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/11b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/11c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/11d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/12a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/12b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/12c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/12d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/13a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/13b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/13c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/13d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/14a.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/14b.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/14c.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/14d.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/BlindMage.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/BloodKnight2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/HankTheWitchSlayer.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/HawkMaster.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/HoodedWarrior.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/Thaumaturg.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/TheBloodKnight.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/drache.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/hund.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/mahjong.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cardImages/phoenix.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/connectPanel.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database/DB.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/GraphicManager$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/GraphicManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/NodeIDConverter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/PlayerType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/PlayerTypeConverter.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/battleFields/BattleFieldGUI$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/battleFields/BattleFieldGUI.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/battleFields/BattleFrontGUI.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/battleFields/BattleFrontTextBoxGUI.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/buttons/AttackButton$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/buttons/AttackButton.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/buttons/ExitButton.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/Card.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/CardText.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/SerializableText.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/cardPreview/CardPreview.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/cardPreview/CardPreviewTextDescription.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/cardPreview/CardPreviewTextName.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/cardPreview/CardPreviewTextNumbers.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/cards/cardPreview/CardPreviewTextType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/panes/ActionPointsBox.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/panes/CardPreviewPane.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/panes/PlayerHealthBox$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/graphic/panes/PlayerHealthBox.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/1000_F_135437182_VdSBcZDKG7ulKsKoQYrbryp8qmiBw3II.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/123.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/16572512-silver-vintage-ornate-frame.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/26508371-medieval-wood-sign-board-isolated.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/2GIcon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/Board.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/anotherOne.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/bgImage.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/bgImage.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/crossedSwords.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/depositphotos_34024719-stock-photo-old-paper-sheet.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/depositphotos_70912991-stock-photo-old-blank-weathered-wooden-board.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/depositphotos_8701531-stock-photo-vintage-metal-plate-on-old.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/exitButton.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/flagPurple.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/horizontalScroll.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/horizontalScroll.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/ironShield.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/metalFrame.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/metalFrame2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/metalFrame3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/oldsheet.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/ornate-frame.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/paper.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/paper.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/plank.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/preview.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/weatherPlank.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/wooden-texture.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/woodenFrame.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/woodenFrameReverse.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/woodenSign.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/LogicManager$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/LogicManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/battleFields/FrontLine.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/battleFields/LineType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/BattleCard.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/CardCreator$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/CardCreator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/CardLogic.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/CardType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/cards/DasDingo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logic/players/Player.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/GameManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mainPane.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/GetData.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/ListenForServerRequest.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/MethodType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/MethodWrapper$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/MethodWrapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/Network$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/Network$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/Network.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/NetworkConnectPanel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/NetworkManager$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/NetworkManager$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/NetworkManager.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/network/SendData.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/variables/VariablesGraphics.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/variables/VariablesLogic.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -322,28 +52,38 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1232">
-              <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state relative-caret-position="16">
+              <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Thaumaturge.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java">
+      <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/main/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="624">
+              <caret line="57" column="58" lean-forward="false" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java">
+      <file leaf-file-name="GraphicManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="784">
+              <caret line="71" column="65" lean-forward="false" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetworkManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/network/NetworkManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1504">
+              <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -375,15 +115,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/variables/VariablesGraphics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/CardPreviewText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/CardPreviewTextNumbers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/CardTexTName.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/CardPreview.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/CardPreviewTextName.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextName.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextNumbers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextDescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/battleFields/BattleFieldGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/battleFields/BattleFrontGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/network/SendData.java" />
@@ -408,23 +142,29 @@
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/Card.java" />
         <option value="$PROJECT_DIR$/src/main/java/network/MethodType.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/buttons/EndTurnButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/network/NetworkManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/LogicManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/players/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/panes/MessagePane.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/buttons/AttackButton.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mainPane.css" />
-        <option value="$PROJECT_DIR$/src/main/java/main/GameManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/network/MethodWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/panes/AttackActionPane.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/variables/VariablesLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/cards/BattleCleric.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextType.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreview.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/cards/CardType.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java" />
+        <option value="$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextDescription.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/cards/BlindMage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/cards/InfernoMage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/cards/MorgusAssassin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/cards/CardType.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/cards/PlanesWalker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/battleFields/FrontLine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/main/GameManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/LogicManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/network/NetworkManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
       </list>
     </option>
@@ -530,7 +270,32 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
+              <item name="battleFields" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwoGenerals" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwoGenerals" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="logic" type="462c0819:PsiDirectoryNode" />
               <item name="cards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwoGenerals" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwoGenerals" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TwoGenerals" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TwoGenerals" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TwoGenerals" type="b2602c69:ProjectViewProjectNode" />
@@ -555,9 +320,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -813,12 +578,13 @@
       <workItem from="1526893942791" duration="9861000" />
       <workItem from="1527013857448" duration="1194000" />
       <workItem from="1527167763645" duration="10039000" />
-      <workItem from="1527234767689" duration="15420000" />
+      <workItem from="1527234767689" duration="24112000" />
+      <workItem from="1527284449658" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221696000" />
+    <option name="totallyTimeSpent" value="230417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -834,20 +600,18 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29132947" sideWeight="0.50647247" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22572815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28901735" sideWeight="0.4935275" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28901735" sideWeight="0.4935275" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27427185" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27912623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -858,8 +622,10 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -905,103 +671,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/battleFrontStyles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/buttons/AttackButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="44" column="42" lean-forward="false" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
-          <folding>
-            <element signature="e#1534#1535#0" expanded="false" />
-            <element signature="e#1571#1572#0" expanded="false" />
-            <element signature="e#1891#1892#0" expanded="false" />
-            <element signature="e#1922#1923#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/battleFields/BattleFieldGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="45" column="22" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="45" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mainPane.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="40" column="61" lean-forward="false" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/panes/MessagePane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#784#785#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/network/MethodWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/panes/AttackActionPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="105" column="20" lean-forward="false" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="71" />
-          <folding>
-            <element signature="e#10158#10159#0" expanded="false" />
-            <element signature="e#10193#10194#0" expanded="false" />
-            <element signature="e#10242#10243#0" expanded="false" />
-            <element signature="e#10279#10280#0" expanded="false" />
-            <element signature="e#10328#10329#0" expanded="false" />
-            <element signature="e#10365#10366#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/BlindMage.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/BlueKnight.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/BurningMage.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/HawkMaster.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1053,16 +722,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/Thief.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/ThiefAssassinWoman.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/ThiefClimbingWall.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1141,15 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="77" column="68" lean-forward="false" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,27 +827,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="62" column="25" lean-forward="false" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,38 +842,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/cards/cardPreview/CardPreviewTextDescription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/BlindMage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/InfernoMage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/ThiefClimbingWall.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/cardImages/ThiefAssassinWoman.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/MorgusAssassin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/CardType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#288#289#0" expanded="false" />
-            <element signature="e#367#368#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="80">
+          <caret line="6" column="137" lean-forward="false" selection-start-line="6" selection-start-column="137" selection-end-line="6" selection-end-column="137" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/Thaumaturge.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/cards/PlanesWalker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="400">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/battleFields/FrontLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/network/GetData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/network/MethodWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-848">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/LogicManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="212" column="5" lean-forward="false" selection-start-line="212" selection-start-column="5" selection-end-line="212" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/network/NetworkManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1504">
+          <caret line="108" column="14" lean-forward="false" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="57" column="58" lean-forward="false" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/graphic/GraphicManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="71" column="65" lean-forward="false" selection-start-line="71" selection-start-column="65" selection-end-line="71" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state relative-caret-position="16">
+          <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
           <folding />
         </state>
       </provider>

@@ -8,8 +8,16 @@ public class CardCreator {
                 return new BattleCard(name, power, cost, imageURL, cardType);
             case BoostArmyMorale:
                 return new BattleCleric(name, power, cost, imageURL, cardType);
-            case Thaumaturge:
+            case MagicCatalyst:
                 return new Thaumaturge(name, power, cost, imageURL, cardType);
+            case MagicNullification:
+                return new BlindMage(name, power, cost, imageURL, cardType);
+            case UncontrolledPower:
+                return new InfernoMage(name, power, cost, imageURL, cardType);
+            case Assassination:
+                return new MorgusAssassin(name, power, cost, imageURL, cardType);
+            case Trickster:
+                return new PlanesWalker(name, power, cost, imageURL, cardType);
             default:
                 return null;
         }

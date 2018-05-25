@@ -4,9 +4,9 @@ import graphic.PlayerType;
 import logic.LogicManager;
 import logic.battleFields.LineType;
 
-public class Thaumaturge extends CardLogic {
+public class BlindMage extends CardLogic {
 
-    Thaumaturge(String name, int power, int cost, String imageURL, CardType cardType) {
+    BlindMage(String name, int power, int cost, String imageURL, CardType cardType) {
         super(name, power, cost, imageURL, cardType);
         this.setUpdateGraphics(true);
     }
@@ -19,15 +19,15 @@ public class Thaumaturge extends CardLogic {
         } else {
             newPlayerType = PlayerType.player;
         }
-        for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, newPlayerType).getCardList()){
-            if (cardLogic.getCardType() != CardType.BattleCard){
-                this.setCurrentPower(this.getCurrentPower()+3);
+        for (LineType lineType : LineType.values()) {
+            for (CardLogic cardLogic : logicManager.getFrontLine(lineType, newPlayerType).getCardList()){
+                cardLogic.setCurrentPower(cardLogic.getPower());
             }
         }
     }
 
     @Override
     public String getDescription() {
-        return "When used this card gets +3 increased power for every enemy special card on the same battle front.";
+        return "When used this card nullifies enemy powers, changing their powers to default.";
     }
 }

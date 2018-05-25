@@ -35,7 +35,9 @@ public class FrontLine {
     public int getSummedPower() {
         int summedPower = 0;
         for (CardLogic card: this.cardList){
-            summedPower += card.getCurrentPower();
+            if (card.getLineType() == this.frontLineType){
+                summedPower += card.getCurrentPower();
+            }
         }
         return summedPower;
     }

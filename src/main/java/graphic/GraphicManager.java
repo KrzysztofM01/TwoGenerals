@@ -69,13 +69,13 @@ public class GraphicManager {
         this.scene.getStylesheets().addAll(STYLESHEET);
         //
         // Set mainPane layouts
-        this.playerCards.setHgap(-VariablesGraphics.cardWidth/2);
+        this.playerCards.setHgap(-VariablesGraphics.cardWidth*0.6);
         this.playerCards.setAlignment(Pos.BOTTOM_CENTER);
         this.playerCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
         this.playerCards.setLayoutY(VariablesGraphics.playerCardPositionY);
 
         this.opponentCards.setLayoutY(VariablesGraphics.screenHeight*0.01);
-        this.opponentCards.setHgap(-VariablesGraphics.cardWidth*0.75);
+        this.opponentCards.setHgap(-VariablesGraphics.cardWidth*0.83);
         this.opponentCards.setAlignment(Pos.TOP_CENTER);
         this.opponentCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
 
@@ -132,8 +132,11 @@ public class GraphicManager {
         this.cardList.add(card);
         this.updateGraphics(card);
         card.setHighlighted(false);
-        this.getBattleFrontTextBoxGUI(lineType, playerType).setPowerAmount(power);
         this.getBattleFrontNodeList(lineType, playerType).add(card);
+    }
+
+    public void updateBattleFrontBoxPower(LineType lineType, PlayerType playerType, int power) {
+        this.getBattleFrontTextBoxGUI(lineType, playerType).setPowerAmount(power);
     }
 
     public void updateGraphics(Card card){

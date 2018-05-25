@@ -1,11 +1,13 @@
 package network;
 
 import graphic.GraphicManager;
+import graphic.PlayerType;
 import graphic.cards.Card;
 import javafx.concurrent.Task;
 import javafx.stage.Stage;
 import logic.players.Player;
 import main.GameManager;
+import variables.VariablesLogic;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -108,6 +110,8 @@ public class NetworkManager {
             task.setOnSucceeded(e2 -> {
                 if (clientAccepted){
                     gameManager.getGraphicManager().loadGameScene(true);
+                    gameManager.getLogicManager().getPlayer(PlayerType.player).setActionPoints(VariablesLogic.playerActionPoints/2);
+                    gameManager.getGraphicManager().setActionPointsText(VariablesLogic.playerActionPoints/2);
                     GetData getData = new GetData(getOis(), gameManager);
                     receiveDataThread = new Thread(getData);
                     receiveDataThread.start();
