@@ -17,7 +17,7 @@ import java.net.Socket;
 public class NetworkManager {
 
     private Thread thread;
-    private Thread recieveDataThread;
+    private Thread receiveDataThread;
     private Socket clientSocket;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
@@ -56,10 +56,10 @@ public class NetworkManager {
             };
             task.setOnSucceeded(e2 -> {
                 if (isConnected){
-                    gameManager.getGraphicManager().loadGameScene();
+                    gameManager.getGraphicManager().loadGameScene(false);
                     GetData getData = new GetData(getOis(), gameManager);
-                    recieveDataThread = new Thread(getData);
-                    recieveDataThread.start();
+                    receiveDataThread = new Thread(getData);
+                    receiveDataThread.start();
                     sendCardsThroughNetwork(gameManager.getGraphicManager());
                 }
             });
@@ -107,10 +107,10 @@ public class NetworkManager {
             };
             task.setOnSucceeded(e2 -> {
                 if (clientAccepted){
-                    gameManager.getGraphicManager().loadGameScene();
+                    gameManager.getGraphicManager().loadGameScene(true);
                     GetData getData = new GetData(getOis(), gameManager);
-                    recieveDataThread = new Thread(getData);
-                    recieveDataThread.start();
+                    receiveDataThread = new Thread(getData);
+                    receiveDataThread.start();
                     sendCardsThroughNetwork(gameManager.getGraphicManager());
                 }
             });
@@ -202,6 +202,14 @@ public class NetworkManager {
     }
 
     public void closeReceiveDataThread(){
-        recieveDataThread.stop();
+        receiveDataThread.stop();
+    }
+
+    public boolean isYourTurn() {
+        return yourTurn;
+    }
+
+    public void setYourTurn(boolean yourTurn) {
+        this.yourTurn = yourTurn;
     }
 }

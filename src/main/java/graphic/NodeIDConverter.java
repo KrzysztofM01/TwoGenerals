@@ -14,7 +14,7 @@ public class NodeIDConverter {
     }
 
     public static boolean isItBattleFieldID(String nodeID){
-        return nodeID.contains("BattleField") || nodeID.contains("FrontTextBoxGUI");
+        return nodeID.contains("BattleField") || nodeID.contains("FrontTextBoxGUI") || nodeID.contains("cardNumbers");
 
     }
 }

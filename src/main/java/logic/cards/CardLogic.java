@@ -14,7 +14,7 @@ public abstract class CardLogic implements Serializable{
     private CardType cardType;
     private int currentPower;
     private boolean isHidden = false;
-    private int onWhichFront = 0;
+    private LineType lineType;
     private boolean updateGraphics = false;
 
     CardLogic(String name, int power, int cost, String imageURL, CardType cardType) {
@@ -67,9 +67,6 @@ public abstract class CardLogic implements Serializable{
         return isHidden;
     }
 
-    public int getOnWhichFront() {
-        return onWhichFront;
-    }
 
     public void setCurrentPower(int currentPower) {
         this.currentPower = currentPower;
@@ -79,9 +76,6 @@ public abstract class CardLogic implements Serializable{
         isHidden = hidden;
     }
 
-    public void setOnWhichFront(int onWhichFront) {
-        this.onWhichFront = onWhichFront;
-    }
 
     public void setUpdateGraphics(boolean updateGraphics) {
         this.updateGraphics = updateGraphics;
@@ -91,4 +85,11 @@ public abstract class CardLogic implements Serializable{
         return updateGraphics;
     }
 
+    public LineType getLineType() {
+        return lineType;
+    }
+
+    public void setLineType(LineType lineType) {
+        this.lineType = lineType;
+    }
 }

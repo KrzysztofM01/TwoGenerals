@@ -47,7 +47,6 @@ public class Player {
         this.hitPoints = hitPoints;
         if (this.hitPoints < 0){
             this.hitPoints = 0;
-            System.out.println("GAME OVER!!!");
         }
     }
 

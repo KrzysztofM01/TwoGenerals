@@ -10,6 +10,7 @@ import variables.VariablesGraphics;
 
 public class AttackButton extends Button {
     private LineType lineType;
+    private boolean usedInThisTurn = false;
 
     public AttackButton(LineType lineType){
         this.lineType = lineType;
@@ -29,6 +30,19 @@ public class AttackButton extends Button {
                 this.setLayoutX(VariablesGraphics.battleFieldBreakWidth*2.5 + VariablesGraphics.battleFieldWidth*2.5
                         + VariablesGraphics.battleFrontTextBoxWidth*0.45);
                 break;
+        }
+    }
+
+    public boolean isUsedInThisTurn() {
+        return usedInThisTurn;
+    }
+
+    public void setUsedInThisTurn(boolean usedInThisTurn) {
+        this.usedInThisTurn = usedInThisTurn;
+        if (usedInThisTurn){
+            this.setId(this.lineType + "UsedAttackButton");
+        } else {
+            this.setId(this.lineType+"AttackButton");
         }
     }
 

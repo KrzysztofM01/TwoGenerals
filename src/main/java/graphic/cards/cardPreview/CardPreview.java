@@ -20,6 +20,6 @@ public class CardPreview extends StackPane {
         this.getChildren().addAll(imageView, new CardPreviewTextNumbers(cardLogic.getCost(),false)
                 , new CardPreviewTextNumbers(cardLogic.getCurrentPower(), true),
                 new CardPreviewTextName(cardLogic.getName()), new CardPreviewTextDescription(cardLogic.getDescription()),
-                new CardPreviewTextType(cardLogic.getCardType().toString()));
+                new CardPreviewTextType(cardLogic.getCardType().toStringSeparated()));
     }
 }

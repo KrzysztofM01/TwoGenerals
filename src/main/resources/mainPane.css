@@ -21,6 +21,28 @@
     -fx-background-position: center center;
 }
 
+#leftUsedAttackButton, #centerUsedAttackButton, #rightUsedAttackButton {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-image: url("images/crossedSwordsRed.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#attackActionPane {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-background-image: url("images/crossedSwordsAttack.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
 #cardPreview {
     -fx-background-image: url("images/oldsheet.png");
     -fx-background-size: stretch;
@@ -68,6 +90,26 @@
     -fx-background-position: center center;
 }
 
+#endTurnButton {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/preview.jpg");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#messagePane {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/plank.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
 #playerText, #HPText, #HPAmountText {
     -fx-font-size: 2.3em;
     -fx-font-family: 'Helvetica';
@@ -76,8 +118,15 @@
 
 }
 
-#actionPointsAmount, #exitText, #exitGameText {
+#actionPointsAmount, #exitText, #exitGameText, #messageText {
     -fx-font-size: 3em;
+    -fx-font-family: 'Helvetica';
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+#endTurnText, #endText {
+    -fx-font-size: 2.2em;
     -fx-font-family: 'Helvetica';
     -fx-font-weight: bold;
     -fx-fill: white;

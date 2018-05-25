@@ -21,7 +21,7 @@ public class CardText extends StackPane implements Serializable{
         this.setMaxSize(VariablesGraphics.cardWidth/5, VariablesGraphics.cardHeight/8);
 
         if (isPowerText){
-            this.setTranslateX(-VariablesGraphics.cardWidth/2.75- VariablesGraphics.cardPadding);
+            this.setTranslateX(-VariablesGraphics.cardWidth/2.78- VariablesGraphics.cardPadding);
             this.setTranslateY(-VariablesGraphics.cardHeight/2.72- VariablesGraphics.cardPadding);
         } else {
             this.setTranslateX(-VariablesGraphics.cardWidth/2.6- VariablesGraphics.cardPadding);

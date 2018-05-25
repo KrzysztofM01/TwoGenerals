@@ -5,6 +5,7 @@ import graphic.cards.Card;
 import graphic.cards.cardPreview.CardPreview;
 import graphic.GraphicManager;
 import graphic.NodeIDConverter;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import logic.cards.CardLogic;
 import logic.battleFields.LineType;
@@ -15,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import network.MethodWrapper;
 import network.NetworkManager;
+import variables.VariablesLogic;
 
 import java.io.IOException;
 
@@ -24,10 +26,7 @@ public class GameManager {
 
     private LogicManager logicManager;
     private GraphicManager graphicManager;
-
     private NetworkManager networkManager;
-
-
 
     public GameManager(Stage primaryStage) {
 
@@ -40,48 +39,83 @@ public class GameManager {
 
         // Handler must be in main manager
         EventHandler<MouseEvent> exitGameButton = e -> {
+            try {
+                networkManager.getOos().writeObject(MethodWrapper.stopGettingData());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             primaryStage.close();
             networkManager.closeReceiveDataThread();
         };
         this.graphicManager.getExitButton().setOnMouseClicked(exitGameButton);
 
+        EventHandler<MouseEvent> endTurnButton = e -> {
+            if (networkManager.isYourTurn()){
+                try {
+                    networkManager.setYourTurn(false);
+                    networkManager.getOos().writeObject(MethodWrapper.endTurn());
+                    graphicManager.getEndTurnButton().isYourTurnText(false);
+                    graphicManager.showMessagePane("Opponent Turn", false);
+                    logicManager.getPlayer(PlayerType.player).setActionPoints(VariablesLogic.playerActionPoints);
+                    graphicManager.setActionPointsText(VariablesLogic.playerActionPoints);
+                    graphicManager.getAttackButton(LineType.left).setUsedInThisTurn(false);
+                    graphicManager.getAttackButton(LineType.center).setUsedInThisTurn(false);
+                    graphicManager.getAttackButton(LineType.right).setUsedInThisTurn(false);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        };
+        this.graphicManager.getEndTurnButton().setOnMouseClicked(endTurnButton);
 
         EventHandler<MouseEvent> sendCardToFrontHandler = e -> {
-            if (e.getPickResult().getIntersectedNode().getId() != null && !NodeIDConverter.isItBattleFieldID(e.getPickResult().getIntersectedNode().getId())) {
-                if (main.GameManager.this.tempCard != null && main.GameManager.this.tempCard.isHighlighted()) {
-                    try {
-                        this.tempCard.setPadding(Insets.EMPTY);
-                        main.GameManager.this.removeCardFromPlayerDeck(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempPlayerType());
-                        // To ma sie wyslac
-                        MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(main.GameManager.this.tempCard);
-                        networkManager.getOos().writeObject(removeCardToSend);
-                        //
-                        main.GameManager.this.addCardToFront(main.GameManager.this.tempCard, e.getPickResult().getIntersectedNode().getId(), main.GameManager.this.tempCard.getTempPlayerType());
-                        // To ma sie wyslac
-                        MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(main.GameManager.this.tempCard, NodeIDConverter.toLineType(e.getPickResult().getIntersectedNode().getId()));
-                        networkManager.getOos().writeObject(addCardToFrontToSend);
-                        //
-                        //main.GameManager.this.tempCard = null;
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
+            if (networkManager.isYourTurn()){
+                String nodeID = e.getPickResult().getIntersectedNode().getId();
+                if (nodeID != null && !NodeIDConverter.isItBattleFieldID(nodeID)) {
+                    if (main.GameManager.this.tempCard != null && main.GameManager.this.tempCard.isHighlighted()) {
+                        if (logicManager.getPlayer(PlayerType.player).getActionPoints() >= this.tempCard.getCardLogic().getCost()){
+                            try {
+                                int actionPointsAmount = logicManager.getPlayer(PlayerType.player).getActionPoints() - this.tempCard.getCardLogic().getCost();
+                                logicManager.getPlayer(PlayerType.player).setActionPoints(actionPointsAmount);
+                                graphicManager.setActionPointsText(actionPointsAmount);
+                                main.GameManager.this.removeCardFromPlayerDeck(main.GameManager.this.tempCard, main.GameManager.this.tempCard.getTempPlayerType());
+                                // To ma sie wyslac
+                                MethodWrapper removeCardToSend = MethodWrapper.removeCardFromPlayer(main.GameManager.this.tempCard);
+                                networkManager.getOos().writeObject(removeCardToSend);
+                                //
+                                main.GameManager.this.addCardToFront(main.GameManager.this.tempCard, nodeID, main.GameManager.this.tempCard.getTempPlayerType());
+                                // To ma sie wyslac
+                                MethodWrapper addCardToFrontToSend = MethodWrapper.addCardToFront(main.GameManager.this.tempCard, NodeIDConverter.toLineType(nodeID));
+                                networkManager.getOos().writeObject(addCardToFrontToSend);
+                                //
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
                     }
-
                 }
             }
         };
 
         EventHandler<ActionEvent> attackOnFrontHandler = e -> {
-            try {
+            if (networkManager.isYourTurn()){
                 LineType lineType = NodeIDConverter.toLineType(e.getSource().toString());
-                PlayerType loserPlayerType = this.logicManager.attackFrontLine(lineType);
-                this.graphicManager.getBattleFrontTextBoxGUI(lineType, loserPlayerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerType));
-                this.graphicManager.getPlayerHealthBox(loserPlayerType).setHPAmount(this.logicManager.getPlayer(loserPlayerType).getHitPoints());
-                // To ma sie wyslac
-                MethodWrapper attackOnFrontToSend = MethodWrapper.attackOnFront(lineType);
-                networkManager.getOos().writeObject(attackOnFrontToSend);
-
-            } catch (IOException e1) {
-                e1.printStackTrace();
+                if (!graphicManager.getAttackButton(lineType).isUsedInThisTurn()){
+                    graphicManager.getAttackButton(lineType).setUsedInThisTurn(true);
+                    graphicManager.showAttackOnFrontGraphics(lineType);
+                    try {
+                        PlayerType loserPlayerType = this.logicManager.attackFrontLine(lineType);
+                        this.graphicManager.getBattleFrontTextBoxGUI(lineType, loserPlayerType).setHitPointsAmount(this.logicManager.getFrontLineHitPoints(lineType, loserPlayerType));
+                        this.graphicManager.getPlayerHealthBox(loserPlayerType).setHPAmount(this.logicManager.getPlayer(loserPlayerType).getHitPoints());
+                        // To ma sie wyslac
+                        MethodWrapper attackOnFrontToSend = MethodWrapper.attackOnFront(lineType);
+                        networkManager.getOos().writeObject(attackOnFrontToSend);
+                        checkForVictoryCondition(loserPlayerType);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
             }
         };
 
@@ -89,9 +123,9 @@ public class GameManager {
         graphicManager.getCenterBattleFieldGUI().setOnMouseClicked(sendCardToFrontHandler);
         graphicManager.getRightBattleFieldGUI().setOnMouseClicked(sendCardToFrontHandler);
 
-        graphicManager.getLeftAttackButton().setOnAction(attackOnFrontHandler);
-        graphicManager.getCenterAttackButton().setOnAction(attackOnFrontHandler);
-        graphicManager.getRightAttackButton().setOnAction(attackOnFrontHandler);
+        graphicManager.getAttackButton(LineType.left).setOnAction(attackOnFrontHandler);
+        graphicManager.getAttackButton(LineType.center).setOnAction(attackOnFrontHandler);
+        graphicManager.getAttackButton(LineType.right).setOnAction(attackOnFrontHandler);
     }
 
 
@@ -130,11 +164,23 @@ public class GameManager {
     public void removeCardFromPlayerDeck(Card card, PlayerType playerType) {
         graphicManager.removeCardFromPlayerDeck(card, playerType);
         logicManager.getPlayer(playerType).removeCard(card.getCardLogic());
-        this.tempCard.setOnMouseClicked((MouseEvent e) -> {
-            e.getPickResult().getIntersectedNode().setId(e.getPickResult().getIntersectedNode().getParent().getId());
+        card.setOnMouseClicked((MouseEvent e) -> {
+            if (e.getPickResult().getIntersectedNode().getId() == null) {
+                e.getPickResult().getIntersectedNode().setId(e.getPickResult().getIntersectedNode().getParent().getId());
+            }
         });
 
 
+    }
+
+    public void checkForVictoryCondition (PlayerType loserPlayerType){
+        if (this.logicManager.getPlayer(loserPlayerType).getHitPoints() == 0 && loserPlayerType == PlayerType.opponent) {
+            networkManager.setYourTurn(false);
+            graphicManager.showMessagePane("You have won!", true);
+        } else if (this.logicManager.getPlayer(loserPlayerType).getHitPoints() == 0 && loserPlayerType == PlayerType.player) {
+            networkManager.setYourTurn(false);
+            graphicManager.showMessagePane("Your opponent has won!", true);
+        }
     }
 
     public void addCardToFront(Card card, String nodeID, PlayerType playerType) {
@@ -163,5 +209,9 @@ public class GameManager {
 
     public GraphicManager getGraphicManager() {
         return graphicManager;
+    }
+
+    public NetworkManager getNetworkManager() {
+        return networkManager;
     }
 }

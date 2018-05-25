@@ -24,10 +24,11 @@ public class LogicManager {
     public LogicManager(){
     }
 
-    public void addCardToFront(CardLogic cardLogic, LineType frontLineType, PlayerType playerType){
+    public void addCardToFront(CardLogic cardLogic, LineType lineType, PlayerType playerType){
         this.getPlayer(playerType).removeCard(cardLogic);
+        cardLogic.setLineType(lineType);
         if (playerType == PlayerType.player){
-            switch (frontLineType) {
+            switch (lineType) {
                 case left:
                     this.leftPlayerFrontLine.addCard(cardLogic);
                     break;
@@ -38,7 +39,7 @@ public class LogicManager {
                     this.rightPlayerFrontLine.addCard(cardLogic);
                     break;
         }} else {
-            switch (frontLineType) {
+            switch (lineType) {
                 case left:
                     this.leftOpponentFrontLine.addCard(cardLogic);
                     break;
