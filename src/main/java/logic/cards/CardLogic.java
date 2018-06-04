@@ -1,5 +1,6 @@
 package logic.cards;
 
+import graphic.GraphicManager;
 import graphic.PlayerType;
 import logic.battleFields.LineType;
 import logic.LogicManager;
@@ -16,17 +17,19 @@ public abstract class CardLogic implements Serializable{
     private boolean isHidden = false;
     private LineType lineType;
     private boolean updateGraphics = false;
+    private int specialPower;
 
-    CardLogic(String name, int power, int cost, String imageURL, CardType cardType) {
+    CardLogic(String name, int power, int cost, String imageURL, CardType cardType, int specialPower) {
         this.name = name;
         this.power = power;
         this.cost = cost;
         this.imageURL = imageURL;
         this.cardType = cardType;
         this.currentPower = power;
+        this.specialPower = specialPower;
     }
 
-    public void action(LogicManager logicManager, LineType frontLineType, PlayerType playerType){
+    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType){
 
     }
 
@@ -91,5 +94,13 @@ public abstract class CardLogic implements Serializable{
 
     public void setLineType(LineType lineType) {
         this.lineType = lineType;
+    }
+
+    public int getSpecialPower() {
+        return specialPower;
+    }
+
+    public void setSpecialPower(int specialPower) {
+        this.specialPower = specialPower;
     }
 }

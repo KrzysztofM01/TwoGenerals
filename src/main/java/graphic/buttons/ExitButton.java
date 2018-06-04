@@ -1,23 +1,26 @@
 package graphic.buttons;
 
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import variables.VariablesGraphics;
 
 public class ExitButton extends StackPane {
 
     public ExitButton() {
+
         this.setId("exitButton");
-        this.setPrefSize(VariablesGraphics.screenWidth*0.14, VariablesGraphics.screenHeight*0.12);
-        this.setLayoutY(VariablesGraphics.screenHeight*0.87);
-        this.setLayoutX(VariablesGraphics.screenWidth*0.85);
-        Text exitText = new Text("Exit");
-        Text exitGameText = new Text("Game");
-        exitText.setId("exitText");
+
+        this.setPrefSize(VariablesGraphics.getInstance().getScreenWidth() * 0.14, VariablesGraphics.getInstance().getScreenHeight() * 0.12);
+        this.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.87);
+        this.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.85);
+
+        Text exitGameText = new Text("Exit Game");
+        exitGameText.setTextAlignment(TextAlignment.CENTER);
         exitGameText.setId("exitGameText");
-        exitText.setTranslateY(-VariablesGraphics.screenHeight*0.021);
-        exitGameText.setTranslateY(VariablesGraphics.screenHeight*0.019);
-        this.getChildren().addAll(exitText,exitGameText);
+        exitGameText.setWrappingWidth(VariablesGraphics.getInstance().getScreenWidth() * 0.1);
+        exitGameText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight() * 0.005);
+
+        this.getChildren().add(exitGameText);
     }
 }

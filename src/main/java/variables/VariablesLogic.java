@@ -1,10 +1,43 @@
 package variables;
 
 public class VariablesLogic {
-    public static final int battleFieldHitPoints = 100;
-    public static final int playerHitPoints = 75;
-    public static final int playerActionPoints = 12;
-    public static final double frontLineAttackFactor = 1.0;
-    public static final double playerAttackFactor = 1.0;
-    public static final int messageShowUpTimeInMillis = 2500;
+
+    private static VariablesLogic instance;
+
+    private VariablesLogic() {
+    }
+
+    // Create instance when someone wants to getInstance for the first time
+    public static synchronized VariablesLogic getInstance() {
+        if (instance == null) {
+            instance = new VariablesLogic();
+        }
+        return instance;
+    }
+
+
+    // Getters for logic variables
+    public int getBattleFieldHitPoints() {
+        return 100;
+    }
+
+    public int getPlayerHitPoints() {
+        return 75;
+    }
+
+    public int getPlayerActionPoints() {
+        return 12;
+    }
+
+    public double getFrontLineAttackFactor() {
+        return 1.0;
+    }
+
+    public double getPlayerAttackFactor() {
+        return 1.0;
+    }
+
+    public int getMessageShowUpTimeInMillis() {
+        return 2500;
+    }
 }

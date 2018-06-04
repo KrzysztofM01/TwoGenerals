@@ -3,11 +3,12 @@ package graphic.cards.cardPreview;
 import javafx.scene.text.Text;
 import variables.VariablesGraphics;
 
-public class CardPreviewTextName extends Text{
+class CardPreviewTextName extends Text {
 
-    public CardPreviewTextName(String cardName) {
+    CardPreviewTextName(String cardName) {
+
         this.setId("cardPreviewTextName");
         this.setText(cardName);
-        this.setTranslateY(VariablesGraphics.screenHeight/6.8);
+        this.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() / 6.8);
     }
 }

@@ -1,5 +1,6 @@
 package graphic.battleFields;
 
+import graphic.cards.Card;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import logic.battleFields.LineType;
@@ -7,8 +8,10 @@ import javafx.scene.layout.Pane;
 import graphic.PlayerType;
 import variables.VariablesGraphics;
 
+import java.util.ArrayList;
+
 public class BattleFieldGUI extends Pane {
-    public static final String STYLESHEET = "battleFrontStyles.css";
+
     private BattleFrontGUI playerCards = new BattleFrontGUI();
     private BattleFrontGUI opponentCards = new BattleFrontGUI();
 
@@ -17,40 +20,44 @@ public class BattleFieldGUI extends Pane {
     private BattleFrontTextBoxGUI playerTextBox;
     private BattleFrontTextBoxGUI opponentTextBox;
 
+    private ArrayList<Card> playerCardsList = new ArrayList<>();
+    private ArrayList<Card> opponentCardsList = new ArrayList<>();
+
 
     public BattleFieldGUI(LineType lineType) {
-        this.getStylesheets().addAll(STYLESHEET);
+
         this.lineType = lineType;
 
-        this.playerTextBox = new BattleFrontTextBoxGUI(PlayerType.player, this.lineType);
-        this.opponentTextBox = new BattleFrontTextBoxGUI(PlayerType.opponent, this.lineType);
+        // Create the boxes according to line type
+        playerTextBox = new BattleFrontTextBoxGUI(PlayerType.player, lineType);
+        opponentTextBox = new BattleFrontTextBoxGUI(PlayerType.opponent, lineType);
 
         // Set IDs of Panes
-        this.opponentCards.setId(this.lineType.toString() + "Opponent" + this.opponentCards.getId());
-        this.playerCards.setId(this.lineType.toString() + "Player" + this.playerCards.getId());
-        this.setId(this.lineType.toString() + "BattleField");
+        opponentCards.setId(lineType.toString() + "Opponent" + opponentCards.getId());
+        playerCards.setId(lineType.toString() + "Player" + playerCards.getId());
+        this.setId(lineType.toString() + "BattleField");
 
-        //
         //Set BattleFieldPane Layout
-        this.setPrefSize(VariablesGraphics.battleFieldWidth, VariablesGraphics.battleFieldHeight);
-        this.setLayoutY(VariablesGraphics.battleFieldPositionY);
-        switch (this.lineType) {
+        this.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth(), VariablesGraphics.getInstance().getBattleFieldHeight());
+        this.setLayoutY(VariablesGraphics.getInstance().getBattleFieldPositionY());
+        playerCards.setLayoutY(VariablesGraphics.getInstance().getBattleFieldHeight() / 2);
+        switch (lineType) {
             case left:
-                this.setLayoutX(VariablesGraphics.battleFieldBreakWidth);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth());
                 break;
             case center:
-                this.setLayoutX(VariablesGraphics.battleFieldWidth + VariablesGraphics.battleFieldBreakWidth * 2);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 2);
                 break;
             case right:
-                this.setLayoutX(VariablesGraphics.battleFieldWidth * 2 + VariablesGraphics.battleFieldBreakWidth * 3);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() * 2 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3);
                 break;
         }
-        this.playerCards.setLayoutY(VariablesGraphics.battleFieldHeight/2);
-        this.getChildren().addAll(this.opponentCards, this.playerCards, this.playerTextBox, this.opponentTextBox);
+
+        this.getChildren().addAll(opponentCards, playerCards, playerTextBox, opponentTextBox);
     }
 
-    public ObservableList<Node> getCardsNodeList (PlayerType playerType) {
-        if (playerType == PlayerType.player){
+    public ObservableList<Node> getCardsNodeList(PlayerType playerType) {
+        if (playerType == PlayerType.player) {
             return playerCards.getChildren();
         } else {
             return opponentCards.getChildren();
@@ -68,4 +75,14 @@ public class BattleFieldGUI extends Pane {
     public BattleFrontTextBoxGUI getOpponentTextBox() {
         return opponentTextBox;
     }
+
+    public ArrayList<Card> getCardsList(PlayerType playerType) {
+        if (playerType == PlayerType.player) {
+            return playerCardsList;
+        } else {
+            return opponentCardsList;
+        }
+
+    }
+
 }

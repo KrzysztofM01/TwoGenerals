@@ -1,15 +1,7 @@
 package graphic.cards;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import variables.VariablesGraphics;
 
 import java.io.Serializable;
@@ -17,27 +9,27 @@ import java.io.Serializable;
 public class CardText extends StackPane implements Serializable{
     private SerializableText text;
 
-    public CardText(int number, boolean isPowerText) {
-        this.setMaxSize(VariablesGraphics.cardWidth/5, VariablesGraphics.cardHeight/8);
+    CardText(int number, boolean isPowerText) {
 
+        this.setMaxSize(VariablesGraphics.getInstance().getCardWidth()/5, VariablesGraphics.getInstance().getCardHeight()/8);
+
+        // Depending on whether it's power text (Red/Blue flag text) or action cost text (Purple Flag)
+        // set the proper position
         if (isPowerText){
-            this.setTranslateX(-VariablesGraphics.cardWidth/2.78- VariablesGraphics.cardPadding);
-            this.setTranslateY(-VariablesGraphics.cardHeight/2.72- VariablesGraphics.cardPadding);
+            this.setTranslateX(-VariablesGraphics.getInstance().getCardWidth()/2.78- VariablesGraphics.getInstance().getCardPadding());
+            this.setTranslateY(-VariablesGraphics.getInstance().getCardHeight()/2.72- VariablesGraphics.getInstance().getCardPadding());
         } else {
-            this.setTranslateX(-VariablesGraphics.cardWidth/2.6- VariablesGraphics.cardPadding);
-            this.setTranslateY(VariablesGraphics.cardHeight/3.1- VariablesGraphics.cardPadding);
+            this.setTranslateX(-VariablesGraphics.getInstance().getCardWidth()/2.6- VariablesGraphics.getInstance().getCardPadding());
+            this.setTranslateY(VariablesGraphics.getInstance().getCardHeight()/3.1- VariablesGraphics.getInstance().getCardPadding());
         }
 
-        this.text = new SerializableText(Integer.toString(number));
-        this.text.setId("cardNumbers");
+        text = new SerializableText(Integer.toString(number));
+        text.setId("cardNumbers");
+
         this.getChildren().add(this.text);
     }
 
     public void setText(int power) {
         this.text.setText(Integer.toString(power));
-    }
-
-    public SerializableText getText() {
-        return text;
     }
 }

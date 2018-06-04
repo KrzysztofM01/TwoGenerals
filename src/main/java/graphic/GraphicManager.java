@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import logic.LogicManager;
 import logic.battleFields.LineType;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,14 +27,17 @@ import java.util.ArrayList;
 
 public class GraphicManager {
 
-    public static final String STYLESHEET = "mainPane.css";
+    private static final String STYLESHEET = "twoGeneralsGame.css";
 
     private CardPreview tempCardPreview;
     private Scene scene;
-    private Pane mainPane = new Pane();
+    private Pane gamePane = new Pane();
+
     private FlowPane playerCards = new FlowPane();
     private FlowPane opponentCards = new FlowPane();
+
     private CardPreviewPane cardPreviewPane = new CardPreviewPane();
+
     private BattleFieldGUI leftBattleFieldGUI = new BattleFieldGUI(LineType.left);
     private BattleFieldGUI centerBattleFieldGUI = new BattleFieldGUI(LineType.center);
     private BattleFieldGUI rightBattleFieldGUI = new BattleFieldGUI(LineType.right);
@@ -46,125 +50,99 @@ public class GraphicManager {
     private PlayerHealthBox opponentHealthBox = new PlayerHealthBox(PlayerType.opponent);
 
     private ActionPointsBox actionPointsBox = new ActionPointsBox();
+
     private ExitButton exitButton = new ExitButton();
     private EndTurnButton endTurnButton = new EndTurnButton();
+
     private MessagePane messagePane = new MessagePane();
     private AttackActionPane attackActionPane = new AttackActionPane();
 
-    private ArrayList<Card> cardList = new ArrayList<Card>();
-    private ArrayList<Card> playerCardList = new ArrayList<>();
-    private ArrayList<Card> opponentCardList = new ArrayList<>();
+    private ArrayList<Card> cardList = new ArrayList<>();
 
     private Stage primaryStage;
 
 
     public GraphicManager(Stage primaryStage) {
-        // Set IDs of Panes
-        this.playerCards.setId("playerCards");
-        this.opponentCards.setId("opponentCards");
+
         this.primaryStage = primaryStage;
-        //
-        // Set scene and it's style
-        this.scene = new Scene(this.mainPane, VariablesGraphics.screenWidth, VariablesGraphics.screenHeight);
-        this.scene.getStylesheets().addAll(STYLESHEET);
-        //
-        // Set mainPane layouts
-        this.playerCards.setHgap(-VariablesGraphics.cardWidth*0.6);
-        this.playerCards.setAlignment(Pos.BOTTOM_CENTER);
-        this.playerCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
-        this.playerCards.setLayoutY(VariablesGraphics.playerCardPositionY);
 
-        this.opponentCards.setLayoutY(VariablesGraphics.screenHeight*0.01);
-        this.opponentCards.setHgap(-VariablesGraphics.cardWidth*0.83);
-        this.opponentCards.setAlignment(Pos.TOP_CENTER);
-        this.opponentCards.setPrefSize(VariablesGraphics.battleFieldWidth*3+ VariablesGraphics.battleFieldBreakWidth*3, VariablesGraphics.cardHeight+ VariablesGraphics.cardPadding*2);
+        // Create scene and set it's style
+        scene = new Scene(gamePane, VariablesGraphics.getInstance().getScreenWidth(), VariablesGraphics.getInstance().getScreenHeight());
+        scene.getStylesheets().addAll(STYLESHEET);
 
-        this.mainPane.getChildren().addAll(this.playerCards, this.opponentCards, this.leftBattleFieldGUI,
-                this.centerBattleFieldGUI, this.rightBattleFieldGUI, this.leftAttackButton, this.centerAttackButton,
-                this.rightAttackButton, this.cardPreviewPane, this.playerHealthBox, this.opponentHealthBox,
-                this.actionPointsBox, this.exitButton, this.endTurnButton);
+        // Set layout for player and opponent card panes
+        playerCards.setHgap(-VariablesGraphics.getInstance().getCardWidth() * 0.6);
+        playerCards.setAlignment(Pos.BOTTOM_CENTER);
+        playerCards.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth() * 3 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3, VariablesGraphics.getInstance().getCardHeight() + VariablesGraphics.getInstance().getCardPadding() * 2);
+        playerCards.setLayoutY(VariablesGraphics.getInstance().getPlayerCardPositionY());
+
+        opponentCards.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.01);
+        opponentCards.setHgap(-VariablesGraphics.getInstance().getCardWidth() * 0.83);
+        opponentCards.setAlignment(Pos.TOP_CENTER);
+        opponentCards.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth() * 3 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3, VariablesGraphics.getInstance().getCardHeight() + VariablesGraphics.getInstance().getCardPadding() * 2);
+
+        gamePane.getChildren().addAll(playerCards, opponentCards, leftBattleFieldGUI,
+                centerBattleFieldGUI, rightBattleFieldGUI, leftAttackButton, centerAttackButton,
+                rightAttackButton, cardPreviewPane, playerHealthBox, opponentHealthBox,
+                actionPointsBox, exitButton, endTurnButton);
     }
 
 
-    public void loadGameScene(boolean isYourTurn){
-
-        if(!isYourTurn){
-            this.endTurnButton.isYourTurnText(false);
+    public void loadGameScene(boolean isYourTurn) {
+        // Loads the game scene to the primary stage, ensures that the game is full screen
+        if (!isYourTurn) {
+            endTurnButton.setYourTurnText(false);
         }
-        //
-        // Add scene to the primary stage
-        //primaryStage.setTitle("Two Generals");
-        this.primaryStage.setFullScreen(true);
-        this.primaryStage.setFullScreenExitHint("");
-        //primaryStage.getIcons().add(new Image("images/2GIcon.png"));
-        this.primaryStage.close();
-        this.primaryStage.setScene(this.scene);
-        this.primaryStage.show();
-        //
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint("");
+        primaryStage.close();
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public CardPreviewPane getCardPreviewPane() {
-        return cardPreviewPane;
+    public void addCardToPlayerDeck(Card card, PlayerType playerType) {
+        // Adds card to list of all cards in game, needed when updating graphics and iterating through every card
+        // also adds cards to panes
+        cardList.add(card);
+        getCardFlowPane(playerType).getChildren().add(card);
     }
 
-    public void addCardToPlayerDeck(Card card, PlayerType playerType){
-        this.cardList.add(card);
-        if (playerType == PlayerType.player){
-            this.playerCards.getChildren().add(card);
-            this.playerCardList.add(card);
-        } else {
-            this.opponentCards.getChildren().add(card);
-            this.opponentCardList.add(card);
-        }
-    }
-
-    public void removeCardFromPlayerDeck(Card card, PlayerType playerType){
-        this.cardList.remove(card);
+    public void removeCardFromPlayerDeck(Card card, PlayerType playerType) {
+        // Removes card from list of all cards in game, removes it from panes and removes padding
+        cardList.remove(card);
         card.setPadding(Insets.EMPTY);
-        if (playerType == PlayerType.player){
-            this.playerCards.getChildren().remove(card);
-        } else {
-            this.opponentCards.getChildren().remove(card);
-        }
+        getCardFlowPane(playerType).getChildren().remove(card);
     }
 
-    public void addCardToFront(Card card, LineType lineType, int power, PlayerType playerType){
-        this.cardList.add(card);
-        this.updateGraphics(card);
+    public void addCardToFront(Card card, LineType lineType, PlayerType playerType) {
+        // Adds card to list of all cards in game, adds it to the list of cards in certain battlefield
+        // updates played cards graphics, sets the highlight off and adds it to the battlefront nodeList
+        cardList.add(card);
+        getBattleFieldGUI(lineType).getCardsList(playerType).add(card);
+        updateCardGraphics(card);
         card.setHighlighted(false);
-        this.getBattleFrontNodeList(lineType, playerType).add(card);
+        getBattleFrontNodeList(lineType, playerType).add(card);
     }
 
-    public void updateBattleFrontBoxPower(LineType lineType, PlayerType playerType, int power) {
-        this.getBattleFrontTextBoxGUI(lineType, playerType).setPowerAmount(power);
+    private void updateBattleFrontBoxPower(LineType lineType, PlayerType playerType, int power) {
+        getBattleFrontTextBoxGUI(lineType, playerType).setPowerAmount(power);
     }
 
-    public void updateGraphics(Card card){
+    public void updateCardGraphics(Card card) {
+        // Updates the power and cost text of card
         card.getCardTextPower().setText(card.getCardLogic().getCurrentPower());
         card.getCardTextCost().setText(card.getCardLogic().getCost());
     }
 
-    public void removeCardFromFront(Card card, LineType lineType, int power, PlayerType playerType){
-        this.cardList.remove(card);
-        this.updateGraphics(card);
-        this.getBattleFrontTextBoxGUI(lineType, playerType).setPowerAmount(power);
-        this.getBattleFrontNodeList(lineType, playerType).remove(card);
+    public void removeCardFromFront(Card card, LineType lineType, PlayerType playerType) {
+        cardList.remove(card);
+        getBattleFrontNodeList(lineType, playerType).remove(card);
     }
 
-    public BattleFieldGUI getLeftBattleFieldGUI() {
-        return leftBattleFieldGUI;
-    }
-
-    public BattleFieldGUI getCenterBattleFieldGUI() {
-        return centerBattleFieldGUI;
-    }
-
-    public BattleFieldGUI getRightBattleFieldGUI() {
-        return rightBattleFieldGUI;
-    }
-
+    @SuppressWarnings("Duplicates")
+    // Why the hell does IntelliJ points it as duplicate???
     public AttackButton getAttackButton(LineType lineType) {
-        switch (lineType){
+        switch (lineType) {
             case left:
                 return leftAttackButton;
             case center:
@@ -175,8 +153,26 @@ public class GraphicManager {
         return null;
     }
 
-    public ArrayList<Card> getCardList() {
-        return cardList;
+    @SuppressWarnings("Duplicates")
+    // Why the hell does IntelliJ points it as duplicate???
+    public BattleFieldGUI getBattleFieldGUI(LineType lineType) {
+        switch (lineType) {
+            case left:
+                return leftBattleFieldGUI;
+            case center:
+                return centerBattleFieldGUI;
+            case right:
+                return rightBattleFieldGUI;
+        }
+        return null;
+    }
+
+    private FlowPane getCardFlowPane(PlayerType playerType) {
+        if (playerType == PlayerType.player) {
+            return playerCards;
+        } else {
+            return opponentCards;
+        }
     }
 
     public ExitButton getExitButton() {
@@ -187,95 +183,72 @@ public class GraphicManager {
         return endTurnButton;
     }
 
-    public void setActionPointsText(int amount){
-        this.actionPointsBox.setActionPointsAmount(amount);
+    public ArrayList<Card> getCardList() {
+        return cardList;
     }
 
-    public MessagePane getMessagePane() {
-        return messagePane;
+    public void setActionPointsText(int amount) {
+        actionPointsBox.setActionPointsAmount(amount);
     }
 
-    public BattleFrontTextBoxGUI getBattleFrontTextBoxGUI(LineType lineType, PlayerType playerType){
-        if (playerType == PlayerType.player){
-            switch (lineType){
+    public BattleFrontTextBoxGUI getBattleFrontTextBoxGUI(LineType lineType, PlayerType playerType) {
+        if (playerType == PlayerType.player) {
+            switch (lineType) {
                 case left:
-                    return this.leftBattleFieldGUI.getPlayerTextBox();
+                    return leftBattleFieldGUI.getPlayerTextBox();
                 case center:
-                    return this.centerBattleFieldGUI.getPlayerTextBox();
+                    return centerBattleFieldGUI.getPlayerTextBox();
                 case right:
-                    return this.rightBattleFieldGUI.getPlayerTextBox();
+                    return rightBattleFieldGUI.getPlayerTextBox();
             }
         } else {
-            switch (lineType){
+            switch (lineType) {
                 case left:
-                    return this.leftBattleFieldGUI.getOpponentTextBox();
+                    return leftBattleFieldGUI.getOpponentTextBox();
                 case center:
-                    return this.centerBattleFieldGUI.getOpponentTextBox();
+                    return centerBattleFieldGUI.getOpponentTextBox();
                 case right:
-                    return this.rightBattleFieldGUI.getOpponentTextBox();
+                    return rightBattleFieldGUI.getOpponentTextBox();
             }
         }
         return null;
     }
 
-    public ObservableList<Node> getBattleFrontNodeList (LineType lineType, PlayerType playerType){
-        switch (lineType) {
-            case left:
-                return this.leftBattleFieldGUI.getCardsNodeList(playerType);
-            case center:
-                return this.centerBattleFieldGUI.getCardsNodeList(playerType);
-            case right:
-                return this.rightBattleFieldGUI.getCardsNodeList(playerType);
-        }
-        return null;
+
+    private ObservableList<Node> getBattleFrontNodeList(LineType lineType, PlayerType playerType) {
+        return getBattleFieldGUI(lineType).getCardsNodeList(playerType);
+    }
+
+    public ArrayList<Card> getCardsFromBattleFront(LineType lineType, PlayerType playerType) {
+        return getBattleFieldGUI(lineType).getCardsList(playerType);
     }
 
     public PlayerHealthBox getPlayerHealthBox(PlayerType playerType) {
-        if (playerType == PlayerType.player){
-            return this.playerHealthBox;
+        if (playerType == PlayerType.player) {
+            return playerHealthBox;
         } else {
-            return this.opponentHealthBox;
+            return opponentHealthBox;
         }
     }
 
-    public void createCardPreview (CardLogic cardLogic){
+    public void createCardPreview(CardLogic cardLogic) {
         CardPreview cardPreview = new CardPreview(cardLogic);
-        this.cardPreviewPane.getChildren().add(cardPreview);
-        this.tempCardPreview = cardPreview;
+        cardPreviewPane.getChildren().add(cardPreview);
+        tempCardPreview = cardPreview;
     }
 
-    public void removeCardPreview () {
-        this.cardPreviewPane.getChildren().remove(tempCardPreview);
+    public void removeCardPreview() {
+        cardPreviewPane.getChildren().remove(tempCardPreview);
     }
 
-    public ArrayList<Card> getPlayerCardList() {
-        return playerCardList;
-    }
-
-    public ArrayList<Card> getOpponentCardList() {
-        return opponentCardList;
-    }
-
-    public void showMessagePane(String messageText, boolean isPerma) {
-        messagePane.setMessageText(messageText);
-        if (!mainPane.getChildren().contains(messagePane)){
-            mainPane.getChildren().add(messagePane);
-        }
-        if (!isPerma){
-            Task<Void> sleeper = sleeperTask();
-            sleeper.setOnSucceeded(e -> {
-                mainPane.getChildren().remove(messagePane);
-            });
-            new Thread(sleeper).start();
-        }
-    }
-
-    public Task<Void> sleeperTask() {
-        return new Task<Void>() {
+    private Task<Void> sleeperTask() {
+        // A method that returns a task that waits X seconds, specified in logic variables,
+        // needed when something needs to be shown for a moment and then removed
+        return new Task<>() {
             @Override
             protected Void call() {
                 try {
-                    Thread.sleep(VariablesLogic.messageShowUpTimeInMillis);
+                    Thread.sleep(VariablesLogic.getInstance().getMessageShowUpTimeInMillis());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -284,16 +257,52 @@ public class GraphicManager {
         };
     }
 
-    public void showAttackOnFrontGraphics (LineType lineType) {
-        if (!mainPane.getChildren().contains(attackActionPane)){
-            mainPane.getChildren().add(attackActionPane);
+    public void showMessagePane(String messageText, boolean isPermanent) {
+        // Sets the text of message pane
+        messagePane.setMessageText(messageText);
+        // Ensures that there is but one messagePane in the game pane
+        if (!gamePane.getChildren().contains(messagePane)) {
+            gamePane.getChildren().add(messagePane);
         }
+        // Should the pop-up message be non-permanent, launch the sleeper task that will remove the message
+        // after it's finished
+        if (!isPermanent) {
+            Task<Void> sleeper = sleeperTask();
+            sleeper.setOnSucceeded(e -> gamePane.getChildren().remove(messagePane));
+            new Thread(sleeper).start();
+        }
+    }
+
+    public void showAttackOnFrontGraphics(LineType lineType) {
+        // Ensures that there is but one attackActionPane in the game pane
+        // TODO: Make an attackActionPane for each of the battle field and get rid of this
+        if (!gamePane.getChildren().contains(attackActionPane)) {
+            gamePane.getChildren().add(attackActionPane);
+        }
+        // Moves the pane to the center of battle field it should be displayed on
         attackActionPane.setPosition(lineType);
+        // Launches the sleeper task, upon success it will remove the attackActionPane from game pane
         Task<Void> sleeper = sleeperTask();
-        sleeper.setOnSucceeded(e -> {
-            mainPane.getChildren().remove(attackActionPane);
-        });
+        sleeper.setOnSucceeded(e -> gamePane.getChildren().remove(attackActionPane));
         new Thread(sleeper).start();
 
+    }
+
+    public void endTurnGraphics() {
+        // Changes end turn button text, shows up pop-up message for player
+        endTurnButton.setYourTurnText(false);
+        showMessagePane("Opponent Turn", false);
+        // Resets the action points and attack buttons of player
+        setActionPointsText(VariablesLogic.getInstance().getPlayerActionPoints());
+        getAttackButton(LineType.left).setUsedInThisTurn(false);
+        getAttackButton(LineType.center).setUsedInThisTurn(false);
+        getAttackButton(LineType.right).setUsedInThisTurn(false);
+    }
+
+    public void updateBattleFieldTextBoxes(LogicManager logicManager, PlayerType playerType) {
+        // Goes through all of battle front boxes and updates their numbers
+        for (LineType lineTypeForAll : LineType.values()) {
+            updateBattleFrontBoxPower(lineTypeForAll, playerType, logicManager.getFrontLinePower(lineTypeForAll, playerType));
+        }
     }
 }

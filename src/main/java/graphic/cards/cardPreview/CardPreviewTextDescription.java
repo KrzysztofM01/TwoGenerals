@@ -6,15 +6,17 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import variables.VariablesGraphics;
 
-public class CardPreviewTextDescription extends StackPane {
+class CardPreviewTextDescription extends StackPane {
 
-    public CardPreviewTextDescription(String cardDescription) {
+    CardPreviewTextDescription(String cardDescription) {
+
         Text text = new Text(cardDescription);
         text.setId("cardPreviewTextDescription");
-        text.setWrappingWidth(VariablesGraphics.battleFieldWidth*0.65);
+        text.setWrappingWidth(VariablesGraphics.getInstance().getBattleFieldWidth() * 0.65);
         text.setTextAlignment(TextAlignment.JUSTIFY);
+
         this.setAlignment(Pos.TOP_CENTER);
-        this.setTranslateY(VariablesGraphics.battleFieldHeight*0.9);
+        this.setTranslateY(VariablesGraphics.getInstance().getBattleFieldHeight() * 0.9);
         this.getChildren().add(text);
     }
 }

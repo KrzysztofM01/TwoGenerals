@@ -9,20 +9,25 @@ public class EndTurnButton extends StackPane{
     private Text endText = new Text("End");
 
     public EndTurnButton () {
+
         this.setId("endTurnButton");
-        this.setPrefSize(VariablesGraphics.screenWidth*0.11, VariablesGraphics.screenHeight*0.11);
-        this.setLayoutY(VariablesGraphics.screenHeight*0.73);
-        this.setLayoutX(VariablesGraphics.screenWidth*0.87);
+
+        this.setPrefSize(VariablesGraphics.getInstance().getScreenWidth()*0.11, VariablesGraphics.getInstance().getScreenHeight()*0.11);
+        this.setLayoutY(VariablesGraphics.getInstance().getScreenHeight()*0.73);
+        this.setLayoutX(VariablesGraphics.getInstance().getScreenWidth()*0.87);
+
         Text endTurnText = new Text("Turn");
-        endText.setId("endText");
         endTurnText.setId("endTurnText");
-        endText.setTranslateY(-VariablesGraphics.screenHeight*0.021);
-        endTurnText.setTranslateY(VariablesGraphics.screenHeight*0.019);
+        endTurnText.setTranslateY(VariablesGraphics.getInstance().getScreenHeight()*0.019);
+
+        endText.setId("endText");
+        endText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight()*0.021);
+
         this.getChildren().addAll(endText,endTurnText);
     }
 
-    public void isYourTurnText (boolean isYourTurn){
-        if (isYourTurn){
+    public void setYourTurnText(boolean yourTurn){
+        if (yourTurn){
             this.endText.setText("End");
         } else {
             this.endText.setText("Opponent");

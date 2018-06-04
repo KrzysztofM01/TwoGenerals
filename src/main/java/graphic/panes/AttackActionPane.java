@@ -5,23 +5,27 @@ import logic.battleFields.LineType;
 import variables.VariablesGraphics;
 
 public class AttackActionPane extends StackPane {
+
     public AttackActionPane() {
+
         this.setId("attackActionPane");
-        this.setPrefSize(VariablesGraphics.battleFieldWidth*0.8, VariablesGraphics.battleFieldHeight*0.4);
-        this.setViewOrder(-30);
-        this.setLayoutY(VariablesGraphics.battleFieldPositionY+VariablesGraphics.battleFieldHeight/2-this.getPrefHeight()/2);
-    }
+        this.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth()*0.8, VariablesGraphics.getInstance().getBattleFieldHeight()*0.4);
+        this.setLayoutY(VariablesGraphics.getInstance().getBattleFieldPositionY()+VariablesGraphics.getInstance().getBattleFieldHeight()/2-this.getPrefHeight()/2);
+
+        // Ensures that this image is on top on all cards
+        this.setViewOrder(-10);
+        }
 
     public void setPosition(LineType lineType) {
         switch (lineType){
             case left:
-                this.setLayoutX(VariablesGraphics.battleFieldBreakWidth+VariablesGraphics.battleFieldWidth/2-this.getPrefWidth()/2);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth()+VariablesGraphics.getInstance().getBattleFieldWidth()/2-this.getPrefWidth()/2);
                 break;
             case center:
-                this.setLayoutX(VariablesGraphics.battleFieldWidth + VariablesGraphics.battleFieldBreakWidth * 2 +VariablesGraphics.battleFieldWidth/2-this.getPrefWidth()/2);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 2 +VariablesGraphics.getInstance().getBattleFieldWidth()/2-this.getPrefWidth()/2);
                 break;
             case right:
-                this.setLayoutX(VariablesGraphics.battleFieldWidth * 2 + VariablesGraphics.battleFieldBreakWidth * 3 +VariablesGraphics.battleFieldWidth/2-this.getPrefWidth()/2);
+                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() * 2 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3 +VariablesGraphics.getInstance().getBattleFieldWidth()/2-this.getPrefWidth()/2);
                 break;
         }
     }

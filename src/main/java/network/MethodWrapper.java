@@ -9,6 +9,7 @@ import main.GameManager;
 import java.io.Serializable;
 
 public class MethodWrapper implements Serializable {
+
     private Card card;
     private LineType lineType;
     private MethodType methodType;
@@ -60,13 +61,11 @@ public class MethodWrapper implements Serializable {
     public void unwrapMethod(GameManager gameManager) {
         switch (this.methodType) {
             case addCardToFront:
+                // Reveals card, and adds events for creating card preview
                 card.turnCard(false);
-                card.setOnMouseEntered((MouseEvent e) -> {
-                    gameManager.getGraphicManager().createCardPreview(card.getCardLogic());
-                });
-                card.setOnMouseExited((MouseEvent e) -> {
-                    gameManager.getGraphicManager().removeCardPreview();
-                });
+                card.setOnMouseEntered((MouseEvent e) -> gameManager.getGraphicManager().createCardPreview(card.getCardLogic()));
+                card.setOnMouseExited((MouseEvent e) -> gameManager.getGraphicManager().removeCardPreview());
+                // Rest of the job is already done in game manager
                 gameManager.addCardToFront(card, lineType.toOpponentBattleFrontNodeID(), PlayerType.opponent);
                 break;
             case removeCardFromPlayer:
@@ -82,7 +81,6 @@ public class MethodWrapper implements Serializable {
             case addCardToPlayer:
                 gameManager.getLogicManager().getPlayer(PlayerType.opponent).getCardList().add(card.getCardLogic());
                 card.renderCardGraphicsOpponent();
-                gameManager.getGraphicManager().getOpponentCardList().add(card);
                 gameManager.getGraphicManager().addCardToPlayerDeck(card, PlayerType.opponent);
                 break;
             case stopGettingData:
@@ -91,7 +89,7 @@ public class MethodWrapper implements Serializable {
                 break;
             case endTurn:
                 gameManager.getNetworkManager().setYourTurn(true);
-                gameManager.getGraphicManager().getEndTurnButton().isYourTurnText(true);
+                gameManager.getGraphicManager().getEndTurnButton().setYourTurnText(true);
                 gameManager.getGraphicManager().showMessagePane("Your Turn", false);
                 break;
         }
@@ -105,19 +103,11 @@ public class MethodWrapper implements Serializable {
         return lineType;
     }
 
-    public MethodType getMethodType() {
-        return methodType;
-    }
-
     public void setCard(Card card) {
         this.card = card;
     }
 
     public void setLineType(LineType lineType) {
         this.lineType = lineType;
-    }
-
-    public void setMethodType(MethodType methodType) {
-        this.methodType = methodType;
     }
 }

@@ -1,7 +1,5 @@
 package logic.battleFields;
 
-import graphic.PlayerType;
-
 import java.io.Serializable;
 
 public enum LineType implements Serializable{

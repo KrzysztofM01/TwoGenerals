@@ -6,22 +6,10 @@ import logic.cards.CardLogic;
 import java.util.ArrayList;
 
 public class FrontLine {
-    private LineType frontLineType;
-    private int playerID;
-    private ArrayList<CardLogic> cardList = new ArrayList<CardLogic>();
-    private int HP = VariablesLogic.battleFieldHitPoints;
+    private ArrayList<CardLogic> cardList = new ArrayList<>();
+    private int HP = VariablesLogic.getInstance().getBattleFieldHitPoints();
 
-    public FrontLine(LineType frontLineType, int playerID) {
-        this.frontLineType = frontLineType;
-        this.playerID = playerID;
-    }
-
-    public LineType getFrontLineType() {
-        return frontLineType;
-    }
-
-    public int getPlayerID() {
-        return playerID;
+    public FrontLine() {
     }
 
     public ArrayList<CardLogic> getCardList() {
@@ -30,16 +18,6 @@ public class FrontLine {
 
     public int getHP() {
         return HP;
-    }
-
-    public int getSummedPower() {
-        int summedPower = 0;
-        for (CardLogic card: this.cardList){
-            if (card.getLineType() == this.frontLineType){
-                summedPower += card.getCurrentPower();
-            }
-        }
-        return summedPower;
     }
 
     public void setHP(int HP) {

@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import main.GameManager;
 
+import java.util.ArrayList;
+
 public class Main extends Application{
 
     public static void main(String[] args) {
@@ -16,6 +18,7 @@ public class Main extends Application{
     public void start(Stage primaryStage){
 
         /* To fix:
+        1) Add ability for card to remove others
         2) Scale font with screenSize
         3) Send all things to css and scale it into one CSS
         4) Remove things from graphicManager and create new class for each of them
@@ -59,55 +62,109 @@ public class Main extends Application{
 
 
         // Creating Player Cards, special cards disabled for now...
-        CardLogic card = CardCreator.newCard("Blood Knight", CardType.BattleCard, 8, 6, image);
-        CardLogic card2 = CardCreator.newCard("Thaumaturge", CardType.MagicCatalyst, 3, 5, image2);
-        CardLogic card42 = CardCreator.newCard("Thaumaturge", CardType.MagicCatalyst, 3, 5, image2);
+        CardLogic card = CardCreator.newCard("Blood Knight", CardType.BattleCard, 8, 6, image, 0);
+        CardLogic card2 = CardCreator.newCard("MagicCatalyst", CardType.MagicCatalyst, 3, 5, image2, 3);
+        CardLogic card42 = CardCreator.newCard("MagicCatalyst", CardType.MagicCatalyst, 3, 5, image2, 3);
         // CardLogic card3 = CardCreator.newCard("Hawk Master", CardType.HawkMaster, 3, 5, image3);
         // reveal enemy cards
-        CardLogic card4 = CardCreator.newCard("Witch Slayer", CardType.BattleCard, 7, 5, image4);
-        CardLogic card16 = CardCreator.newCard("Hooded Warrior", CardType.BattleCard, 4, 2, image5);
-        CardLogic card17 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6);
-        CardLogic card43 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6);
-        CardLogic card5 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
-        CardLogic card6 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
-        CardLogic card7 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer);
-        CardLogic card8 = CardCreator.newCard("Marksman", CardType.BattleCard, 5, 2, archerWoman);
-        CardLogic card9 = CardCreator.newCard("Marksman", CardType.BattleCard, 5, 2, archerWoman);
-        CardLogic card10 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin);
-        CardLogic card11 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin);
-        CardLogic card12 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric);
-        CardLogic card44 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric);
-        CardLogic card13 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1);
-        CardLogic card14 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1);
-        CardLogic card15 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2);
-        CardLogic card18 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2);
-        CardLogic card19 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage);
-        CardLogic card45 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage);
-        CardLogic card20 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan);
-        CardLogic card21 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan);
-        CardLogic card22 = CardCreator.newCard("Nylotha Shaman", CardType.BattleCard, 10, 7, hunterWithOwl);
-        CardLogic card23 = CardCreator.newCard("Inquisitor", CardType.BattleCard, 6, 4, inquisitor);
-        CardLogic card24 = CardCreator.newCard("Inquisitor", CardType.BattleCard, 6, 4, inquisitor);
-        CardLogic card25 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary);
-        CardLogic card26 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary);
-        CardLogic card27 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary);
-        CardLogic card40 = CardCreator.newCard("Thergoth Soldier", CardType.BattleCard, 2, 1, soldierInRain);
-        CardLogic card41 = CardCreator.newCard("Thergoth Soldier", CardType.BattleCard, 2, 1, soldierInRain);
-        CardLogic card28 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan);
-        CardLogic card29 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan);
-        CardLogic card30 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan);
-        CardLogic card31 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue);
-        CardLogic card32 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue);
-        CardLogic card33 = CardCreator.newCard("Raven Knight", CardType.BattleCard, 8, 5, RavenKnight);
+        CardLogic card4 = CardCreator.newCard("Witch Slayer", CardType.BattleCard, 7, 5, image4, 0);
+        CardLogic card16 = CardCreator.newCard("Hooded Warrior", CardType.BattleCard, 4, 2, image5, 0);
+        CardLogic card17 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6, 0);
+        CardLogic card43 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6, 0);
+        CardLogic card5 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer, 0);
+        CardLogic card6 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer, 0);
+        CardLogic card7 = CardCreator.newCard("Field Archer", CardType.BattleCard, 3, 1, archer, 0);
+        CardLogic card8 = CardCreator.newCard("Marksman", CardType.BattleCard, 5, 2, archerWoman, 0);
+        CardLogic card9 = CardCreator.newCard("Marksman", CardType.BattleCard, 5, 2, archerWoman, 0);
+        CardLogic card10 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin, 0);
+        CardLogic card11 = CardCreator.newCard("Sister of Blade", CardType.BattleCard, 6, 4, assassin, 0);
+        CardLogic card12 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric, 2);
+        CardLogic card44 = CardCreator.newCard("Battle Cleric", CardType.BoostArmyMorale, 2, 5, battleCleric,2 );
+        CardLogic card13 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1, 0);
+        CardLogic card14 = CardCreator.newCard("Battle Mage", CardType.BattleCard, 12, 8, battleMage1, 0);
+        CardLogic card15 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2, 0);
+        CardLogic card18 = CardCreator.newCard("Conjurer", CardType.BattleCard, 7, 5, battleMage2, 0);
+        CardLogic card19 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage, 8);
+        CardLogic card45 = CardCreator.newCard("Inferno Mage", CardType.UncontrolledPower, 10, 5, burningMage, 8);
+        CardLogic card20 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan, 0);
+        CardLogic card21 = CardCreator.newCard("Ak'vir Mercenary", CardType.BattleCard, 6, 4, desertBowMan, 0);
+        CardLogic card22 = CardCreator.newCard("Nylotha Shaman", CardType.BattleCard, 10, 7, hunterWithOwl, 0);
+        CardLogic card23 = CardCreator.newCard("Inquisitor", CardType.BattleCard, 6, 4, inquisitor, 0);
+        CardLogic card24 = CardCreator.newCard("Inquisitor", CardType.BattleCard, 6, 4, inquisitor, 0);
+        CardLogic card25 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary, 0);
+        CardLogic card26 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary, 0);
+        CardLogic card27 = CardCreator.newCard("Ak'vir Sellsword", CardType.BattleCard, 5, 3, mercenary, 0);
+        CardLogic card40 = CardCreator.newCard("Thergoth Soldier", CardType.BattleCard, 2, 1, soldierInRain, 0);
+        CardLogic card41 = CardCreator.newCard("Thergoth Soldier", CardType.BattleCard, 2, 1, soldierInRain, 0);
+        CardLogic card28 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan, 0);
+        CardLogic card29 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan, 0);
+        CardLogic card30 = CardCreator.newCard("Swordsman", CardType.BattleCard, 2, 1, swordsMan, 0);
+        CardLogic card31 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue, 0);
+        CardLogic card32 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue, 0);
+        CardLogic card33 = CardCreator.newCard("Raven Knight", CardType.BattleCard, 8, 5, RavenKnight, 0);
         //CardLogic card34 = CardCreator.newCard("Shadow Dancer", CardType.ShadowDancer, 3, 6, thiefClimbingWall);
-        CardLogic card35 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman);
-        CardLogic card46 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman);
-        CardLogic card36 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief);
-        CardLogic card37 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief);
-        CardLogic card38 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker);
-        CardLogic card47 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker);
-        CardLogic card39 = CardCreator.newCard("Berserk", CardType.BattleCard, 8, 5, warMercenary);
+        CardLogic card35 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman, 0);
+        CardLogic card46 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman, 0);
+        CardLogic card36 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief, 0);
+        CardLogic card37 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief, 0);
+        CardLogic card38 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker, 0);
+        CardLogic card47 = CardCreator.newCard("Planes Walker", CardType.Trickster, 7, 5, planesWalker, 0);
+        CardLogic card39 = CardCreator.newCard("Berserk", CardType.BattleCard, 8, 5, warMercenary, 0);
 
+        ArrayList<CardLogic> cardList = new ArrayList<>();
+        cardList.add(card);
+        cardList.add(card2);
+        //cardList.add(card3);
+        cardList.add(card4);
+        cardList.add(card5);
+        cardList.add(card6);
+        cardList.add(card7);
+        cardList.add(card8);
+        cardList.add(card9);
+        cardList.add(card10);
+        cardList.add(card11);
+        cardList.add(card12);
+        cardList.add(card13);
+        cardList.add(card14);
+        cardList.add(card15);
+        cardList.add(card16);
+        cardList.add(card17);
+        cardList.add(card18);
+        cardList.add(card19);
+        cardList.add(card20);
+        cardList.add(card21);
+        cardList.add(card22);
+        cardList.add(card23);
+        cardList.add(card24);
+        cardList.add(card25);
+        cardList.add(card26);
+        cardList.add(card27);
+        cardList.add(card28);
+        cardList.add(card29);
+        cardList.add(card30);
+        cardList.add(card31);
+        cardList.add(card32);
+        cardList.add(card33);
+        //cardList.add(card34);
+        cardList.add(card35);
+        cardList.add(card36);
+        cardList.add(card37);
+        cardList.add(card38);
+        cardList.add(card39);
+        cardList.add(card40);
+        cardList.add(card41);
+        cardList.add(card42);
+        cardList.add(card43);
+        cardList.add(card44);
+        cardList.add(card45);
+        cardList.add(card46);
+        cardList.add(card47);
+
+        for (CardLogic cardLogig: cardList) {
+            gameManager.addCardToPlayerDeck(cardLogig, PlayerType.player);
+        }
+
+        /*
         //Adding Cards to player deck
         gameManager.addCardToPlayerDeck(card, PlayerType.player);
         gameManager.addCardToPlayerDeck(card2,PlayerType.player);
@@ -156,7 +213,7 @@ public class Main extends Application{
         gameManager.addCardToPlayerDeck(card45,PlayerType.player);
         gameManager.addCardToPlayerDeck(card46,PlayerType.player);
         gameManager.addCardToPlayerDeck(card47,PlayerType.player);
-
+        */
 
 
     }

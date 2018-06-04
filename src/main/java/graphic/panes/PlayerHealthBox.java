@@ -6,36 +6,39 @@ import javafx.scene.text.Text;
 import variables.VariablesGraphics;
 import variables.VariablesLogic;
 
-public class PlayerHealthBox extends StackPane{
-    private PlayerType playerType;
-    private Text playerText = new Text("Player");
-    private Text HPText = new Text("HP:");
-    private Text HPAmountText = new Text(Integer.toString(VariablesLogic.playerHitPoints));
+public class PlayerHealthBox extends StackPane {
+
+    private Text HPAmountText = new Text(Integer.toString(VariablesLogic.getInstance().getPlayerHitPoints()));
 
     public PlayerHealthBox(PlayerType playerType) {
-        this.playerType = playerType;
+
+        Text playerText = new Text("Player");
+        Text HPText = new Text("HP:");
+
         this.setId(playerType.toString() + "HealthBox");
-        this.playerText.setId("playerText");
-        this.HPText.setId("HPText");
-        this.HPAmountText.setId("HPAmountText");
-        this.setPrefSize(VariablesGraphics.screenWidth*0.11, VariablesGraphics.screenHeight*0.16);
-        this.setLayoutX(VariablesGraphics.screenWidth*0.75);
-        switch (playerType){
+        playerText.setId("playerText");
+        HPText.setId("HPText");
+        HPAmountText.setId("HPAmountText");
+
+        this.setPrefSize(VariablesGraphics.getInstance().getScreenWidth() * 0.11, VariablesGraphics.getInstance().getScreenHeight() * 0.16);
+        this.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.75);
+        switch (playerType) {
             case player:
-                this.setLayoutY(VariablesGraphics.playerCardPositionY - VariablesGraphics.cardHeight*0.75);
+                this.setLayoutY(VariablesGraphics.getInstance().getPlayerCardPositionY() - VariablesGraphics.getInstance().getCardHeight() * 0.75);
                 break;
             case opponent:
-                this.setLayoutY(VariablesGraphics.screenHeight*0.01);
+                this.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.01);
                 break;
         }
 
-        this.playerText.setTranslateY(-VariablesGraphics.screenHeight*0.038);
-        this.HPText.setTranslateY(-VariablesGraphics.screenHeight*0.01);
-        this.HPAmountText.setTranslateY(VariablesGraphics.screenHeight*0.015);
-        this.getChildren().addAll(this.playerText, this.HPAmountText, this.HPText);
+        playerText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight() * 0.038);
+        HPText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight() * 0.01);
+        HPAmountText.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() * 0.015);
+
+        this.getChildren().addAll(playerText, this.HPAmountText, HPText);
     }
 
-    public void setHPAmount(int HPamount){
+    public void setHPAmount(int HPamount) {
         this.HPAmountText.setText(Integer.toString(HPamount));
     }
 }

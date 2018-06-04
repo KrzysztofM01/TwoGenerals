@@ -4,15 +4,16 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.FlowPane;
 import variables.VariablesGraphics;
 
-public class BattleFrontGUI extends FlowPane{
+class BattleFrontGUI extends FlowPane {
 
-    public BattleFrontGUI() {
-        Pos pos = Pos.CENTER;
-        this.setHgap(-VariablesGraphics.cardWidth/3);
-        this.setVgap(-VariablesGraphics.cardHeight/3);
-        this.setAlignment(pos);
-        this.setPrefSize(VariablesGraphics.battleFieldWidth, VariablesGraphics.battleFieldHeight/2);
-        this.setMaxSize(VariablesGraphics.battleFieldWidth, VariablesGraphics.battleFieldHeight/2);
+    BattleFrontGUI() {
+
+        this.setHgap(-VariablesGraphics.getInstance().getCardWidth() / 3);
+        this.setVgap(-VariablesGraphics.getInstance().getCardHeight() / 3);
+
+        this.setAlignment(Pos.CENTER);
+
+        this.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth(), VariablesGraphics.getInstance().getBattleFieldHeight() / 2);
         this.setId("BattleFront");
     }
 
