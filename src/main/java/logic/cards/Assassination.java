@@ -6,6 +6,8 @@ import graphic.cards.Card;
 import logic.LogicManager;
 import logic.battleFields.LineType;
 
+import java.util.Comparator;
+
 public class Assassination extends CardLogic {
 
     Assassination(String name, int power, int cost, String imageURL, CardType cardType, int specialPower) {
@@ -14,25 +16,24 @@ public class Assassination extends CardLogic {
     }
 
     @Override
-    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType){
+    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType) {
+
         PlayerType newPlayerType;
+        // Changes the player type to opposite
         if (playerType == PlayerType.player) {
             newPlayerType = PlayerType.opponent;
         } else {
             newPlayerType = PlayerType.player;
         }
-        int maxPower = 0;
-        Card cardWithMaxPower = new Card();
-        for (Card card : graphicManager.getCardsFromBattleFront(frontLineType, newPlayerType)){
-            if (card.getCardLogic().getCurrentPower() > maxPower) {
-                maxPower = card.getCardLogic().getCurrentPower();
-                cardWithMaxPower = card;
-            }
-        }
-        logicManager.removeCardFromFront(cardWithMaxPower.getCardLogic(), frontLineType, newPlayerType);
-        graphicManager.removeCardFromFront(cardWithMaxPower, frontLineType, newPlayerType);
-        graphicManager.updateBattleFieldTextBoxes(logicManager, newPlayerType);
 
+        // Searches for strongest card on battle front and removes it
+        graphicManager.getCardsFromBattleFront(frontLineType, newPlayerType).stream()
+                .max(Comparator.comparingInt(s -> s.getCardLogic().getCurrentPower()))
+                .ifPresent(s -> {
+                    logicManager.removeCardFromFront(s.getCardLogic(), frontLineType, newPlayerType);
+                    graphicManager.removeCardFromFront(s, frontLineType, newPlayerType);
+                    graphicManager.updateBattleFieldTextBoxes(logicManager, newPlayerType);
+                });
     }
 
     @Override

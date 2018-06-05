@@ -40,11 +40,11 @@ public class ConnectHandler implements EventHandler<ActionEvent> {
             // You have to check if the connection was successful, task could've been finished via 'cancel'
             if (networkManager.isConnected()) {
                 // Load the game scene, start the receive thread and send your cards to opponent
-                gameManager.getGraphicManager().loadGameScene(false);
                 GetData getData = new GetData(networkManager.getOis(), gameManager);
                 networkManager.setReceiveDataThread(new Thread(getData));
                 networkManager.getReceiveDataThread().start();
                 networkManager.sendCardsThroughNetwork(gameManager.getGraphicManager());
+                gameManager.getGraphicManager().loadGameScene(false);
             }
         });
         // Set and start the connection thread

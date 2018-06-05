@@ -21,32 +21,17 @@ public class Card extends StackPane implements Serializable {
     private CardText cardTextPower;
     private CardText cardTextCost;
     private PlayerType ownerOfCard;
-    private ImageView cardBack;
+    private ImageView cardHiddenImageView;
 
     public Card() {
-
     }
 
-    public Card(CardLogic card) {
-
+    public Card(CardLogic card, PlayerType playerType) {
         this.cardLogic = card;
-        renderCardFront();
+        this.ownerOfCard = playerType;
     }
 
-    public void renderCardGraphicsOpponent() {
-        renderCardFront();
-
-        cardBack = new ImageView(new Image("images/CardBackG2.png"));
-        cardBack.setFitWidth(VariablesGraphics.getInstance().getCardWidth());
-        cardBack.setFitHeight(VariablesGraphics.getInstance().getCardHeight());
-        cardBack.setViewOrder(-5);
-
-        isHidden = true;
-
-        this.getChildren().add(cardBack);
-    }
-
-    private void renderCardFront() {
+    public void renderCardFront() {
 
         ImageView cardFront = new ImageView(new Image(cardLogic.getImageURL()));
         cardFront.setPreserveRatio(false);
@@ -56,16 +41,31 @@ public class Card extends StackPane implements Serializable {
         cardTextPower = new CardText(this.cardLogic.getCurrentPower(), true);
         cardTextCost = new CardText(this.cardLogic.getCost(), false);
 
+        // Opens up a possibility for future game rules adjustment -> when card is played, it first is hidden
+        // until player attacks with it or is attacked
+        if (ownerOfCard == PlayerType.player) {
+            cardHiddenImageView = new ImageView(new Image("images/hidingMist.png"));
+        } else {
+            cardHiddenImageView = new ImageView(new Image("images/CardBackG2.png"));
+        }
+
+        cardHiddenImageView.setFitWidth(VariablesGraphics.getInstance().getCardWidth());
+        cardHiddenImageView.setFitHeight(VariablesGraphics.getInstance().getCardHeight());
+
+        if (isHidden){
+            cardHiddenImageView.setViewOrder(-5);
+        }
+
         this.setPadding(new Insets(VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding()));
-        this.getChildren().addAll(cardFront, cardTextPower, cardTextCost);
+        this.getChildren().addAll(cardHiddenImageView, cardFront, cardTextPower, cardTextCost);
     }
 
     public void turnCard(boolean isHidden) {
         this.isHidden = isHidden;
         if (isHidden) {
-            this.cardBack.setViewOrder(-5);
+            this.cardHiddenImageView.setViewOrder(-5);
         } else {
-            this.cardBack.setViewOrder(5);
+            this.cardHiddenImageView.setViewOrder(5);
         }
     }
 
@@ -86,12 +86,12 @@ public class Card extends StackPane implements Serializable {
         return cardTextPower;
     }
 
-    public CardText getCardTextCost() {
-        return cardTextCost;
-    }
-
     public void setOwnerOfCard(PlayerType ownerOfCard) {
         this.ownerOfCard = ownerOfCard;
+    }
+
+    public CardText getCardTextCost() {
+        return cardTextCost;
     }
 
     public PlayerType getOwnerOfCard() {

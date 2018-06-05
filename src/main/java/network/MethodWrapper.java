@@ -80,7 +80,9 @@ public class MethodWrapper implements Serializable {
                 break;
             case addCardToPlayer:
                 gameManager.getLogicManager().getPlayer(PlayerType.opponent).getCardList().add(card.getCardLogic());
-                card.renderCardGraphicsOpponent();
+                card.setOwnerOfCard(PlayerType.opponent);
+                card.renderCardFront();
+                card.turnCard(true);
                 gameManager.getGraphicManager().addCardToPlayerDeck(card, PlayerType.opponent);
                 break;
             case stopGettingData:

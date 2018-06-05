@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public enum CardType implements Serializable{
-    BattleCard, BoostArmyMorale, MagicCatalyst, HawkMaster, MagicNullification, UncontrolledPower, ShadowDancer, Assassination, Trickster;
+    BattleCard, BoostArmyMorale, MagicCatalyst, Tracker, MagicNullification, UncontrolledPower, Infiltrator, Assassination, Trickster;
 
     public String toStringSeparated() {
         return this.toString().replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2");

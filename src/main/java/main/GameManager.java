@@ -27,17 +27,16 @@ public class GameManager {
         networkManager = new NetworkManager(primaryStage, this);
         logicManager = new LogicManager();
 
-
         // Set up handlers for events
         graphicManager.getExitButton().setOnMouseClicked(new ExitGameHandler(networkManager, primaryStage));
         graphicManager.getEndTurnButton().setOnMouseClicked(new EndTurnHandler(networkManager, graphicManager, logicManager));
 
         SendCardToFrontHandler sendCardToFrontHandler = new SendCardToFrontHandler(this);
-        for (LineType lineType: LineType.values()){
+        for (LineType lineType : LineType.values()) {
             graphicManager.getBattleFieldGUI(lineType).setOnMouseClicked(sendCardToFrontHandler);
         }
         AttackOnFrontHandler attackOnFrontHandler = new AttackOnFrontHandler(this);
-        for (LineType lineType: LineType.values()){
+        for (LineType lineType : LineType.values()) {
             graphicManager.getAttackButton(lineType).setOnAction(attackOnFrontHandler);
         }
     }
@@ -45,7 +44,7 @@ public class GameManager {
 
     public void addCardToPlayerDeck(CardLogic cardLogic, PlayerType playerType) {
         // Create a new card with graphics and add it to graphic and logic managers
-        Card card = new Card(cardLogic);
+        Card card = new Card(cardLogic, playerType);
         graphicManager.addCardToPlayerDeck(card, playerType);
         logicManager.getPlayer(playerType).getCardList().add(cardLogic);
         // Set handlers for the card
@@ -53,7 +52,7 @@ public class GameManager {
         card.setOnMouseExited((MouseEvent e) -> graphicManager.removeCardPreview());
         // This handler has to be here, as it needs to have constant access to tempCard
         card.setOnMouseClicked((MouseEvent e) -> {
-                // There's already card selected, the same as picked one
+            // There's already card selected, the same as picked one
             if (tempCard != null && tempCard == card) {
                 card.setHighlighted(false);
                 card.setViewOrder(0);
@@ -63,7 +62,6 @@ public class GameManager {
                 tempCard.setHighlighted(false);
                 tempCard.setViewOrder(0);
                 tempCard = card;
-                tempCard.setOwnerOfCard(playerType);
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
                 // No card selected
@@ -71,7 +69,6 @@ public class GameManager {
                 card.setHighlighted(true);
                 card.setViewOrder(-1);
                 tempCard = card;
-                tempCard.setOwnerOfCard(playerType);
             }
         });
 

@@ -30,7 +30,7 @@ public class HostHandler implements EventHandler<ActionEvent> {
                 // Task will keep running and waiting for proper connection, if connection was denied due to
                 // some reasons, the server will be still waiting for another connection until cancelled or
                 // succeeded.
-                while (networkManager.isHosting()){
+                while (networkManager.isHosting()) {
                     networkManager.getNetworkConnectPanel().setConnectionStatus("Waiting for connection...");
                     networkManager.listenForServerRequest();
                     if (networkManager.isClientAccepted()) {
@@ -52,13 +52,13 @@ public class HostHandler implements EventHandler<ActionEvent> {
             if (networkManager.isClientAccepted()) {
                 // Load the game scene, start the receive thread and send your cards to opponent
                 // also set your AP to half of it for balance purposes
-                gameManager.getGraphicManager().loadGameScene(true);
                 gameManager.getLogicManager().getPlayer(PlayerType.player).setActionPoints(VariablesLogic.getInstance().getPlayerActionPoints() / 2);
                 gameManager.getGraphicManager().setActionPointsText(VariablesLogic.getInstance().getPlayerActionPoints() / 2);
                 GetData getData = new GetData(networkManager.getOis(), gameManager);
                 networkManager.setReceiveDataThread(new Thread(getData));
                 networkManager.getReceiveDataThread().start();
                 networkManager.sendCardsThroughNetwork(gameManager.getGraphicManager());
+                gameManager.getGraphicManager().loadGameScene(true);
             }
         });
         // Set and start the host thread

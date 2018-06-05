@@ -7,14 +7,13 @@ import logic.LogicManager;
 
 import java.io.Serializable;
 
-public abstract class CardLogic implements Serializable{
+public abstract class CardLogic implements Serializable {
     private String name;
     private int power;
     private int cost;
     private String imageURL;
     private CardType cardType;
     private int currentPower;
-    private boolean isHidden = false;
     private LineType lineType;
     private boolean updateGraphics = false;
     private int specialPower;
@@ -29,11 +28,11 @@ public abstract class CardLogic implements Serializable{
         this.specialPower = specialPower;
     }
 
-    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType){
+    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType) {
 
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return "";
     }
 
@@ -55,32 +54,31 @@ public abstract class CardLogic implements Serializable{
 
     public void setPower(int power) {
         this.power = power;
+        if (this.power < 0) {
+            this.power = 0;
+        }
     }
 
     public void setCost(int cost) {
         this.cost = cost;
+        if (this.cost < 0) {
+            this.cost = 0;
+        }
     }
 
-    public CardType getCardType() { return cardType; }
-
-    public int getCurrentPower() { return currentPower;
+    public CardType getCardType() {
+        return cardType;
     }
 
-    public boolean isHidden() {
-        return isHidden;
+    public int getCurrentPower() {
+        return currentPower;
     }
-
 
     public void setCurrentPower(int currentPower) {
         this.currentPower = currentPower;
     }
 
-    public void setHidden(boolean hidden) {
-        isHidden = hidden;
-    }
-
-
-    public void setUpdateGraphics(boolean updateGraphics) {
+    void setUpdateGraphics(boolean updateGraphics) {
         this.updateGraphics = updateGraphics;
     }
 
@@ -96,11 +94,7 @@ public abstract class CardLogic implements Serializable{
         this.lineType = lineType;
     }
 
-    public int getSpecialPower() {
+    int getSpecialPower() {
         return specialPower;
-    }
-
-    public void setSpecialPower(int specialPower) {
-        this.specialPower = specialPower;
     }
 }

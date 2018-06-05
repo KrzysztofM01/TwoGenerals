@@ -13,22 +13,25 @@ public class MagicCatalyst extends CardLogic {
     }
 
     @Override
-    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType){
+    public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType) {
+
         PlayerType newPlayerType;
+        // Changes the player type to opposite
         if (playerType == PlayerType.player) {
             newPlayerType = PlayerType.opponent;
         } else {
             newPlayerType = PlayerType.player;
         }
-        for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, newPlayerType).getCardList()){
-            if (cardLogic.getCardType() != CardType.BattleCard){
-                this.setCurrentPower(this.getCurrentPower()+getSpecialPower());
+        // Increases power of this card by +X for each special card that opponent has in same battle front
+        for (CardLogic cardLogic : logicManager.getFrontLine(frontLineType, newPlayerType).getCardList()) {
+            if (cardLogic.getCardType() != CardType.BattleCard) {
+                this.setCurrentPower(this.getCurrentPower() + getSpecialPower());
             }
         }
     }
 
     @Override
     public String getDescription() {
-        return "When used this card gets +" + getSpecialPower() +" increased power for every enemy special card on the same battle front.";
+        return "When used this card gets +" + getSpecialPower() + " increased power for every enemy special card on the same battle front.";
     }
 }

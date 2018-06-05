@@ -14,6 +14,7 @@ public class Trickster extends CardLogic {
 
     @Override
     public void action(LogicManager logicManager, GraphicManager graphicManager, LineType frontLineType, PlayerType playerType){
+
         switch (frontLineType){
             case left:
                 this.setLineType(LineType.center);

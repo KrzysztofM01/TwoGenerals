@@ -17,18 +17,6 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage){
 
-        /* To fix:
-        1) Add ability for card to remove others
-        2) Scale font with screenSize
-        3) Send all things to css and scale it into one CSS
-        4) Remove things from graphicManager and create new class for each of them
-        5) Fix NetworkManager, especially get Data dependency
-        6) Change Logic Manager
-        7) Remove redundant methods
-        8) Add special cards
-        9) Investigate some strange errors that sometimes appear
-        */
-
         // Start game
         GameManager gameManager = new GameManager(primaryStage);
 
@@ -61,12 +49,10 @@ public class Main extends Application{
         String rogue = "cardImages/WomanRogue.png";
 
 
-        // Creating Player Cards, special cards disabled for now...
         CardLogic card = CardCreator.newCard("Blood Knight", CardType.BattleCard, 8, 6, image, 0);
         CardLogic card2 = CardCreator.newCard("MagicCatalyst", CardType.MagicCatalyst, 3, 5, image2, 3);
         CardLogic card42 = CardCreator.newCard("MagicCatalyst", CardType.MagicCatalyst, 3, 5, image2, 3);
-        // CardLogic card3 = CardCreator.newCard("Hawk Master", CardType.HawkMaster, 3, 5, image3);
-        // reveal enemy cards
+        CardLogic card3 = CardCreator.newCard("Hawk Master", CardType.Tracker, 3, 5, image3, 4);
         CardLogic card4 = CardCreator.newCard("Witch Slayer", CardType.BattleCard, 7, 5, image4, 0);
         CardLogic card16 = CardCreator.newCard("Hooded Warrior", CardType.BattleCard, 4, 2, image5, 0);
         CardLogic card17 = CardCreator.newCard("Blind Mage", CardType.MagicNullification, 2, 5, image6, 0);
@@ -102,7 +88,7 @@ public class Main extends Application{
         CardLogic card31 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue, 0);
         CardLogic card32 = CardCreator.newCard("Rogue", CardType.BattleCard, 4, 2, rogue, 0);
         CardLogic card33 = CardCreator.newCard("Raven Knight", CardType.BattleCard, 8, 5, RavenKnight, 0);
-        //CardLogic card34 = CardCreator.newCard("Shadow Dancer", CardType.ShadowDancer, 3, 6, thiefClimbingWall);
+        CardLogic card34 = CardCreator.newCard("Shadow Dancer", CardType.Infiltrator, 3, 6, thiefClimbingWall, 7);
         CardLogic card35 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman, 0);
         CardLogic card46 = CardCreator.newCard("Morgus Assassin", CardType.Assassination, 2, 5, thiefAssassinWoman, 0);
         CardLogic card36 = CardCreator.newCard("Skirmisher", CardType.BattleCard, 3, 2, thief, 0);
@@ -114,7 +100,7 @@ public class Main extends Application{
         ArrayList<CardLogic> cardList = new ArrayList<>();
         cardList.add(card);
         cardList.add(card2);
-        //cardList.add(card3);
+        cardList.add(card3);
         cardList.add(card4);
         cardList.add(card5);
         cardList.add(card6);
@@ -145,7 +131,7 @@ public class Main extends Application{
         cardList.add(card31);
         cardList.add(card32);
         cardList.add(card33);
-        //cardList.add(card34);
+        cardList.add(card34);
         cardList.add(card35);
         cardList.add(card36);
         cardList.add(card37);
@@ -160,61 +146,8 @@ public class Main extends Application{
         cardList.add(card46);
         cardList.add(card47);
 
-        for (CardLogic cardLogig: cardList) {
-            gameManager.addCardToPlayerDeck(cardLogig, PlayerType.player);
+        for (CardLogic cardLogic: cardList) {
+            gameManager.addCardToPlayerDeck(cardLogic, PlayerType.player);
         }
-
-        /*
-        //Adding Cards to player deck
-        gameManager.addCardToPlayerDeck(card, PlayerType.player);
-        gameManager.addCardToPlayerDeck(card2,PlayerType.player);
-        //gameManager.addCardToPlayerDeck(card3,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card4,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card5,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card6,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card7,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card8,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card9,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card10,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card11,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card12,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card13,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card14,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card15,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card16,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card17,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card18,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card19,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card20,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card21,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card22,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card23,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card24,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card25,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card26,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card27,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card28,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card29,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card30,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card31,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card32,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card33,PlayerType.player);
-       // gameManager.addCardToPlayerDeck(card34,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card35,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card36,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card37,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card38,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card39,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card40,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card41,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card42,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card43,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card44,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card45,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card46,PlayerType.player);
-        gameManager.addCardToPlayerDeck(card47,PlayerType.player);
-        */
-
-
     }
 }

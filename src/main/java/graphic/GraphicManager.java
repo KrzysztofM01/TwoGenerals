@@ -93,6 +93,9 @@ public class GraphicManager {
         if (!isYourTurn) {
             endTurnButton.setYourTurnText(false);
         }
+        for (Card card: cardList){
+            card.renderCardFront();
+        }
         primaryStage.setFullScreen(true);
         primaryStage.setFullScreenExitHint("");
         primaryStage.close();
@@ -108,7 +111,6 @@ public class GraphicManager {
     }
 
     public void removeCardFromPlayerDeck(Card card, PlayerType playerType) {
-        // Removes card from list of all cards in game, removes it from panes and removes padding
         cardList.remove(card);
         card.setPadding(Insets.EMPTY);
         getCardFlowPane(playerType).getChildren().remove(card);
