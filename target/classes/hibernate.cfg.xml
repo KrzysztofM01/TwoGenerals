@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://www.db4free.net:3306/twogenerals</property>
+        <property name="hibernate.connection.username">ilusioner</property>
+        <property name="hibernate.connection.password">renoisuli</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <mapping resource="User.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

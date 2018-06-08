@@ -1,10 +1,10 @@
-import graphic.PlayerType;
-import logic.cards.CardCreator;
-import logic.cards.CardLogic;
-import logic.cards.CardType;
+import game.graphic.PlayerType;
+import game.logic.cards.CardCreator;
+import game.logic.cards.CardLogic;
+import game.logic.cards.CardType;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.GameManager;
+import game.GameManager;
 
 import java.util.ArrayList;
 
