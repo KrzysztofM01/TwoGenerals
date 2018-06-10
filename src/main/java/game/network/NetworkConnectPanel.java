@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import game.variables.VariablesGraphics;
@@ -30,39 +31,45 @@ public class NetworkConnectPanel {
         Text port = new Text("Port:");
         port.setId("port");
 
-        ip.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() * 0.22);
-        ip.setTranslateX(VariablesGraphics.getInstance().getScreenWidth() * 0.175);
+        ip.setTranslateX(135);
+        ip.setTranslateY(185);
 
-        port.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() * 0.25);
-        port.setTranslateX(VariablesGraphics.getInstance().getScreenWidth() * 0.158);
+        port.setTranslateX(113);
+        port.setTranslateY(225);
 
-        ipField.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.2);
-        ipField.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.2);
+        ipField.setLayoutX(170);
+        ipField.setLayoutY(165);
 
-        portField.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.2);
-        portField.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.23);
+        portField.setLayoutX(170);
+        portField.setLayoutY(205);
 
-        connectButton.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.268);
-        connectButton.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.26);
+        connectButton.setLayoutX(205);
+        connectButton.setLayoutY(245);
 
-        hostButton.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.23);
-        hostButton.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.26);
+        hostButton.setLayoutX(277);
+        hostButton.setLayoutY(245);
 
-        cancelButton.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.22);
-        cancelButton.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.26);
+        cancelButton.setLayoutX(265);
+        cancelButton.setLayoutY(245);
         cancelButton.setVisible(false);
         cancelButton.setManaged(false);
 
         connectionStatus.setId("connectionStatus");
-        connectionStatus.setTranslateX(VariablesGraphics.getInstance().getScreenWidth() * 0.2);
-        connectionStatus.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() * 0.31);
-        connectionStatus.setWrappingWidth(VariablesGraphics.getInstance().getScreenWidth() * 0.12);
+        connectionStatus.setTranslateX(170);
+        connectionStatus.setTranslateY(305);
+        connectionStatus.setWrappingWidth(150);
 
-        Scene scene = new Scene(connectMainPane, VariablesGraphics.getInstance().getScreenWidth() / 2, VariablesGraphics.getInstance().getScreenHeight() / 2);
+        StackPane logoPane = new StackPane();
+        logoPane.setId("logoPane");
+        logoPane.setPrefSize(325, 100);
+        logoPane.setLayoutX(62.5);
+        logoPane.setLayoutY(50);
+
+        Scene scene = new Scene(connectMainPane, 450, 400);
         scene.getStylesheets().addAll(STYLESHEET);
 
         connectMainPane.getChildren().addAll(cancelButton, ip, port, ipField, portField, hostButton,
-                connectButton, connectionStatus);
+                connectButton, connectionStatus, logoPane);
 
         primaryStage.setScene(scene);
         primaryStage.show();

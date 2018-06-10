@@ -1,12 +1,18 @@
 package database;
 
 
+import game.logic.cards.CardLogic;
+
+import java.util.ArrayList;
 
 public class User {
     private int id;
     private String login;
     private String password;
     private boolean hasAdmin = false;
+    private String cardListString = "1, 1, 4, 5, 5, 7, 7, 7, 8, 8, 9, 9, 11, 12, 12, 14, 14, 15, 15, 16, 16, 17, 17, 19, 19, 19, 20, 20, 20, 21, 21, 22, 25, 25, 25, 2, 2, 3, 3, 6, 6, 10, 10, 13, 13, 18, 18, 23, 24, 24";
+    private ArrayList<CardLogic> cardDeck;
+
 
     public User() {
     }
@@ -48,6 +54,14 @@ public class User {
         this.hasAdmin = hasAdmin;
     }
 
+    public String getCardListString() {
+        return cardListString;
+    }
+
+    public void setCardListString(String cardListString) {
+        this.cardListString = cardListString;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -55,6 +69,15 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", hasAdmin=" + hasAdmin +
+                ", cardListString='" + cardListString + '\'' +
                 '}';
+    }
+
+    public ArrayList<CardLogic> getCardDeck() {
+        return cardDeck;
+    }
+
+    public void setCardDeck(ArrayList<CardLogic> cardDeck) {
+        this.cardDeck = cardDeck;
     }
 }

@@ -17,6 +17,7 @@
         <property name = "login" column = "login" type = "string"/>
         <property name = "password" column = "password" type = "string"/>
         <property name = "hasAdmin" column = "hasAdmin" type = "boolean"/>
+        <property name = "cardListString" column = "cardDeck" type = "string"/>
 
     </class>
 </hibernate-mapping>

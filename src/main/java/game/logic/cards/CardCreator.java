@@ -1,5 +1,7 @@
 package game.logic.cards;
 
+import database.CardDB;
+
 public class CardCreator {
 
     public static CardLogic newCard(String name, CardType cardType, int power, int cost, String imageURL, int specialPower) {
@@ -25,5 +27,9 @@ public class CardCreator {
             default:
                 return null;
         }
+    }
+
+    public static CardLogic newCardFromDB (CardDB cardDB) {
+        return newCard(cardDB.getName(), CardType.valueOf(cardDB.getCardType()), cardDB.getPower(), cardDB.getCost(), cardDB.getImageURL(), cardDB.getSpecialPower());
     }
 }

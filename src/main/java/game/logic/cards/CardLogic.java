@@ -8,6 +8,7 @@ import game.logic.LogicManager;
 import java.io.Serializable;
 
 public abstract class CardLogic implements Serializable {
+
     private String name;
     private int power;
     private int cost;

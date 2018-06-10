@@ -1,0 +1,15 @@
+.root {
+    -fx-background-image: url("../images/bgImage.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+    -fx-focus-color: transparent;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+#scrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+#scrollPane, #flowPane {
+    -fx-background-color: transparent;
+}

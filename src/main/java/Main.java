@@ -5,6 +5,7 @@ import game.logic.cards.CardType;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import game.GameManager;
+import previewCardsPanel.PreviewCardsPanel;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,8 @@ public class Main extends Application{
     public void start(Stage primaryStage){
 
         // Start game
-        GameManager gameManager = new GameManager(primaryStage);
-
+        //GameManager gameManager = new GameManager(primaryStage);
+        new PreviewCardsPanel(primaryStage);
         // To be removed later, images of cards
         String image = "cardImages/BloodKnight2.jpg";
         String image2 = "cardImages/Thaumaturg.jpg";
@@ -146,8 +147,8 @@ public class Main extends Application{
         cardList.add(card46);
         cardList.add(card47);
 
-        for (CardLogic cardLogic: cardList) {
-            gameManager.addCardToPlayerDeck(cardLogic, PlayerType.player);
-        }
+//        for (CardLogic cardLogic: cardList) {
+//            gameManager.addCardToPlayerDeck(cardLogic, PlayerType.player);
+//        }
     }
 }

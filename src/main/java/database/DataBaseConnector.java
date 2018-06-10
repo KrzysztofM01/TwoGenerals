@@ -1,6 +1,12 @@
 package database;
 
+import game.logic.cards.CardCreator;
+import game.logic.cards.CardLogic;
+import javafx.concurrent.Task;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import mainPanel.MainMenuPanel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -75,9 +81,11 @@ public class DataBaseConnector {
         return User;
     }
 
-    public static void checkPasswordForLogin(String login, String password, Text systemResponse) {
+    public static void checkPasswordForLogin(String login, String password, Text systemResponse, Stage primaryStage, Button loginButton, Button registerButton) {
 
         try {
+            loginButton.setDisable(true);
+            registerButton.setDisable(true);
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -85,14 +93,20 @@ public class DataBaseConnector {
             Root<User> root = criteriaQuery.from(User.class);
             criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("login"), login));
             TypedQuery<User> typedQuery = session.createQuery(criteriaQuery);
-            if (typedQuery.getSingleResult().getPassword().equals(password)) {
+            User user = typedQuery.getSingleResult();
+            if (user.getPassword().equals(password)) {
                 systemResponse.setText("Login successful");
+                launchMainMenuPanel(primaryStage, user, systemResponse);
             } else {
                 systemResponse.setText("Invalid password");
+                loginButton.setDisable(false);
+                registerButton.setDisable(false);
             }
             transaction.commit();
             session.close();
         } catch (javax.persistence.NoResultException e) {
+            loginButton.setDisable(false);
+            registerButton.setDisable(false);
             if (e.getMessage().equals("No entity found for query")) {
                 systemResponse.setText("This user is not in database");
             }
@@ -104,5 +118,66 @@ public class DataBaseConnector {
         return sessionFactory;
     }
 
+    private static CardLogic getCardLogic(int id) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<CardDB> criteriaQuery = criteriaBuilder.createQuery(CardDB.class);
+        Root<CardDB> root = criteriaQuery.from(CardDB.class);
+        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("id"), id));
+        TypedQuery<CardDB> typedQuery = session.createQuery(criteriaQuery);
+        CardDB cardDB = typedQuery.getSingleResult();
+        CardLogic cardLogic = CardCreator.newCardFromDB(cardDB);
+        transaction.commit();
+        session.close();
+        return cardLogic;
+    }
+
+    private static void launchMainMenuPanel(Stage primaryStage, User user, Text systemResponse) {
+        ArrayList<CardLogic> cardDeck = new ArrayList<>();
+        ArrayList<Integer> intList = new ArrayList<>();
+
+        for (String field : user.getCardListString().split(", "))
+            intList.add(Integer.parseInt(field));
+
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() {
+                for (Integer integer : intList) {
+                    cardDeck.add(getCardLogic(integer));
+                    systemResponse.setText("Loading data from database " + cardDeck.size() * 2 + "%...");
+                }
+                return null;
+            }
+        };
+        task.setOnSucceeded(e -> {
+            user.setCardDeck(cardDeck);
+            new MainMenuPanel(primaryStage, user);
+        });
+        new Thread(task).start();
+
+    }
+
+    public static ArrayList<CardLogic> getAllCards() {
+        ArrayList<CardLogic> cardDeck = new ArrayList<>();
+        List<CardDB> cardDeckDB;
+
+
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<CardDB> criteriaQuery = criteriaBuilder.createQuery(CardDB.class);
+        Root<CardDB> root = criteriaQuery.from(CardDB.class);
+        criteriaQuery.select(root);
+        TypedQuery<CardDB> typedQuery = session.createQuery(criteriaQuery);
+        cardDeckDB = typedQuery.getResultList();
+        for (CardDB cardDB: cardDeckDB) {
+            cardDeck.add(CardCreator.newCardFromDB(cardDB));
+        }
+        transaction.commit();
+        session.close();
+        return cardDeck;
+    }
 
 }

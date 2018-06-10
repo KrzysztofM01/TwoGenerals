@@ -9,7 +9,8 @@
         <property name="hibernate.connection.password">renoisuli</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <mapping resource="User.hbm.xml"/>
+        <mapping resource="hibernateFiles/User.hbm.xml"/>
+        <mapping resource="hibernateFiles/CardDB.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

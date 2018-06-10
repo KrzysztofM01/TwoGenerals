@@ -2,12 +2,12 @@ package loginPanel;
 
 import database.DataBaseConnector;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.util.Objects;
 
 public class LoginPanel extends Application{
 
@@ -18,43 +18,27 @@ public class LoginPanel extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        DataBaseConnector.startSessionFactory();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("FXML/loginMenu.fxml")));
-
-        Scene scene = new Scene(root, 600, 550);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("FXML/loginMenu.fxml"));
+        Parent root = fxmlLoader.load();
+        LoginController controller = fxmlLoader.getController();
+        controller.setPrimaryStage(primaryStage);
+        Scene scene = new Scene(root, 450, 400);
         primaryStage.setTitle("Two Generals");
         primaryStage.getIcons().add(new Image("images/2GIcon.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        /*
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() {
+                DataBaseConnector.startSessionFactory();
+                return null;
+            }
+        };
+        task.setOnSucceeded(e2 -> controller.setSystemResponse("Successfully connected to database."));
+        new Thread(task).start();
 
-        primaryStage.show();
-        primaryStage.setTitle("No hula hula");
-        //flow pane zarzadca scen
-        FlowPane flowPane = new FlowPane();
-        // scena mozna do niej wrzucac
 
-
-        primaryStage.setResizable(false);
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("FXML/loginMenu.fxml"));
-        GridPane fp = fxmlLoader.load();
-        Scene scene = new Scene(fp, 300, 300);
-        primaryStage.setScene(scene);
-        /*
-        Button button = new Button("Click me babe...");
-        button.setLayoutX(150);
-        button.setLayoutX(150);
-        flowPane.getChildren().add(button);
-
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    System.out.println("wololo");
-                }
-            });
-            */
     }
 
     @Override
