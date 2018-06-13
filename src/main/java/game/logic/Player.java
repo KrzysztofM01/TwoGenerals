@@ -1,15 +1,15 @@
 package game.logic;
 
 import game.logic.cards.CardLogic;
-import game.variables.VariablesLogic;
+import game.variables.VLogic;
 
 import java.util.ArrayList;
 
 public class Player {
 
     private ArrayList<CardLogic> cardList = new ArrayList<>();
-    private int hitPoints = VariablesLogic.getInstance().getPlayerHitPoints();
-    private int actionPoints = VariablesLogic.getInstance().getPlayerActionPoints();
+    private int hitPoints = VLogic.getInstance().getPlayerHitPoints();
+    private int actionPoints = VLogic.getInstance().getPlayerActionPoints();
 
     public Player() {
     }

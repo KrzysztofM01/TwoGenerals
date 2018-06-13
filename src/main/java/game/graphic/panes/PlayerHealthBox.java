@@ -3,12 +3,12 @@ package game.graphic.panes;
 import game.graphic.PlayerType;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-import game.variables.VariablesGraphics;
-import game.variables.VariablesLogic;
+import game.variables.VGraphics;
+import game.variables.VLogic;
 
 public class PlayerHealthBox extends StackPane {
 
-    private Text HPAmountText = new Text(Integer.toString(VariablesLogic.getInstance().getPlayerHitPoints()));
+    private Text HPAmountText = new Text(Integer.toString(VLogic.getInstance().getPlayerHitPoints()));
 
     public PlayerHealthBox(PlayerType playerType) {
 
@@ -20,20 +20,20 @@ public class PlayerHealthBox extends StackPane {
         HPText.setId("HPText");
         HPAmountText.setId("HPAmountText");
 
-        this.setPrefSize(VariablesGraphics.getInstance().getScreenWidth() * 0.11, VariablesGraphics.getInstance().getScreenHeight() * 0.16);
-        this.setLayoutX(VariablesGraphics.getInstance().getScreenWidth() * 0.75);
+        this.setPrefSize(VGraphics.getInstance().getScreenWidth() * 0.11, VGraphics.getInstance().getScreenHeight() * 0.16);
+        this.setLayoutX(VGraphics.getInstance().getScreenWidth() * 0.75);
         switch (playerType) {
             case player:
-                this.setLayoutY(VariablesGraphics.getInstance().getPlayerCardPositionY() - VariablesGraphics.getInstance().getCardHeight() * 0.75);
+                this.setLayoutY(VGraphics.getInstance().getPlayerCardPositionY() - VGraphics.getInstance().getCardHeight() * 0.75);
                 break;
             case opponent:
-                this.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.01);
+                this.setLayoutY(VGraphics.getInstance().getScreenHeight() * 0.01);
                 break;
         }
 
-        playerText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight() * 0.038);
-        HPText.setTranslateY(-VariablesGraphics.getInstance().getScreenHeight() * 0.01);
-        HPAmountText.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() * 0.015);
+        playerText.setTranslateY(-VGraphics.getInstance().getScreenHeight() * 0.038);
+        HPText.setTranslateY(-VGraphics.getInstance().getScreenHeight() * 0.01);
+        HPAmountText.setTranslateY(VGraphics.getInstance().getScreenHeight() * 0.015);
 
         this.getChildren().addAll(playerText, this.HPAmountText, HPText);
     }

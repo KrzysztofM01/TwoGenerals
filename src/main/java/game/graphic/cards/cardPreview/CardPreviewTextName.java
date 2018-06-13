@@ -1,7 +1,7 @@
 package game.graphic.cards.cardPreview;
 
 import javafx.scene.text.Text;
-import game.variables.VariablesGraphics;
+import game.variables.VGraphics;
 
 class CardPreviewTextName extends Text {
 
@@ -9,6 +9,6 @@ class CardPreviewTextName extends Text {
 
         this.setId("cardPreviewTextName");
         this.setText(cardName);
-        this.setTranslateY(VariablesGraphics.getInstance().getScreenHeight() / 6.8);
+        this.setTranslateY(VGraphics.getInstance().getScreenHeight() / 6.8);
     }
 }

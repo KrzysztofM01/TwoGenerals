@@ -20,8 +20,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import game.logic.cards.CardLogic;
-import game.variables.VariablesGraphics;
-import game.variables.VariablesLogic;
+import game.variables.VGraphics;
+import game.variables.VLogic;
 
 import java.util.ArrayList;
 
@@ -51,8 +51,8 @@ public class GraphicManager {
 
     private ActionPointsBox actionPointsBox = new ActionPointsBox();
 
-    private ExitButton exitButton = new ExitButton();
-    private EndTurnButton endTurnButton = new EndTurnButton();
+    private ExitButton exitButton = new ExitButton(true);
+    private EndTurnButton endTurnButton = new EndTurnButton(true);
 
     private MessagePane messagePane = new MessagePane();
     private AttackActionPane attackActionPane = new AttackActionPane();
@@ -67,19 +67,19 @@ public class GraphicManager {
         this.primaryStage = primaryStage;
 
         // Create scene and set it's style
-        scene = new Scene(gamePane, VariablesGraphics.getInstance().getScreenWidth(), VariablesGraphics.getInstance().getScreenHeight());
+        scene = new Scene(gamePane, VGraphics.getInstance().getScreenWidth(), VGraphics.getInstance().getScreenHeight());
         scene.getStylesheets().addAll(STYLESHEET);
 
         // Set layout for player and opponent card panes
-        playerCards.setHgap(-VariablesGraphics.getInstance().getCardWidth() * 0.6);
+        playerCards.setHgap(-VGraphics.getInstance().getCardWidth() * 0.6);
         playerCards.setAlignment(Pos.BOTTOM_CENTER);
-        playerCards.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth() * 3 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3, VariablesGraphics.getInstance().getCardHeight() + VariablesGraphics.getInstance().getCardPadding() * 2);
-        playerCards.setLayoutY(VariablesGraphics.getInstance().getPlayerCardPositionY());
+        playerCards.setPrefSize(VGraphics.getInstance().getBattleFieldWidth() * 3 + VGraphics.getInstance().getBattleFieldBreakWidth() * 3, VGraphics.getInstance().getCardHeight() + VGraphics.getInstance().getCardPadding() * 2);
+        playerCards.setLayoutY(VGraphics.getInstance().getPlayerCardPositionY());
 
-        opponentCards.setLayoutY(VariablesGraphics.getInstance().getScreenHeight() * 0.01);
-        opponentCards.setHgap(-VariablesGraphics.getInstance().getCardWidth() * 0.83);
+        opponentCards.setLayoutY(VGraphics.getInstance().getScreenHeight() * 0.01);
+        opponentCards.setHgap(-VGraphics.getInstance().getCardWidth() * 0.83);
         opponentCards.setAlignment(Pos.TOP_CENTER);
-        opponentCards.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth() * 3 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3, VariablesGraphics.getInstance().getCardHeight() + VariablesGraphics.getInstance().getCardPadding() * 2);
+        opponentCards.setPrefSize(VGraphics.getInstance().getBattleFieldWidth() * 3 + VGraphics.getInstance().getBattleFieldBreakWidth() * 3, VGraphics.getInstance().getCardHeight() + VGraphics.getInstance().getCardPadding() * 2);
 
         gamePane.getChildren().addAll(playerCards, opponentCards, leftBattleFieldGUI,
                 centerBattleFieldGUI, rightBattleFieldGUI, leftAttackButton, centerAttackButton,
@@ -250,7 +250,7 @@ public class GraphicManager {
             @Override
             protected Void call() {
                 try {
-                    Thread.sleep(VariablesLogic.getInstance().getMessageShowUpTimeInMillis());
+                    Thread.sleep(VLogic.getInstance().getMessageShowUpTimeInMillis());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -295,7 +295,7 @@ public class GraphicManager {
         endTurnButton.setYourTurnText(false);
         showMessagePane("Opponent Turn", false);
         // Resets the action points and attack buttons of player
-        setActionPointsText(VariablesLogic.getInstance().getPlayerActionPoints());
+        setActionPointsText(VLogic.getInstance().getPlayerActionPoints());
         getAttackButton(LineType.left).setUsedInThisTurn(false);
         getAttackButton(LineType.center).setUsedInThisTurn(false);
         getAttackButton(LineType.right).setUsedInThisTurn(false);

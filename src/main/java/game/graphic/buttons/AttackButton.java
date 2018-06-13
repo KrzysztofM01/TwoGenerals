@@ -2,7 +2,7 @@ package game.graphic.buttons;
 
 import game.logic.battleFields.LineType;
 import javafx.scene.control.Button;
-import game.variables.VariablesGraphics;
+import game.variables.VGraphics;
 
 
 public class AttackButton extends Button {
@@ -15,20 +15,20 @@ public class AttackButton extends Button {
         this.lineType = lineType;
         this.setId(this.lineType + "AttackButton");
 
-        this.setPrefSize(VariablesGraphics.getInstance().getScreenHeight() * 0.035, VariablesGraphics.getInstance().getScreenHeight() * 0.035);
-        this.setLayoutY(VariablesGraphics.getInstance().getBattleFieldPositionY() + VariablesGraphics.getInstance().getBattleFieldHeight() + VariablesGraphics.getInstance().getBattleFrontTextBoxHeight() / 4);
+        this.setPrefSize(VGraphics.getInstance().getScreenHeight() * 0.035, VGraphics.getInstance().getScreenHeight() * 0.035);
+        this.setLayoutY(VGraphics.getInstance().getBattleFieldPositionY() + VGraphics.getInstance().getBattleFieldHeight() + VGraphics.getInstance().getBattleFrontTextBoxHeight() / 4);
         switch (lineType) {
             case left:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 0.5 + VariablesGraphics.getInstance().getBattleFieldWidth() * 0.5
-                        + VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldBreakWidth() * 0.5 + VGraphics.getInstance().getBattleFieldWidth() * 0.5
+                        + VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
                 break;
             case center:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 1.5 + VariablesGraphics.getInstance().getBattleFieldWidth() * 1.5
-                        + VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldBreakWidth() * 1.5 + VGraphics.getInstance().getBattleFieldWidth() * 1.5
+                        + VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
                 break;
             case right:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 2.5 + VariablesGraphics.getInstance().getBattleFieldWidth() * 2.5
-                        + VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldBreakWidth() * 2.5 + VGraphics.getInstance().getBattleFieldWidth() * 2.5
+                        + VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.45);
                 break;
         }
     }

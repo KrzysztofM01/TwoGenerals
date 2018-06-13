@@ -4,12 +4,12 @@ import game.logic.battleFields.LineType;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import game.graphic.PlayerType;
-import game.variables.VariablesGraphics;
-import game.variables.VariablesLogic;
+import game.variables.VGraphics;
+import game.variables.VLogic;
 
 public class BattleFrontTextBoxGUI extends Pane {
 
-    private Text hitPointsAmount = new Text(Integer.toString(VariablesLogic.getInstance().getBattleFieldHitPoints()));
+    private Text hitPointsAmount = new Text(Integer.toString(VLogic.getInstance().getBattleFieldHitPoints()));
     private Text powerAmount = new Text("0");
 
     private PlayerType playerType;
@@ -22,12 +22,12 @@ public class BattleFrontTextBoxGUI extends Pane {
 
         // Set layout of this pane
         this.setId("BattleFrontTextBoxGUI");
-        this.setPrefSize(VariablesGraphics.getInstance().getBattleFrontTextBoxWidth(), VariablesGraphics.getInstance().getBattleFrontTextBoxHeight());
-        this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() / 8);
+        this.setPrefSize(VGraphics.getInstance().getBattleFrontTextBoxWidth(), VGraphics.getInstance().getBattleFrontTextBoxHeight());
+        this.setLayoutX(VGraphics.getInstance().getBattleFieldWidth() / 8);
         if (playerType == PlayerType.player) {
-            this.setLayoutY(VariablesGraphics.getInstance().getBattleFieldHeight());
+            this.setLayoutY(VGraphics.getInstance().getBattleFieldHeight());
         } else {
-            this.setLayoutY(-VariablesGraphics.getInstance().getBattleFrontTextBoxHeight());
+            this.setLayoutY(-VGraphics.getInstance().getBattleFrontTextBoxHeight());
         }
 
         Text hitPoints = new Text("Hit Points: ");
@@ -40,14 +40,14 @@ public class BattleFrontTextBoxGUI extends Pane {
         powerAmount.setId("powerAmount");
 
         // Set layout positions
-        hitPoints.setLayoutX(VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.05);
-        hitPoints.setLayoutY(VariablesGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.4);
-        hitPointsAmount.setLayoutX(VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.22);
-        hitPointsAmount.setLayoutY(VariablesGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.7);
-        power.setLayoutX(VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.6);
-        power.setLayoutY(VariablesGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.4);
-        powerAmount.setLayoutX(VariablesGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.69);
-        powerAmount.setLayoutY(VariablesGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.7);
+        hitPoints.setLayoutX(VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.05);
+        hitPoints.setLayoutY(VGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.4);
+        hitPointsAmount.setLayoutX(VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.22);
+        hitPointsAmount.setLayoutY(VGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.7);
+        power.setLayoutX(VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.6);
+        power.setLayoutY(VGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.4);
+        powerAmount.setLayoutX(VGraphics.getInstance().getBattleFrontTextBoxWidth() * 0.69);
+        powerAmount.setLayoutY(VGraphics.getInstance().getBattleFrontTextBoxHeight() * 0.7);
 
         this.getChildren().addAll(hitPoints, hitPointsAmount, power, powerAmount);
     }

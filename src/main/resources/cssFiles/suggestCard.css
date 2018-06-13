@@ -1,0 +1,68 @@
+.root {
+    -fx-background-image: url("../images/bgImage.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+    -fx-font-family: 'Helvetica';
+}
+
+#text {
+    -fx-font-size: 1.3em;
+    -fx-font-family: 'Helvetica';
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+#checkbox .text{
+    -fx-font-size: 1.3em;
+    -fx-font-family: 'Helvetica';
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.text-area {
+    -fx-wrap-text:true;
+}
+
+#cardPreview {
+    -fx-background-image: url("../images/oldsheet.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#exitButton {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-background-image: url("../images/anotherOne.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#cardPreviewTextNumbers {
+    -fx-font-size: 2.3em;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+#exitText, #exitGameText {
+    -fx-font-size: 2.2em;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+#cardPreviewTextName {
+    -fx-font-size: 2.3em;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+#cardPreviewTextDescription {
+    -fx-font-size: 1.1em;
+
+}
+
+#cardPreviewTextType {
+    -fx-font-size: 1.8em;
+    -fx-font-style: italic;
+}

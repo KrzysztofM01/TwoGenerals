@@ -1,5 +1,6 @@
 package mainPanel;
 
+import database.User;
 import game.GameManager;
 import game.graphic.PlayerType;
 import game.logic.cards.CardLogic;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import previewCardsPanel.PreviewCardsPanel;
+import suggestCardsPanel.SuggestCardPanel;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class MainMenuController {
 
     private Stage primaryStage;
 
-    private ArrayList<CardLogic> cardDeck;
+    private User user;
 
     @FXML
     protected void exitGame(){
@@ -37,19 +39,19 @@ public class MainMenuController {
     @FXML
     protected void startGame(){
         GameManager gameManager = new GameManager(primaryStage);
-        for (CardLogic cardLogic: cardDeck) {
+        for (CardLogic cardLogic: user.getCardDeck()) {
             gameManager.addCardToPlayerDeck(cardLogic, PlayerType.player);
         }
     }
 
     @FXML
     protected void previewCards(){
-        PreviewCardsPanel previewCardsPanel = new PreviewCardsPanel(primaryStage);
+        PreviewCardsPanel previewCardsPanel = new PreviewCardsPanel(primaryStage, user);
     }
 
     @FXML
     protected void suggestCards(){
-        System.out.println("Suggest Cards!");
+        SuggestCardPanel suggestCardPanel = new SuggestCardPanel(primaryStage, user);
     }
 
     public Stage getPrimaryStage() {
@@ -60,7 +62,7 @@ public class MainMenuController {
         this.primaryStage = primaryStage;
     }
 
-    public void setCardDeck(ArrayList<CardLogic> cardDeck) {
-        this.cardDeck = cardDeck;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

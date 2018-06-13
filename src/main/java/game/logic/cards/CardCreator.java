@@ -8,6 +8,8 @@ public class CardCreator {
         switch (cardType) {
             case BattleCard:
                 return new BattleCard(name, power, cost, imageURL, cardType, specialPower);
+            case SpecialCard:
+                return new SpecialCard(name, power, cost, imageURL, cardType, specialPower);
             case BoostArmyMorale:
                 return new BoostArmyMorale(name, power, cost, imageURL, cardType, specialPower);
             case MagicCatalyst:
@@ -30,6 +32,9 @@ public class CardCreator {
     }
 
     public static CardLogic newCardFromDB (CardDB cardDB) {
-        return newCard(cardDB.getName(), CardType.valueOf(cardDB.getCardType()), cardDB.getPower(), cardDB.getCost(), cardDB.getImageURL(), cardDB.getSpecialPower());
+        CardLogic cardToReturn = newCard(cardDB.getName(), CardType.valueOf(cardDB.getCardType()), cardDB.getPower(), cardDB.getCost(), cardDB.getImageURL(), cardDB.getSpecialPower());
+        assert cardToReturn != null;
+        cardToReturn.setCardID(cardDB.getId());
+        return cardToReturn;
     }
 }

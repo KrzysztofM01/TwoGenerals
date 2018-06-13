@@ -1,3 +1,4 @@
+import database.DataBaseConnector;
 import game.graphic.PlayerType;
 import game.logic.cards.CardCreator;
 import game.logic.cards.CardLogic;
@@ -20,7 +21,7 @@ public class Main extends Application{
 
         // Start game
         //GameManager gameManager = new GameManager(primaryStage);
-        new PreviewCardsPanel(primaryStage);
+        //new PreviewCardsPanel(primaryStage);
         // To be removed later, images of cards
         String image = "cardImages/BloodKnight2.jpg";
         String image2 = "cardImages/Thaumaturg.jpg";
@@ -150,5 +151,10 @@ public class Main extends Application{
 //        for (CardLogic cardLogic: cardList) {
 //            gameManager.addCardToPlayerDeck(cardLogic, PlayerType.player);
 //        }
+    }
+
+    @Override
+    public void stop() {
+        DataBaseConnector.getSessionFactory().close();
     }
 }

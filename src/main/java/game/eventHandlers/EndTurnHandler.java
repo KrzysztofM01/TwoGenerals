@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 import game.logic.LogicManager;
 import game.network.MethodWrapper;
 import game.network.NetworkManager;
-import game.variables.VariablesLogic;
+import game.variables.VLogic;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class EndTurnHandler implements EventHandler<MouseEvent> {
             try {
                 networkManager.setYourTurn(false);
                 networkManager.getOos().writeObject(MethodWrapper.endTurn());
-                logicManager.getPlayer(PlayerType.player).setActionPoints(VariablesLogic.getInstance().getPlayerActionPoints());
+                logicManager.getPlayer(PlayerType.player).setActionPoints(VLogic.getInstance().getPlayerActionPoints());
                 graphicManager.endTurnGraphics();
             } catch (IOException e1) {
                 e1.printStackTrace();

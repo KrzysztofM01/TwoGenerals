@@ -45,6 +45,19 @@ public class DataBaseConnector {
         }
     }
 
+    public static void insertCardSuggest(CardLogic cardLogic) {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.save(new CardSuggest(cardLogic));
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+
     public static ArrayList<User> getUserList() {
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
@@ -161,9 +174,6 @@ public class DataBaseConnector {
     public static ArrayList<CardLogic> getAllCards() {
         ArrayList<CardLogic> cardDeck = new ArrayList<>();
         List<CardDB> cardDeckDB;
-
-
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -178,6 +188,23 @@ public class DataBaseConnector {
         transaction.commit();
         session.close();
         return cardDeck;
+    }
+
+    public static void saveCardList (User user) {
+        StringBuilder sb = new StringBuilder();
+        for (CardLogic cardLogic: user.getCardDeck()) {
+            sb.append(cardLogic.getCardID());
+            sb.append(", ");
+        }
+        user.setCardListString(sb.toString());
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.update(user);
+            transaction.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        }
     }
 
 }

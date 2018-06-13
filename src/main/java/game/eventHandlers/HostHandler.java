@@ -7,7 +7,7 @@ import javafx.event.EventHandler;
 import game.GameManager;
 import game.network.GetData;
 import game.network.NetworkManager;
-import game.variables.VariablesLogic;
+import game.variables.VLogic;
 
 public class HostHandler implements EventHandler<ActionEvent> {
 
@@ -52,8 +52,8 @@ public class HostHandler implements EventHandler<ActionEvent> {
             if (networkManager.isClientAccepted()) {
                 // Load the game scene, start the receive thread and send your cards to opponent
                 // also set your AP to half of it for balance purposes
-                gameManager.getLogicManager().getPlayer(PlayerType.player).setActionPoints(VariablesLogic.getInstance().getPlayerActionPoints() / 2);
-                gameManager.getGraphicManager().setActionPointsText(VariablesLogic.getInstance().getPlayerActionPoints() / 2);
+                gameManager.getLogicManager().getPlayer(PlayerType.player).setActionPoints(VLogic.getInstance().getPlayerActionPoints() / 2);
+                gameManager.getGraphicManager().setActionPointsText(VLogic.getInstance().getPlayerActionPoints() / 2);
                 GetData getData = new GetData(networkManager.getOis(), gameManager);
                 networkManager.setReceiveDataThread(new Thread(getData));
                 networkManager.getReceiveDataThread().start();

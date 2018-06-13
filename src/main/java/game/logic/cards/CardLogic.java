@@ -18,6 +18,8 @@ public abstract class CardLogic implements Serializable {
     private LineType lineType;
     private boolean updateGraphics = false;
     private int specialPower;
+    private int cardID;
+    private String cardDescription = "";
 
     CardLogic(String name, int power, int cost, String imageURL, CardType cardType, int specialPower) {
         this.name = name;
@@ -33,8 +35,12 @@ public abstract class CardLogic implements Serializable {
 
     }
 
+    public void setCardDescription(String cardDescription) {
+        this.cardDescription = cardDescription;
+    }
+
     public String getDescription() {
-        return "";
+        return cardDescription;
     }
 
     public String getName() {
@@ -97,5 +103,13 @@ public abstract class CardLogic implements Serializable {
 
     int getSpecialPower() {
         return specialPower;
+    }
+
+    public int getCardID() {
+        return cardID;
+    }
+
+    public void setCardID(int cardID) {
+        this.cardID = cardID;
     }
 }

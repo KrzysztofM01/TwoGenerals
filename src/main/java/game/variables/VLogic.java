@@ -1,16 +1,16 @@
 package game.variables;
 
-public class VariablesLogic {
+public class VLogic {
 
-    private static VariablesLogic instance;
+    private static VLogic instance;
 
-    private VariablesLogic() {
+    private VLogic() {
     }
 
     // Create instance when someone wants to getInstance for the first time
-    public static synchronized VariablesLogic getInstance() {
+    public static synchronized VLogic getInstance() {
         if (instance == null) {
-            instance = new VariablesLogic();
+            instance = new VLogic();
         }
         return instance;
     }
@@ -39,5 +39,13 @@ public class VariablesLogic {
 
     public int getMessageShowUpTimeInMillis() {
         return 2500;
+    }
+
+    public int getMaxOfCertainCardType() {
+        return 3;
+    }
+
+    public int getMaxOfCards() {
+        return 50;
     }
 }

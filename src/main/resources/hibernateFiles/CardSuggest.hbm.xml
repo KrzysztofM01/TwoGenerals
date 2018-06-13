@@ -4,10 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "database.CardDB" table = "tcard">
+    <class name = "database.CardSuggest" table = "tcardSuggest">
 
         <meta attribute = "class-description">
-            Card mapping
+            Card Suggestion mapping
         </meta>
 
         <id name = "id" type = "int" column = "id">
@@ -19,7 +19,6 @@
         <property name = "cost" column = "cost" type = "int"/>
         <property name = "cardType" column = "cardType" type = "string"/>
         <property name = "imageURL" column = "imageURL" type = "string"/>
-        <property name = "specialPower" column = "specialPower" type = "int"/>
 
     </class>
 </hibernate-mapping>

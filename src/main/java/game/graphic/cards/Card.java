@@ -10,7 +10,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import game.variables.VariablesGraphics;
+import game.variables.VGraphics;
 
 import java.io.Serializable;
 
@@ -35,8 +35,8 @@ public class Card extends StackPane implements Serializable {
 
         ImageView cardFront = new ImageView(new Image(cardLogic.getImageURL()));
         cardFront.setPreserveRatio(false);
-        cardFront.setFitWidth(VariablesGraphics.getInstance().getCardWidth());
-        cardFront.setFitHeight(VariablesGraphics.getInstance().getCardHeight());
+        cardFront.setFitWidth(VGraphics.getInstance().getCardWidth());
+        cardFront.setFitHeight(VGraphics.getInstance().getCardHeight());
 
         cardTextPower = new CardText(this.cardLogic.getCurrentPower(), true);
         cardTextCost = new CardText(this.cardLogic.getCost(), false);
@@ -49,14 +49,14 @@ public class Card extends StackPane implements Serializable {
             cardHiddenImageView = new ImageView(new Image("images/CardBackG2.png"));
         }
 
-        cardHiddenImageView.setFitWidth(VariablesGraphics.getInstance().getCardWidth());
-        cardHiddenImageView.setFitHeight(VariablesGraphics.getInstance().getCardHeight());
+        cardHiddenImageView.setFitWidth(VGraphics.getInstance().getCardWidth());
+        cardHiddenImageView.setFitHeight(VGraphics.getInstance().getCardHeight());
 
         if (isHidden){
             cardHiddenImageView.setViewOrder(-5);
         }
 
-        this.setPadding(new Insets(VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding(), VariablesGraphics.getInstance().getCardPadding()));
+        this.setPadding(new Insets(VGraphics.getInstance().getCardPadding(), VGraphics.getInstance().getCardPadding(), VGraphics.getInstance().getCardPadding(), VGraphics.getInstance().getCardPadding()));
         this.getChildren().addAll(cardHiddenImageView, cardFront, cardTextPower, cardTextCost);
     }
 

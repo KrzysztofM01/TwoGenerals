@@ -3,17 +3,17 @@ package game.variables;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 
-public class VariablesGraphics {
+public class VGraphics {
 
-    private static VariablesGraphics instance;
+    private static VGraphics instance;
 
-    private VariablesGraphics() {
+    private VGraphics() {
     }
 
     // Create instance when someone wants to getInstance for the first time
-    public static synchronized VariablesGraphics getInstance() {
+    public static synchronized VGraphics getInstance() {
         if (instance == null) {
-            instance = new VariablesGraphics();
+            instance = new VGraphics();
         }
         return instance;
     }

@@ -1,13 +1,13 @@
 package game.logic.battleFields;
 
-import game.variables.VariablesLogic;
+import game.variables.VLogic;
 import game.logic.cards.CardLogic;
 
 import java.util.ArrayList;
 
 public class FrontLine {
     private ArrayList<CardLogic> cardList = new ArrayList<>();
-    private int HP = VariablesLogic.getInstance().getBattleFieldHitPoints();
+    private int HP = VLogic.getInstance().getBattleFieldHitPoints();
 
     public FrontLine() {
     }

@@ -4,6 +4,8 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--Database is hosted on db4free site, to allow anyone to host and play the game, I didn't have-->
+        <!--time to hide the login and password through some site-->
         <property name="hibernate.connection.url">jdbc:mysql://www.db4free.net:3306/twogenerals</property>
         <property name="hibernate.connection.username">ilusioner</property>
         <property name="hibernate.connection.password">renoisuli</property>
@@ -11,6 +13,7 @@
 
         <mapping resource="hibernateFiles/User.hbm.xml"/>
         <mapping resource="hibernateFiles/CardDB.hbm.xml"/>
+        <mapping resource="hibernateFiles/CardSuggest.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

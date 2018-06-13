@@ -3,12 +3,10 @@ package game.network;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import game.variables.VariablesGraphics;
 
 public class NetworkConnectPanel {
 

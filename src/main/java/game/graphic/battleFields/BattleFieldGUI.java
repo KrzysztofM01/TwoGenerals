@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import game.logic.battleFields.LineType;
 import javafx.scene.layout.Pane;
 import game.graphic.PlayerType;
-import game.variables.VariablesGraphics;
+import game.variables.VGraphics;
 
 import java.util.ArrayList;
 
@@ -38,18 +38,18 @@ public class BattleFieldGUI extends Pane {
         this.setId(lineType.toString() + "BattleField");
 
         //Set BattleFieldPane Layout
-        this.setPrefSize(VariablesGraphics.getInstance().getBattleFieldWidth(), VariablesGraphics.getInstance().getBattleFieldHeight());
-        this.setLayoutY(VariablesGraphics.getInstance().getBattleFieldPositionY());
-        playerCards.setLayoutY(VariablesGraphics.getInstance().getBattleFieldHeight() / 2);
+        this.setPrefSize(VGraphics.getInstance().getBattleFieldWidth(), VGraphics.getInstance().getBattleFieldHeight());
+        this.setLayoutY(VGraphics.getInstance().getBattleFieldPositionY());
+        playerCards.setLayoutY(VGraphics.getInstance().getBattleFieldHeight() / 2);
         switch (lineType) {
             case left:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldBreakWidth());
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldBreakWidth());
                 break;
             case center:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 2);
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldWidth() + VGraphics.getInstance().getBattleFieldBreakWidth() * 2);
                 break;
             case right:
-                this.setLayoutX(VariablesGraphics.getInstance().getBattleFieldWidth() * 2 + VariablesGraphics.getInstance().getBattleFieldBreakWidth() * 3);
+                this.setLayoutX(VGraphics.getInstance().getBattleFieldWidth() * 2 + VGraphics.getInstance().getBattleFieldBreakWidth() * 3);
                 break;
         }
 
