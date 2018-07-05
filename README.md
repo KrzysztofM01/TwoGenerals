@@ -1,4 +1,4 @@
-# TwoGenerals
+# Two Generals
 
 A turn based strategy card game for two players, made in JavaFX technology. Application uses Socket/Server Socket for client connection.
 
