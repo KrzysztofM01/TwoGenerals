@@ -129,10 +129,10 @@ public class SuggestCardController {
                             cardType = CardType.BattleCard;
                         }
                         CardLogic cardLogic = CardCreator.newCard(cardNameField.getText(), cardType, Integer.valueOf(powerField.getText()), Integer.valueOf(costField.getText()), imageURLField.getText(), 0);
+                        cardLogic.setCardDescription(cardDescription.getText());
                         DataBaseConnector.insertCardSuggest(cardLogic);
                     } catch (IllegalArgumentException | IllegalStateException e) {
                         Platform.runLater(() -> sendCardButton.setText("Invalid Image"));
-
                     }
                     try {
                         Thread.sleep(3000);

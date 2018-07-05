@@ -112,4 +112,14 @@ public abstract class CardLogic implements Serializable {
     public void setCardID(int cardID) {
         this.cardID = cardID;
     }
+
+    @Override
+    public String toString() {
+        return  "name='" + name + '\'' +
+                "\n power=" + power +
+                "\n cost=" + cost +
+                "\n imageURL='" + imageURL + '\'' +
+                "\n cardType=" + cardType +
+                "\n cardDescription='" + cardDescription + '\'';
+    }
 }

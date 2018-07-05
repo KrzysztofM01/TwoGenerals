@@ -3,8 +3,8 @@ package game.graphic;
 import game.graphic.battleFields.BattleFieldGUI;
 import game.graphic.battleFields.BattleFrontTextBoxGUI;
 import game.graphic.buttons.AttackButton;
-import game.graphic.buttons.EndTurnButton;
-import game.graphic.buttons.ExitButton;
+import game.graphic.buttons.RectangleButton;
+import game.graphic.buttons.SquareButton;
 import game.graphic.cards.Card;
 import game.graphic.cards.cardPreview.CardPreview;
 import game.graphic.panes.*;
@@ -51,8 +51,8 @@ public class GraphicManager {
 
     private ActionPointsBox actionPointsBox = new ActionPointsBox();
 
-    private ExitButton exitButton = new ExitButton(true);
-    private EndTurnButton endTurnButton = new EndTurnButton(true);
+    private RectangleButton exitGameButton = new RectangleButton("Exit Game");
+    private SquareButton endTurnButton = new SquareButton("End Turn");
 
     private MessagePane messagePane = new MessagePane();
     private AttackActionPane attackActionPane = new AttackActionPane();
@@ -84,7 +84,7 @@ public class GraphicManager {
         gamePane.getChildren().addAll(playerCards, opponentCards, leftBattleFieldGUI,
                 centerBattleFieldGUI, rightBattleFieldGUI, leftAttackButton, centerAttackButton,
                 rightAttackButton, cardPreviewPane, playerHealthBox, opponentHealthBox,
-                actionPointsBox, exitButton, endTurnButton);
+                actionPointsBox, exitGameButton, endTurnButton);
     }
 
 
@@ -177,11 +177,11 @@ public class GraphicManager {
         }
     }
 
-    public ExitButton getExitButton() {
-        return exitButton;
+    public RectangleButton getExitGameButton() {
+        return exitGameButton;
     }
 
-    public EndTurnButton getEndTurnButton() {
+    public SquareButton getEndTurnButton() {
         return endTurnButton;
     }
 

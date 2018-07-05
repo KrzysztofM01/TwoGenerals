@@ -19,6 +19,7 @@
         <property name = "cost" column = "cost" type = "int"/>
         <property name = "cardType" column = "cardType" type = "string"/>
         <property name = "imageURL" column = "imageURL" type = "string"/>
+        <property name = "cardDescription" column = "cardDescription" type = "string"/>
 
     </class>
 </hibernate-mapping>

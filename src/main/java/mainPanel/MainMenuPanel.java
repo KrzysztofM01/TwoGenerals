@@ -23,7 +23,6 @@ public class MainMenuPanel {
         MainMenuController controller = fxmlLoader.getController();
         controller.setPrimaryStage(primaryStage);
         controller.setUser(user);
-        assert root != null;
         Scene scene = new Scene(root, 450, 400);
 
         primaryStage.setFullScreen(false);

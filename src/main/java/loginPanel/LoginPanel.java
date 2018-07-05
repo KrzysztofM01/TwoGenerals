@@ -37,8 +37,7 @@ public class LoginPanel extends Application{
         };
         task.setOnSucceeded(e2 -> controller.setSystemResponse("Successfully connected to database."));
         new Thread(task).start();
-
-
+        
     }
 
     @Override

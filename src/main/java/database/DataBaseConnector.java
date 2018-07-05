@@ -190,6 +190,25 @@ public class DataBaseConnector {
         return cardDeck;
     }
 
+    public static ArrayList<CardLogic> getAllCardSuggestions() {
+        ArrayList<CardLogic> cardDeck = new ArrayList<>();
+        List<CardSuggest> cardSuggestList;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<CardSuggest> criteriaQuery = criteriaBuilder.createQuery(CardSuggest.class);
+        Root<CardSuggest> root = criteriaQuery.from(CardSuggest.class);
+        criteriaQuery.select(root);
+        TypedQuery<CardSuggest> typedQuery = session.createQuery(criteriaQuery);
+        cardSuggestList = typedQuery.getResultList();
+        for (CardSuggest cardSuggest: cardSuggestList) {
+            cardDeck.add(CardCreator.newCardFromSuggest(cardSuggest));
+        }
+        transaction.commit();
+        session.close();
+        return cardDeck;
+    }
+
     public static void saveCardList (User user) {
         StringBuilder sb = new StringBuilder();
         for (CardLogic cardLogic: user.getCardDeck()) {
@@ -207,4 +226,16 @@ public class DataBaseConnector {
         }
     }
 
+    public static void removeCardSuggest (CardLogic cardLogic) {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.remove(new CardSuggest(cardLogic));
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
 }

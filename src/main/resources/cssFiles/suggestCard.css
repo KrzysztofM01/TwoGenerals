@@ -29,7 +29,7 @@
     -fx-background-position: center center;
 }
 
-#exitButton {
+#rectangleButton {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
@@ -45,7 +45,7 @@
     -fx-fill: white;
 }
 
-#exitText, #exitGameText {
+#rectangleButtonText {
     -fx-font-size: 2.2em;
     -fx-font-weight: bold;
     -fx-fill: white;

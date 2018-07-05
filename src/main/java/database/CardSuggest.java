@@ -10,6 +10,7 @@ public class CardSuggest {
     private int cost;
     private String imageURL;
     private String cardType;
+    private String cardDescription;
 
     public CardSuggest() {
     }
@@ -21,6 +22,7 @@ public class CardSuggest {
         this.cost = cardLogic.getCost();
         this.imageURL = cardLogic.getImageURL();
         this.cardType = cardLogic.getCardType().toString();
+        this.cardDescription = cardLogic.getDescription();
     }
 
     public int getId() {
@@ -69,5 +71,13 @@ public class CardSuggest {
 
     public void setCardType(String cardType) {
         this.cardType = cardType;
+    }
+
+    public String getCardDescription() {
+        return cardDescription;
+    }
+
+    public void setCardDescription(String cardDescription) {
+        this.cardDescription = cardDescription;
     }
 }

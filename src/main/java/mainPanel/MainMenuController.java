@@ -6,8 +6,10 @@ import game.graphic.PlayerType;
 import game.logic.cards.CardLogic;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import previewCardsPanel.PreviewCardsPanel;
+import previewSuggestedCardsPanel.PreviewSuggestedCardsPanel;
 import suggestCardsPanel.SuggestCardPanel;
 
 import java.util.ArrayList;
@@ -18,13 +20,7 @@ public class MainMenuController {
     private Pane exitGamePane;
 
     @FXML
-    private Pane startGamePane;
-
-    @FXML
-    private Pane previewCardsPane;
-
-    @FXML
-    private Pane suggestCardsPane;
+    private Text suggestCardsPaneText;
 
     private Stage primaryStage;
 
@@ -46,12 +42,16 @@ public class MainMenuController {
 
     @FXML
     protected void previewCards(){
-        PreviewCardsPanel previewCardsPanel = new PreviewCardsPanel(primaryStage, user);
+        new PreviewCardsPanel(primaryStage, user);
     }
 
     @FXML
     protected void suggestCards(){
-        SuggestCardPanel suggestCardPanel = new SuggestCardPanel(primaryStage, user);
+        if (user.isHasAdmin()) {
+            new PreviewSuggestedCardsPanel(primaryStage, user);
+        } else {
+            new SuggestCardPanel(primaryStage, user);
+        }
     }
 
     public Stage getPrimaryStage() {
@@ -64,5 +64,8 @@ public class MainMenuController {
 
     public void setUser(User user) {
         this.user = user;
+        if (user.isHasAdmin()) {
+            suggestCardsPaneText.setText("Preview\nSuggestions");
+        }
     }
 }

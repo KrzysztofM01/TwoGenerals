@@ -73,7 +73,7 @@
     -fx-background-position: center center;
 }
 
-#exitButton {
+#rectangleButton {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
@@ -83,7 +83,7 @@
     -fx-background-position: center center;
 }
 
-#endTurnButton {
+#squareButton {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
@@ -112,13 +112,13 @@
 
 }
 
-#actionPointsAmount, #exitText, #exitGameText, #messageText {
+#actionPointsAmount, #rectangleButtonText, #messageText {
     -fx-font-size: 3em;
     -fx-font-weight: bold;
     -fx-fill: white;
 }
 
-#endTurnText, #endText {
+#squareButtonText {
     -fx-font-size: 2.2em;
     -fx-font-weight: bold;
     -fx-fill: white;

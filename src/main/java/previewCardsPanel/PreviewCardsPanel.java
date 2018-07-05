@@ -2,13 +2,12 @@ package previewCardsPanel;
 
 import database.DataBaseConnector;
 import database.User;
-import game.graphic.buttons.EndTurnButton;
-import game.graphic.buttons.ExitButton;
+import game.graphic.buttons.RectangleButton;
+import game.graphic.buttons.SquareButton;
 import game.graphic.panes.CardPreviewPane;
 import game.variables.VGraphics;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -43,20 +42,23 @@ public class PreviewCardsPanel {
 
         Scene scene = new Scene(previewCardsPane, VGraphics.getInstance().getScreenWidth(), VGraphics.getInstance().getScreenHeight());
 
-        InfrastructurePane infrastructurePane = new InfrastructurePane();
-        ScrollPane cardScrollPane = infrastructurePane.infrastructurePane(cardPreviewPane, selectedPlayerCards, user.getCardDeck());
-        cardScrollPane.setId("scrollPane");
+        PreviewCardsController previewCardsController = new PreviewCardsController(cardPreviewPane, selectedPlayerCards, user.getCardDeck());
+        previewCardsController.getCardScrollingPane().setId("scrollPane");
         scene.getStylesheets().addAll("cssFiles/previewCardsPanel.css");
 
-        EndTurnButton endTurnButton = new EndTurnButton(false);
-        endTurnButton.setOnMouseClicked(e -> {
-            user.setCardDeck(infrastructurePane.getPlayerCardsCopy());
+        SquareButton saveDeckButton = new SquareButton("Save\nDeck");
+        saveDeckButton.setLayoutX(VGraphics.getInstance().getScreenWidth()*0.815);
+        saveDeckButton.setLayoutY(VGraphics.getInstance().getScreenHeight()*0.65);
+        saveDeckButton.setOnMouseClicked(e -> {
+            user.setCardDeck(previewCardsController.getPlayerCardsCopy());
             DataBaseConnector.saveCardList(user);
         });
-        ExitButton exitButton = new ExitButton(false);
+        RectangleButton exitButton = new RectangleButton("Back to Menu");
+        exitButton.setLayoutX(VGraphics.getInstance().getScreenWidth() * 0.8);
+        exitButton.setLayoutY(VGraphics.getInstance().getScreenHeight() * 0.79);
         exitButton.setOnMouseClicked(e -> new MainMenuPanel(primaryStage, user));
 
-        previewCardsPane.getChildren().addAll(cardsBackgroundPane, cardScrollPane, cardPreviewPane, selectedPlayerCards, exitButton, endTurnButton);
+        previewCardsPane.getChildren().addAll(cardsBackgroundPane, previewCardsController.getCardScrollingPane(), cardPreviewPane, selectedPlayerCards, exitButton, saveDeckButton);
 
 
         primaryStage.close();

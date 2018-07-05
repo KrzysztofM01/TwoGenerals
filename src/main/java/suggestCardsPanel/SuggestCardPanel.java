@@ -1,11 +1,9 @@
 package suggestCardsPanel;
 
-import database.DataBaseConnector;
 import database.User;
-import game.graphic.buttons.ExitButton;
+import game.graphic.buttons.RectangleButton;
 import game.graphic.panes.CardPreviewPane;
 import game.variables.VGraphics;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,10 +29,10 @@ public class SuggestCardPanel{
         cardPreviewPane.setLayoutX(400);
         cardPreviewPane.setLayoutY(0);
 
-        ExitButton exitButton = new ExitButton(false);
-        exitButton.setLayoutX(470);
-        exitButton.setLayoutY(515);
-        exitButton.setOnMouseClicked(e -> new MainMenuPanel(primaryStage, user));
+        RectangleButton rectangleButton = new RectangleButton("Back to Menu");
+        rectangleButton.setLayoutX(470);
+        rectangleButton.setLayoutY(515);
+        rectangleButton.setOnMouseClicked(e -> new MainMenuPanel(primaryStage, user));
 
         ImageView borderImage = new ImageView("cardImages/BorderBattleCard.png");
         borderImage.setViewOrder(-3);
@@ -43,7 +41,7 @@ public class SuggestCardPanel{
         borderImage.setTranslateY(-VGraphics.getInstance().getScreenHeight() * 0.09);
         cardPreviewPane.getChildren().add(borderImage);
         assert root != null;
-        ((Pane) root).getChildren().addAll(cardPreviewPane, exitButton);
+        ((Pane) root).getChildren().addAll(cardPreviewPane, rectangleButton);
         SuggestCardController controller = fxmlLoader.getController();
         controller.setBorderImage(borderImage);
         controller.setCardPreviewPane(cardPreviewPane);

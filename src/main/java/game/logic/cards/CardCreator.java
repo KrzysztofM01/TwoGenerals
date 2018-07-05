@@ -1,6 +1,7 @@
 package game.logic.cards;
 
 import database.CardDB;
+import database.CardSuggest;
 
 public class CardCreator {
 
@@ -35,6 +36,14 @@ public class CardCreator {
         CardLogic cardToReturn = newCard(cardDB.getName(), CardType.valueOf(cardDB.getCardType()), cardDB.getPower(), cardDB.getCost(), cardDB.getImageURL(), cardDB.getSpecialPower());
         assert cardToReturn != null;
         cardToReturn.setCardID(cardDB.getId());
+        return cardToReturn;
+    }
+
+    public static CardLogic newCardFromSuggest (CardSuggest cardSuggest) {
+        CardLogic cardToReturn = newCard(cardSuggest.getName(), CardType.valueOf(cardSuggest.getCardType()), cardSuggest.getPower(), cardSuggest.getCost(), cardSuggest.getImageURL(), 0);
+        assert cardToReturn != null;
+        cardToReturn.setCardID(cardSuggest.getId());
+        cardToReturn.setCardDescription(cardSuggest.getCardDescription());
         return cardToReturn;
     }
 }

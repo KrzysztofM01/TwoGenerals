@@ -28,7 +28,7 @@ public class GameManager {
         logicManager = new LogicManager();
 
         // Set up handlers for events
-        graphicManager.getExitButton().setOnMouseClicked(new ExitGameHandler(networkManager, primaryStage));
+        graphicManager.getExitGameButton().setOnMouseClicked(new ExitGameHandler(networkManager, primaryStage));
         graphicManager.getEndTurnButton().setOnMouseClicked(new EndTurnHandler(networkManager, graphicManager, logicManager));
 
         SendCardToFrontHandler sendCardToFrontHandler = new SendCardToFrontHandler(this);
