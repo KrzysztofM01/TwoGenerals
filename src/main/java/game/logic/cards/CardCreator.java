@@ -1,7 +1,7 @@
 package game.logic.cards;
 
-import database.CardDB;
-import database.CardSuggest;
+import database.Entities.CardDB;
+import database.Entities.CardSuggest;
 
 public class CardCreator {
 

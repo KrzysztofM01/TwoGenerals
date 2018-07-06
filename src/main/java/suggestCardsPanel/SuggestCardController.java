@@ -54,7 +54,6 @@ public class SuggestCardController {
         specialCardCheckBox.setSelected(false);
         if (battleCardCheckBox.isSelected()) {
             borderImage.setImage(new Image("cardImages/BorderBattleCard.png"));
-
         }
     }
 
@@ -64,12 +63,12 @@ public class SuggestCardController {
         battleCardCheckBox.setSelected(false);
         if (specialCardCheckBox.isSelected()) {
             borderImage.setImage(new Image("cardImages/BorderSpecialCard.png"));
-
         }
     }
 
     @FXML
     protected void loadGraphics() {
+
         if (checkIfAllFieldsAreFilled()) {
             CardType cardType;
             if (specialCardCheckBox.isSelected()) {
@@ -77,6 +76,7 @@ public class SuggestCardController {
             } else {
                 cardType = CardType.BattleCard;
             }
+
             CardLogic cardLogic = CardCreator.newCard(cardNameField.getText(), cardType, Integer.valueOf(powerField.getText()), Integer.valueOf(costField.getText()), imageURLField.getText(), 0);
             assert cardLogic != null && powerNumber != null && costNumber != null;
             cardPreviewPane.getChildren().removeAll(cardPreviewPane.getTempCardPreview(), powerNumber, costNumber);
@@ -100,6 +100,7 @@ public class SuggestCardController {
 
     @FXML
     public void initialize() {
+        // Ensures that only numbers can be written to power and cost fields
         powerField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,7}([.]\\d{0,4})?")) {
                 powerField.setText(oldValue);
@@ -114,6 +115,7 @@ public class SuggestCardController {
 
     @FXML
     protected void suggestCard() {
+
         if (checkIfAllFieldsAreFilled()) {
             sendCardButton.setDisable(true);
             sendCardButton.setText("Card Sent");
@@ -121,6 +123,7 @@ public class SuggestCardController {
                 @Override
                 public Void call() {
                     try {
+                        // Creates testImage to ensure that proper imageURL is sent to database
                         Image testImage = new Image(imageURLField.getText());
                         CardType cardType;
                         if (specialCardCheckBox.isSelected()) {
@@ -174,7 +177,5 @@ public class SuggestCardController {
         } else {
             return true;
         }
-
     }
-
 }

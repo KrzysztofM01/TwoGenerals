@@ -17,11 +17,16 @@ public class PreviewCardsController {
     private ArrayList<CardLogic> playerCardsCopy;
     private CardScrollingPane cardScrollingPane;
 
-    public PreviewCardsController(CardPreviewPane cardPreviewPane, FlowPane selectedPlayerCards, ArrayList<CardLogic> playerCards) {
+    PreviewCardsController(CardPreviewPane cardPreviewPane, FlowPane selectedPlayerCards, ArrayList<CardLogic> playerCards) {
 
         this.cardScrollingPane = new CardScrollingPane();
+
+        // Creates a copy of cards, because the cards of player should only change if he presses 'Save Deck' button
         playerCardsCopy = new ArrayList<>(playerCards);
 
+        // For every card in player's cards, it creates a Card object -> card with graphics and renders the graphics.
+        // Next it adds the controllers  to remove card when clicked and show card preview during mouse over. In the end
+        // it adds the card to flow pane.
         for (CardLogic cardLogic : playerCardsCopy) {
             Card card = new Card(cardLogic, PlayerType.player);
             card.renderCardFront();
@@ -38,8 +43,12 @@ public class PreviewCardsController {
             selectedPlayerCards.getChildren().add(card);
         }
 
+        // Gets all possible cards from database
         ArrayList<CardLogic> cardLogics = DataBaseConnector.getAllCards();
 
+        // For every card in player's cards, it creates a Card object -> card with graphics and renders the graphics.
+        // Next it adds the controllers  to add card when clicked (if there is space for that card in player deck
+        // and show card preview during mouse over. In the end it adds the card to flow pane.
         for (CardLogic cardLogic : cardLogics) {
             Card card = new Card(cardLogic, PlayerType.player);
             card.renderCardFront();

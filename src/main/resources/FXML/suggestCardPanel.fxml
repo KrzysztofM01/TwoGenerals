@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="800.0" stylesheets="cssFiles/suggestCardPanel.css"
+      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.4"
+      fx:controller="suggestCardsPanel.SuggestCardController">
+
+    <CheckBox fx:id="specialCardCheckBox" id="checkbox" layoutX="69.0" layoutY="332.0" mnemonicParsing="false"
+              text="Special Card" onAction="#specialCardSelected"/>
+    <CheckBox fx:id="battleCardCheckBox" selected="true" id="checkbox" layoutX="69.0" layoutY="302.0"
+              mnemonicParsing="false"
+              text="Battle Card" onAction="#battleCardSelected"/>
+
+    <Button onAction="#loadGraphics" layoutX="69.0" layoutY="543.0" mnemonicParsing="false" text="Load Graphics"/>
+    <Button fx:id="sendCardButton" onAction="#suggestCard" layoutX="195.0" layoutY="542.0" mnemonicParsing="false"
+            text="Suggest Card"/>
+
+    <Text id="text" layoutX="69.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card name:"/>
+    <TextField fx:id="cardNameField" layoutX="69.0" layoutY="57.0" prefHeight="25.0" prefWidth="212.0"/>
+
+    <Text id="text" layoutX="69.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Power:"/>
+    <TextField fx:id="powerField" layoutX="69.0" layoutY="127.0" prefHeight="25.0" prefWidth="212.0"/>
+
+    <Text id="text" layoutX="70.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action cost:"/>
+    <TextField fx:id="costField" layoutX="69.0" layoutY="197.0" prefHeight="25.0" prefWidth="212.0"/>
+
+    <Text id="text" layoutX="69.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image URL:"/>
+    <TextField fx:id="imageURLField" layoutX="69.0" layoutY="267.0" prefHeight="25.0" prefWidth="212.0"/>
+
+    <Text id="text" layoutX="69.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card description:"/>
+    <TextArea fx:id="cardDescription" layoutX="69.0" layoutY="398.0" prefHeight="122.0" prefWidth="212.0"/>
+
+</Pane>

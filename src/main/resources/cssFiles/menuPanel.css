@@ -1,0 +1,25 @@
+.root {
+    -fx-background-image: url("../images/bgImage.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+    -fx-font-family: 'Helvetica';
+}
+
+#logoPane {
+    -fx-background-image: url("../images/2GLogo.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#paneButtons{
+    -fx-background-image: url("../images/plank.png");
+    -fx-background-size: stretch;
+    -fx-background-position: center center;
+}
+
+#text{
+    -fx-font-size: 1.3em;
+    -fx-font-family: 'Helvetica';
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}

@@ -1,11 +1,9 @@
 package previewSuggestedCardsPanel;
 
 import database.DataBaseConnector;
-import database.User;
-import game.graphic.PlayerType;
+import database.Entities.User;
 import game.graphic.buttons.RectangleButton;
 import game.graphic.buttons.SquareButton;
-import game.graphic.cards.Card;
 import game.graphic.panes.CardPreviewPane;
 import game.graphic.panes.CardScrollingPane;
 import game.logic.cards.CardLogic;
@@ -13,7 +11,7 @@ import game.variables.VGraphics;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import mainPanel.MainMenuPanel;
+import menuPanel.MenuPanel;
 
 import java.util.ArrayList;
 
@@ -48,7 +46,7 @@ public class PreviewSuggestedCardsPanel {
         RectangleButton exitButton = new RectangleButton("Back to Menu");
         exitButton.setLayoutX(VGraphics.getInstance().getScreenWidth() * 0.77);
         exitButton.setLayoutY(VGraphics.getInstance().getScreenHeight() * 0.79);
-        exitButton.setOnMouseClicked(e -> new MainMenuPanel(primaryStage, user));
+        exitButton.setOnMouseClicked(e -> new MenuPanel(primaryStage, user));
 
         previewSuggestedCardsPane.getChildren().addAll(cardsBackgroundPane, cardScrollingPane, cardPreviewPane, exitButton, acceptCardButton, declineCardButton);
 

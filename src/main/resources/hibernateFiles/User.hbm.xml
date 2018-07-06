@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "database.User" table = "tuser">
+    <class name = "database.Entities.User" table = "tuser">
 
         <meta attribute = "class-description">
             User mapping

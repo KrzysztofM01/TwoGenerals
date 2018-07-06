@@ -21,12 +21,16 @@ import java.io.ObjectOutputStream;
 
 import java.util.ArrayList;
 
-public class PreviewSuggestedCardsController {
+class PreviewSuggestedCardsController {
 
     private Card tempCard;
 
-    public PreviewSuggestedCardsController(CardPreviewPane cardPreviewPane, ArrayList<CardLogic> cardSuggestionList, CardScrollingPane cardScrollingPane, SquareButton acceptCardButton, SquareButton declineCardButton) {
+    PreviewSuggestedCardsController(CardPreviewPane cardPreviewPane, ArrayList<CardLogic> cardSuggestionList, CardScrollingPane cardScrollingPane, SquareButton acceptCardButton, SquareButton declineCardButton) {
 
+        // For every card in card suggestion list it first creates the image of the card Image URL - to check if it's
+        // correct (If the ImageURL is wrong, the card will be immediately removed from database). Next it creates it's
+        // graphic object and adds controller. When the card is clicked it's supposed to be displayed in the card
+        // preview panel.
         for (CardLogic cardLogic : cardSuggestionList) {
             try {
                 Image testImage = new Image(cardLogic.getImageURL());
@@ -59,6 +63,9 @@ public class PreviewSuggestedCardsController {
                 error.printStackTrace();
             }
         }
+
+        // When clicked the card is removed from database, from the preview and suggest pane and all of it's data is
+        // stored in a text file for future use for admin.
         acceptCardButton.setOnMouseClicked(e -> {
             if (tempCard != null) {
                 DataBaseConnector.removeCardSuggest(tempCard.getCardLogic());
@@ -79,6 +86,7 @@ public class PreviewSuggestedCardsController {
             }
         });
 
+        // When clicked the card is removed from database, from the preview and suggest pane.
         declineCardButton.setOnMouseClicked(e -> {
             if (tempCard != null) {
                 DataBaseConnector.removeCardSuggest(tempCard.getCardLogic());

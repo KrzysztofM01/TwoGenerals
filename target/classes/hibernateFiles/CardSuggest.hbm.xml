@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "database.CardSuggest" table = "tcardSuggest">
+    <class name = "database.Entities.CardSuggest" table = "tcardSuggest">
 
         <meta attribute = "class-description">
             Card Suggestion mapping

@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "database.CardDB" table = "tcard">
+    <class name = "database.Entities.CardDB" table = "tcard">
 
         <meta attribute = "class-description">
             Card mapping

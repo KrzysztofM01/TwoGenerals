@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<GridPane fx:controller="menuPanel.MenuController" alignment="center" hgap="10" maxHeight="258.0" maxWidth="303.0"
+          minHeight="258.0" minWidth="303.0" prefHeight="258.0" prefWidth="303.0" stylesheets="cssFiles/menuPanel.css"
+          vgap="10" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+
+    <padding>
+        <Insets bottom="10" left="25" right="25" top="25"/>
+    </padding>
+
+    <Pane id="logoPane" prefHeight="84.0" prefWidth="243.0" GridPane.columnSpan="3"/>
+
+    <StackPane onMouseClicked="#startGame" id="paneButtons" prefHeight="75.0" prefWidth="260.0"
+               GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Text id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Launch Game" textOrigin="CENTER"/>
+    </StackPane>
+
+    <StackPane onMouseClicked="#previewCards" id="paneButtons" prefHeight="75.0"
+               prefWidth="260.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Text id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview Cards" textOrigin="CENTER"/>
+    </StackPane>
+
+    <StackPane onMouseClicked="#suggestCards" id="paneButtons" prefHeight="75.0"
+               prefWidth="260.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+        <Text fx:id="suggestCardsPaneText" textAlignment="CENTER" id="text" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Suggest Cards" textOrigin="CENTER"/>
+    </StackPane>
+
+    <StackPane fx:id="exitGamePane" onMouseClicked="#exitGame" id="paneButtons" prefHeight="70.0" prefWidth="260.0"
+               GridPane.columnIndex="1" GridPane.rowIndex="8">
+        <Text id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit Game" textAlignment="CENTER"
+              textOrigin="CENTER"/>
+    </StackPane>
+
+    <columnConstraints>
+        <ColumnConstraints maxWidth="35.0" minWidth="35.0" prefWidth="35.0"/>
+        <ColumnConstraints maxWidth="145.0" minWidth="145.0" prefWidth="145.0"/>
+        <ColumnConstraints maxWidth="35.0" minWidth="35.0" prefWidth="35.0"/>
+        <ColumnConstraints/>
+    </columnConstraints>
+
+</GridPane>
