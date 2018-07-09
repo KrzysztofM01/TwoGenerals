@@ -15,9 +15,7 @@ How the game works:
 7) To win the game you have to bring down opponents health points to 0.
 
 
-
-<details> 
-  <summary>Images of application:</summary>
+Images of application:
 
 Login and Main Panel:
 
@@ -44,4 +42,3 @@ Game Board:
 ![alt text](https://github.com/KrzysztofM01/TwoGenerals/blob/master/readme_images/gameBoard_3.png)
 ![alt text](https://github.com/KrzysztofM01/TwoGenerals/blob/master/readme_images/gameBoard_4.png)
 ![alt text](https://github.com/KrzysztofM01/TwoGenerals/blob/master/readme_images/gameBoard_5.png)
-</details>
